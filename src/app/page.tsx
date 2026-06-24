@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
 import { IceMakerFeature } from "@/components/Home/IceMakerFeature";
+import { LayeredVideos } from "@/components/Home/LayeredVideos";
 import { ShowroomJourney } from "@/components/Home/ShowroomJourney";
 import { TriBrandShowcase } from "@/components/Home/TriBrandShowcase";
 import { Hero } from "@/components/Hero/Hero";
@@ -18,6 +19,7 @@ export default function Home() {
           <ShowroomJourney />
           <IceMakerFeature />
         </div>
+        <LayeredVideos />
 
         <section className="px-6 py-24 md:px-12">
           <SectionHeader

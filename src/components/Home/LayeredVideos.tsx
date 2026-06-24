@@ -79,7 +79,7 @@ export function LayeredVideos() {
       if (!video) return;
 
       if (index === activeIndex) {
-        if (!isPaused) void video.play();
+        if (!isPaused) void video.play().catch(() => undefined);
       } else {
         video.pause();
       }
@@ -97,10 +97,7 @@ export function LayeredVideos() {
       const viewportHeight = window.innerHeight;
       const scrollRange = Math.max(rect.height - viewportHeight, 1);
       const nextProgress = Math.min(Math.max(-rect.top / scrollRange, 0), 1);
-      const nextIndex = Math.min(
-        slideCount - 1,
-        Math.max(0, Math.round(nextProgress * (slideCount - 1))),
-      );
+      const nextIndex = Math.min(slideCount - 1, Math.max(0, Math.floor(nextProgress * (slideCount - 1) + 0.5)));
 
       setScrollProgress((currentProgress) => {
         if (Math.abs(currentProgress - nextProgress) < 0.001) return currentProgress;
@@ -125,14 +122,21 @@ export function LayeredVideos() {
     };
   }, [slideCount]);
 
+  function getSlideOffset(index: number) {
+    if (index === 0) return 0;
+
+    const offset = (index - slidePosition) * 110;
+    return Math.min(Math.max(offset, 0), 110);
+  }
+
   function getSlideTransform(index: number) {
-    const offset = Math.min(Math.max((index - slidePosition) * 110, -110), 110);
+    const offset = getSlideOffset(index);
     return `translate3d(0, ${offset}%, 0)`;
   }
 
   function getSlideScale(index: number) {
-    const distance = Math.min(Math.abs(index - slidePosition), 1);
-    return 1 + distance * 0.15;
+    const offset = getSlideOffset(index);
+    return 1 + (offset / 110) * 0.15;
   }
 
   const caretTop = Math.min(scrollProgress * 96, 96);
@@ -142,7 +146,7 @@ export function LayeredVideos() {
     if (!video) return;
 
     if (video.paused) {
-      void video.play();
+      void video.play().catch(() => undefined);
       setIsPaused(false);
     } else {
       video.pause();
@@ -161,14 +165,14 @@ export function LayeredVideos() {
       style={{ minHeight: `${slideCount * 100}svh` }}
       aria-labelledby="layered-videos-title"
     >
-      <div className="sticky top-0 h-[100svh] min-h-[680px] overflow-hidden">
+      <div className="sticky top-0 h-[100svh] min-h-[620px] overflow-hidden">
         {slides.map((slide, index) => (
           <article
             key={slide.video}
-            className="absolute inset-0 will-change-transform"
+            className="absolute inset-0 overflow-hidden will-change-transform"
             style={{
               transform: getSlideTransform(index),
-              zIndex: index === activeIndex ? 2 : 1,
+              zIndex: index + 1,
             }}
             aria-hidden={index !== activeIndex}
           >
@@ -187,19 +191,19 @@ export function LayeredVideos() {
               <source src={slide.video} type="video/mp4" />
             </video>
 
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.80)_0%,rgba(0,0,0,0.54)_23%,rgba(0,0,0,0.14)_58%,rgba(0,0,0,0.26)_100%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.10)_0%,rgba(0,0,0,0.06)_48%,rgba(0,0,0,0.72)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.86)_0%,rgba(0,0,0,0.56)_24%,rgba(0,0,0,0.12)_62%,rgba(0,0,0,0.26)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.08)_52%,rgba(0,0,0,0.78)_100%)]" />
 
-            <div className="relative z-10 flex h-full items-center px-5 md:px-6">
+            <div className="relative z-10 flex h-full items-center px-5 pt-16 pb-24 md:px-6 md:pt-20 md:pb-20">
               <div className="max-w-[620px]">
                 <h2
                   id={index === 0 ? "layered-videos-title" : undefined}
-                  className="font-serif text-[46px] leading-[1.08] md:text-[64px]"
+                  className="font-serif text-[44px] leading-[1.08] md:text-[64px]"
                 >
                   {slide.title}
                 </h2>
                 {slide.description ? (
-                  <p className="mt-5 max-w-[520px] font-serif text-[26px] leading-[1.18] md:text-[33px]">
+                  <p className="mt-5 max-w-[520px] font-serif text-[25px] leading-[1.18] md:text-[33px]">
                     {slide.description}
                   </p>
                 ) : null}
@@ -229,7 +233,7 @@ export function LayeredVideos() {
           </article>
         ))}
 
-        <div className="absolute right-5 top-1/2 z-20 hidden -translate-y-1/2 items-start gap-1.5 md:flex">
+        <div className="absolute right-5 top-1/2 z-30 hidden -translate-y-1/2 items-start gap-1.5 md:flex">
           <span className="mt-1 rounded-full bg-[#263335]/80 px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] backdrop-blur">
             Video {activeIndex + 1} / {slideCount}
           </span>
@@ -245,7 +249,7 @@ export function LayeredVideos() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 right-6 z-20 flex items-center gap-4 md:bottom-10 md:right-10">
+        <div className="absolute bottom-8 right-6 z-30 flex items-center gap-4 md:bottom-10 md:right-10">
           <button
             type="button"
             onClick={toggleVideo}
