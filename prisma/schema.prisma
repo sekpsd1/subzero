@@ -1,0 +1,256 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum UserRole {
+  ADMIN
+  STAFF
+}
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+enum StockMovementType {
+  ADJUSTMENT
+  RECEIVED
+  RESERVED
+  RELEASED
+  SOLD
+}
+
+model User {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  role         UserRole   @default(STAFF)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  posts        Post[]
+  auditLogs    AuditLog[]
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  url       String
+  alt       String?
+  mimeType  String?
+  size      Int?
+  createdAt DateTime @default(now())
+}
+
+model SeoMeta {
+  id             String  @id @default(cuid())
+  metaTitle      String?
+  metaDescription String? @db.Text
+  canonicalUrl   String?
+  ogTitle        String?
+  ogDescription  String? @db.Text
+  ogImage        String?
+  twitterTitle   String?
+  twitterDescription String? @db.Text
+  schemaJson     Json?
+  faqJson        Json?
+  robots         String?
+  sitemapVisible Boolean @default(true)
+  post           Post?
+  product        Product?
+}
+
+model PostCategory {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  posts     Post[]
+  createdAt DateTime @default(now())
+}
+
+model PostTag {
+  id    String @id @default(cuid())
+  name  String
+  slug  String @unique
+  posts Post[]
+}
+
+model Post {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  excerpt     String?       @db.Text
+  content     String        @db.LongText
+  status      PublishStatus @default(DRAFT)
+  coverImage  String?
+  authorId    String?
+  author      User?         @relation(fields: [authorId], references: [id])
+  categoryId  String?
+  category    PostCategory? @relation(fields: [categoryId], references: [id])
+  tags        PostTag[]
+  seoMetaId   String?       @unique
+  seoMeta     SeoMeta?      @relation(fields: [seoMetaId], references: [id])
+  publishedAt DateTime?
+  deletedAt   DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Brand {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  logo        String?
+  products    Product[]
+  categories  ProductCategory[]
+  createdAt   DateTime  @default(now())
+}
+
+model ProductCategory {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  parentId  String?
+  parent    ProductCategory? @relation("CategoryTree", fields: [parentId], references: [id])
+  children  ProductCategory[] @relation("CategoryTree")
+  brandId   String?
+  brand     Brand?   @relation(fields: [brandId], references: [id])
+  products  Product[]
+}
+
+model Product {
+  id             String        @id @default(cuid())
+  model          String        @unique
+  name           String
+  slug           String        @unique
+  description    String?       @db.Text
+  brandId        String
+  brand          Brand         @relation(fields: [brandId], references: [id])
+  categoryId     String
+  category       ProductCategory @relation(fields: [categoryId], references: [id])
+  series         String?
+  type           String?
+  width          String?
+  finish         String?
+  style          String?
+  featuresJson   Json?
+  specsJson      Json?
+  warrantyJson   Json?
+  price          Decimal?      @db.Decimal(10, 2)
+  showPrice      Boolean       @default(false)
+  status         ProductStatus @default(DRAFT)
+  deletedAt      DateTime?
+  seoMetaId      String?       @unique
+  seoMeta        SeoMeta?      @relation(fields: [seoMetaId], references: [id])
+  images         ProductImage[]
+  inventory      Inventory?
+  stockMovements StockMovement[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  url       String
+  alt       String?
+  sortOrder Int     @default(0)
+}
+
+model Inventory {
+  id        String  @id @default(cuid())
+  productId String  @unique
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int     @default(0)
+  reserved  Int     @default(0)
+  location  String?
+  updatedAt DateTime @updatedAt
+}
+
+model StockMovement {
+  id        String            @id @default(cuid())
+  productId String
+  product   Product           @relation(fields: [productId], references: [id])
+  type      StockMovementType
+  quantity  Int
+  note      String?
+  createdAt DateTime          @default(now())
+}
+
+model Showroom {
+  id        String   @id @default(cuid())
+  name      String
+  country   String
+  city      String?
+  address   String?  @db.Text
+  phone     String?
+  email     String?
+  latitude  Decimal? @db.Decimal(10, 7)
+  longitude Decimal? @db.Decimal(10, 7)
+  createdAt DateTime @default(now())
+}
+
+model Dealer {
+  id        String   @id @default(cuid())
+  name      String
+  country   String
+  city      String?
+  address   String?  @db.Text
+  phone     String?
+  email     String?
+  createdAt DateTime @default(now())
+}
+
+model ShowroomAppointment {
+  id                         String   @id @default(cuid())
+  visitorType                String
+  country                    String
+  firstName                  String
+  lastName                   String?
+  phone                      String
+  email                      String
+  preferredDate              DateTime?
+  preferredTime              String?
+  countryProductInstallation String?
+  message                    String?  @db.Text
+  status                     String   @default("new")
+  createdAt                  DateTime @default(now())
+  updatedAt                  DateTime @updatedAt
+}
+
+model Redirect {
+  id          String   @id @default(cuid())
+  source      String   @unique
+  destination String
+  permanent   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     Json
+  updatedAt DateTime @updatedAt
+}
