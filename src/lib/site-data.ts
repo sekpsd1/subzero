@@ -3,6 +3,7 @@ export type NavItem = {
   href: string;
   description?: string;
   children?: NavItem[];
+  featured?: boolean;
 };
 
 export type Product = {
@@ -52,12 +53,21 @@ export const mainNavigation: NavItem[] = [
     href: "/products/refrigeration",
     description: "Sub-Zero preservation, wine, and undercounter systems.",
     children: [
-      { title: "Discover Sub-Zero", href: "/products/refrigeration/discover-sub-zero" },
-      { title: "Classic Series", href: "/products/refrigeration/classic-series" },
-      { title: "Designer Series", href: "/products/refrigeration/designer-series" },
-      { title: "Pro Series", href: "/products/refrigeration/pro-series" },
-      { title: "Wine Preservation", href: "/products/refrigeration/wine-preservation" },
-      { title: "Undercounter", href: "/products/refrigeration/undercounter" },
+      { title: "Discover Sub-Zero", href: "/products/refrigeration/discover-sub-zero", featured: true },
+      { title: "Classic Series", href: "/products/refrigeration/classic-series", featured: true },
+      { title: "Designer Series", href: "/products/refrigeration/designer-series", featured: true },
+      { title: "PRO Series", href: "/products/refrigeration/pro-series", featured: true },
+      { title: "Wine Storage", href: "/products/refrigeration/wine-storage", featured: true },
+      { title: "Undercounter", href: "/products/refrigeration/undercounter", featured: true },
+      { title: "Ice Makers - NEW", href: "/products/refrigeration/ice-makers" },
+      { title: "French Door", href: "/products/refrigeration/french-door" },
+      { title: "Side-by-Side", href: "/products/refrigeration/side-by-side" },
+      { title: "Over-and-Under", href: "/products/refrigeration/over-and-under" },
+      { title: "Column Refrigeration", href: "/products/refrigeration/column-refrigeration" },
+      { title: "Column Freezer", href: "/products/refrigeration/column-freezer" },
+      { title: "Drawers", href: "/products/refrigeration/drawers" },
+      { title: "Outdoor", href: "/products/outdoor" },
+      { title: "Accessories", href: "/support/accessories" },
     ],
   },
   {
@@ -65,19 +75,25 @@ export const mainNavigation: NavItem[] = [
     href: "/products/cooking",
     description: "Wolf performance for refined indoor and outdoor kitchens.",
     children: [
-      { title: "Discover Wolf", href: "/products/cooking/discover-wolf" },
+      { title: "Discover Wolf", href: "/products/cooking/discover-wolf", featured: true },
       {
         title: "Ranges",
         href: "/products/cooking/ranges",
+        featured: true,
         children: [
-          { title: "Induction Ranges", href: "/products/cooking/induction-ranges" },
           { title: "Dual Fuel Ranges", href: "/products/cooking/dual-fuel-ranges" },
+          { title: "Induction Ranges", href: "/products/cooking/induction-ranges" },
+          { title: "Professional Induction Ranges", href: "/products/cooking/professional-induction-ranges" },
+          { title: "Transitional Induction Ranges", href: "/products/cooking/transitional-induction-ranges" },
+          { title: "Gas Ranges", href: "/products/cooking/gas-ranges" },
         ],
       },
       {
-        title: "Built-In Ovens",
+        title: "Built-in Ovens",
         href: "/products/cooking/built-in-ovens",
+        featured: true,
         children: [
+          { title: "Convection Ovens", href: "/products/cooking/convection-ovens" },
           { title: "M Series Ovens", href: "/products/cooking/m-series-ovens" },
           { title: "E Series Ovens", href: "/products/cooking/e-series-ovens" },
           { title: "Convection Steam Ovens", href: "/products/cooking/convection-steam-ovens" },
@@ -87,54 +103,43 @@ export const mainNavigation: NavItem[] = [
       {
         title: "Cooktops & Rangetops",
         href: "/products/cooking/cooktops-rangetops",
+        featured: true,
         children: [
-          { title: "Module Cooktops - Gas", href: "/products/cooking/module-cooktops-gas" },
-          { title: "Module Cooktops - Induction", href: "/products/cooking/module-cooktops-induction" },
-          { title: "Induction Cooktops", href: "/products/cooking/induction-cooktops" },
-          { title: "Gas Cooktops", href: "/products/cooking/gas-cooktops" },
+          { title: "Gas Rangetops", href: "/products/cooking/gas-rangetops" },
           { title: "Sealed Burner Rangetops", href: "/products/cooking/sealed-burner-rangetops" },
-        ],
-      },
-      {
-        title: "Ventilation",
-        href: "/products/cooking/ventilation",
-        children: [
-          { title: "Cooktop Ventilation", href: "/products/cooking/cooktop-ventilation" },
-          { title: "Pro Ventilation", href: "/products/cooking/pro-ventilation" },
-        ],
-      },
-      {
-        title: "Warming Drawers",
-        href: "/products/cooking/warming-drawers",
-        children: [
-          { title: "Warming Drawer", href: "/products/cooking/warming-drawer" },
-          { title: "Vacuum Seal Drawer", href: "/products/cooking/vacuum-seal-drawer" },
-        ],
-      },
-      { title: "Coffee Systems", href: "/products/cooking/coffee-systems" },
-      {
-        title: "Module Cooktops",
-        href: "/products/cooking/module-cooktops",
-        children: [
+          { title: "Gas Cooktops", href: "/products/cooking/gas-cooktops" },
+          { title: "Professional Gas Cooktops", href: "/products/cooking/professional-gas-cooktops" },
+          { title: "Transitional Gas Cooktops", href: "/products/cooking/transitional-gas-cooktops" },
+          { title: "Contemporary Gas Cooktops", href: "/products/cooking/contemporary-gas-cooktops" },
+          { title: "Induction Cooktops", href: "/products/cooking/induction-cooktops" },
+          { title: "Contemporary Induction Cooktops", href: "/products/cooking/contemporary-induction-cooktops" },
+          { title: "Transitional Induction Cooktops", href: "/products/cooking/transitional-induction-cooktops" },
           { title: "Module Cooktops - Gas", href: "/products/cooking/module-cooktops-gas" },
           { title: "Module Cooktops - Induction", href: "/products/cooking/module-cooktops-induction" },
         ],
       },
-      {
-        title: "Outdoor & Built-In Grills",
-        href: "/products/cooking/outdoor-grills",
-        children: [
-          { title: "Outdoor Gas Grills and Modules", href: "/products/cooking/outdoor-gas-grills-and-modules" },
-        ],
-      },
-      { title: "Vacuum Seal Drawer", href: "/products/cooking/vacuum-seal-drawer" },
+      { title: "Ventilation", href: "/products/cooking/ventilation" },
+      { title: "Coffee Systems", href: "/products/cooking/coffee-systems" },
+      { title: "Microwaves", href: "/products/cooking/microwaves" },
+      { title: "Drawers", href: "/products/cooking/drawers" },
+      { title: "Outdoor", href: "/products/outdoor" },
+      { title: "Accessories", href: "/support/accessories" },
     ],
   },
   {
     title: "Outdoor",
     href: "/products/outdoor",
     description: "Appliances for complete open-air kitchens.",
-    children: [{ title: "Discover Outdoor", href: "/products/outdoor/discover-outdoor" }],
+    children: [
+      { title: "Discover Outdoor", href: "/products/outdoor/discover-outdoor", featured: true },
+      { title: "Ice Makers - NEW", href: "/products/refrigeration/ice-makers" },
+      { title: "Refrigeration", href: "/products/outdoor?default.categories=outdoor%2Frefrigeration" },
+      { title: "Grilling", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
+      { title: "Cooking", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
+      { title: "Ventilation", href: "/products/outdoor?default.categories=outdoor%2Fventilation" },
+      { title: "Drawers", href: "/products/outdoor?default.categories=outdoor%2Fwarming-drawers" },
+      { title: "Accessories", href: "/support/accessories" },
+    ],
   },
   {
     title: "Owners",
@@ -154,9 +159,20 @@ export const mainNavigation: NavItem[] = [
         ],
       },
       { title: "Product Support", href: "/support/product-support" },
-      { title: "Owner Technique Guide", href: "/support/owner-technique-guide" },
       {
-        title: "Customer Care",
+        title: "Owner Technique Guide",
+        href: "/support/owner-technique-guide",
+        children: [
+          { title: "Dual Fuel Range", href: "/support/owner-technique-guide/dual-fuel-range" },
+          { title: "Induction Range", href: "/support/owner-technique-guide/induction-range" },
+          { title: "E Series Oven", href: "/support/owner-technique-guide/e-series-oven" },
+          { title: "Convection Steam Oven", href: "/support/owner-technique-guide/convection-steam-oven" },
+          { title: "M Series Oven", href: "/support/owner-technique-guide/m-series-oven" },
+          { title: "Speed Oven", href: "/support/owner-technique-guide/speed-oven" },
+        ],
+      },
+      {
+        title: "Customer Care - Factory Certified Installation",
         href: "/support/customer-care",
         children: [
           { title: "Thailand", href: "/support/customer-care/thailand" },
@@ -174,6 +190,8 @@ export const mainNavigation: NavItem[] = [
     children: [
       { title: "Specification Library", href: "/trade/specification-library" },
       { title: "Brochure", href: "/trade/brochure" },
+      { title: "A Higher Standard", href: "/trade/a-higher-standard" },
+      { title: "Design Possibilities", href: "/trade/design-possibilities" },
       { title: "Future Products", href: "/trade/future-products" },
       { title: "Kitchen Design Contest", href: "/trade/kitchen-design-contest" },
     ],
@@ -214,11 +232,15 @@ export const mainNavigation: NavItem[] = [
         title: "Dealers",
         href: "/showroom/dealers",
         children: [
+          { title: "Thailand", href: "/showroom/dealers/thailand" },
           { title: "Authorized Dealers Bangkok", href: "/showroom/dealers/thailand/bangkok" },
           { title: "Authorized Dealers Phuket", href: "/showroom/dealers/thailand/phuket" },
-          { title: "Authorized Dealers Indonesia", href: "/showroom/dealers/indonesia" },
-          { title: "Authorized Dealers Singapore", href: "/showroom/dealers/singapore" },
-          { title: "Authorized Dealers Malaysia", href: "/showroom/dealers/malaysia" },
+          { title: "Indonesia", href: "/showroom/dealers/indonesia" },
+          { title: "Authorized Dealers Indonesia", href: "/showroom/dealers/indonesia/authorized-dealers" },
+          { title: "Singapore", href: "/showroom/dealers/singapore" },
+          { title: "Authorized Dealers Singapore", href: "/showroom/dealers/singapore/authorized-dealers" },
+          { title: "Malaysia", href: "/showroom/dealers/malaysia" },
+          { title: "Authorized Dealers Malaysia", href: "/showroom/dealers/malaysia/authorized-dealers" },
         ],
       },
     ],
