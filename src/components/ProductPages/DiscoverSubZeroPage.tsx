@@ -17,6 +17,12 @@ const heroPosterSrcSet = [430, 640, 992, 1280, 1440, 1920, 2560, 3840]
   .join(", ");
 
 const assets = {
+  seriesClassic:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:fc99f905-1577-4727-a017-a88beead365b/as/SZ12216022.avif?assetname=SZ12216022.jpg",
+  seriesDesigner:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:6d5ad573-0976-4851-bad7-f463408cd539/as/SZ2169182.avif?assetname=SZ2169182.jpg",
+  seriesPro:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:134aceca-524e-4b8a-a854-289c2550de7e/as/SZWC_PA_0519_4021FC_A_GraCol2006.avif?assetname=SZWC_PA_0519_4021FC_A_GraCol2006.tif",
   classic:
     "https://www.subzero-wolf.com/adobe/assets/urn:aaid:aem:4889a049-e540-4492-92b1-49dfe6f3cfd2/as/classic-cl3650u-g-ms-rh-full-exterior-desktop.avif",
   designer:
@@ -32,16 +38,36 @@ const assets = {
   preservationVideo:
     "https://www.subzero-wolf.com/adobe/assets/urn:aaid:aem:dd92e0bf-53f7-4588-ac22-60cde7637b9d/as/learn-about-preservation-video.mp4",
   freshness:
-    "https://www.subzero-wolf.com/adobe/assets/urn:aaid:aem:5583195a-37b7-4be5-b8c3-481795d4f12f/as/bringing-products-to-life-1.jpg",
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:f2a1cb66-2ed2-4cdd-9bbb-077fadf8fcd7/as/Sub_Zero_Euro_Refer_Detail_05.avif?assetname=Sub_Zero_Euro_Refer_Detail_05.jpg",
   intuitive:
-    "https://www.subzero-wolf.com/adobe/assets/urn:aaid:aem:01950421-e725-46df-b8a6-0f5f25fd8c7a/as/bringing-products-to-life-2.mp4",
-  decades:
-    "https://www.subzero-wolf.com/adobe/assets/urn:aaid:aem:fe0e0d66-2a92-481c-84dd-ccf020b6d232/as/bringing-products-to-life-3.mp4",
+    "/assets/subzero/sub-zero-refrigerator-inside.mp4",
+  decades: "/assets/subzero/sub-zero-landing-quality.mp4",
   wine:
     "https://www.subzero-wolf.com/adobe/assets/urn:aaid:aem:2e936d2a-bd0f-4346-93e0-1e0f215ff799/as/wine-storage-desktop.avif",
   undercounter:
     "https://www.subzero-wolf.com/adobe/assets/urn:aaid:aem:7e647231-6fb3-49fd-bd17-b34e7107607c/as/undercounter-desktop.avif",
 };
+
+const seriesTeasers = [
+  {
+    title: "Classic",
+    label: "series",
+    image: assets.seriesClassic,
+    href: "/refrigeration/classic-series",
+  },
+  {
+    title: "Designer",
+    label: "series",
+    image: assets.seriesDesigner,
+    href: "/refrigeration/designer-series",
+  },
+  {
+    title: "PRO",
+    label: "series",
+    image: assets.seriesPro,
+    href: "/refrigeration/pro-series",
+  },
+];
 
 const seriesCards = [
   {
@@ -61,33 +87,6 @@ const seriesCards = [
     description: "Stainless-steel construction, advanced performance, and impressive aesthetic size.",
     image: assets.pro,
     href: "/products/refrigeration/pro-series",
-  },
-];
-
-const featurePanels = [
-  {
-    title: "Peak freshness, longer",
-    description:
-      "Dual refrigeration, advanced air purification, and magnetic door seals help maintain ideal conditions for food, wine, and frozen goods.",
-    cta: "Learn about preservation",
-    media: assets.freshness,
-    type: "image",
-  },
-  {
-    title: "Intuitive and thoughtful",
-    description:
-      "Storage, lighting, and controls are designed around the way people actually use their kitchens every day.",
-    cta: "Explore features",
-    media: assets.intuitive,
-    type: "video",
-  },
-  {
-    title: "Yours for decades to come",
-    description:
-      "Products are tested beyond typical industry standards so performance feels steady today and far into the future.",
-    cta: "Explore ownership",
-    media: assets.decades,
-    type: "video",
   },
 ];
 
@@ -139,41 +138,6 @@ function OutlineButton({ children, href = "#" }: { children: string; href?: stri
     >
       {children}
     </Link>
-  );
-}
-
-function MediaBlock({
-  src,
-  type = "image",
-  alt,
-  className = "",
-}: {
-  src: string;
-  type?: string;
-  alt: string;
-  className?: string;
-}) {
-  if (type === "video") {
-    return (
-      <video
-        className={`h-full w-full object-cover ${className}`}
-        src={src}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-    );
-  }
-
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      sizes="(min-width: 1024px) 50vw, 100vw"
-      className={`object-cover ${className}`}
-    />
   );
 }
 
@@ -312,112 +276,351 @@ function HeroVideo() {
   );
 }
 
+function LayeredImages() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const syncProgress = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const scrollable = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+
+      setScrollProgress(progress);
+    };
+
+    syncProgress();
+    window.addEventListener("scroll", syncProgress, { passive: true });
+    window.addEventListener("resize", syncProgress);
+
+    return () => {
+      window.removeEventListener("scroll", syncProgress);
+      window.removeEventListener("resize", syncProgress);
+    };
+  }, []);
+
+  const timelineProgress = scrollProgress * seriesTeasers.length * 2;
+  const caretHeight = 10 + scrollProgress * 90;
+
+  const clamp = (value: number, min = 0, max = 1) => Math.min(Math.max(value, min), max);
+  const ease = (value: number) => {
+    const t = clamp(value);
+    return t * t * (3 - 2 * t);
+  };
+
+  const scrollToSlide = (index: number) => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const scrollable = Math.max(section.offsetHeight - window.innerHeight, 1);
+    const targetStage = index === 0 ? 0 : index * 2 + 1;
+    const targetProgress = targetStage / (seriesTeasers.length * 2);
+    const top = section.getBoundingClientRect().top + window.scrollY + scrollable * targetProgress;
+
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
+  const skipSection = () => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    window.scrollTo({
+      top: section.getBoundingClientRect().bottom + window.scrollY,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section
+      ref={sectionRef}
+      className="section layered-images-container relative h-[360svh] px-6 pb-24 md:px-12 md:pb-32"
+      data-palette="stone--dark"
+      role="region"
+      aria-labelledby="classic"
+    >
+      <div className="sticky top-[72px] flex h-[calc(100svh-72px)] items-start justify-center pt-5 md:pt-6">
+        <div className="relative w-full max-w-[1190px]">
+          <ul className="relative aspect-[1.6] min-h-[520px] overflow-hidden bg-[#d8d2c5]">
+            {seriesTeasers.map((card, index) => {
+              const enterStart = index === 0 ? 0 : index * 2;
+              const imageSettle = index === 0 ? 1 : enterStart + 1;
+              const overlayStart = imageSettle + 0.28;
+              const overlayEnd = imageSettle + 0.95;
+              const enterProgress = index === 0 ? 1 : ease(timelineProgress - enterStart);
+              const zoomProgress = ease((timelineProgress - imageSettle + 0.9) / 0.9);
+              const overlayOpacity = ease((timelineProgress - overlayStart) / (overlayEnd - overlayStart));
+              const overlayLift = (1 - overlayOpacity) * 10;
+              const translateY = index === 0 ? 0 : (1 - enterProgress) * 110;
+              const imageScale = 1.15 - zoomProgress * 0.15;
+              const isActive =
+                timelineProgress >= enterStart &&
+                (index === seriesTeasers.length - 1 ||
+                  timelineProgress < (index + 1) * 2);
+
+              return (
+                <li
+                  key={card.title}
+                  className="layered-images-slide absolute inset-0 transition-transform duration-150 ease-out"
+                  style={{ transform: `translateY(${translateY}%)`, zIndex: index + 1 }}
+                  aria-hidden={!isActive}
+                >
+                  <div className="relative h-full w-full overflow-hidden">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      sizes="(min-width: 1280px) 1190px, calc(100vw - 48px)"
+                      className="object-cover"
+                      style={{ transform: `scale(${imageScale})` }}
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-black"
+                      style={{ opacity: overlayOpacity * 0.62 }}
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-white"
+                      style={{
+                        opacity: overlayOpacity,
+                        transform: `translateY(${overlayLift}px)`,
+                      }}
+                    >
+                      <h2 className="font-serif text-[clamp(3.4rem,4.1vw,5rem)] leading-none">
+                        {card.title}
+                      </h2>
+                      <p className="mt-4 text-xs font-semibold uppercase tracking-[0.34em] md:text-sm">
+                        {card.label}
+                      </p>
+                    </div>
+                    <div className="sr-only">
+                      <h2 id={card.title.toLowerCase()}>
+                        {card.title} {card.label}
+                      </h2>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="layered-images-progress-controls absolute right-[-32px] top-1/2 hidden -translate-y-1/2 lg:block">
+            <div className="relative h-[90px] w-px bg-[#171715]/40">
+              <div
+                className="absolute left-0 top-0 w-px bg-[#171715]"
+                style={{ height: `${caretHeight}%` }}
+              />
+              <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 flex-col justify-between">
+                {seriesTeasers.map((card, index) => (
+                  <button
+                    key={card.title}
+                    type="button"
+                    className="h-6 w-6 -translate-x-1/2"
+                    aria-label={`Image ${index + 1} / ${seriesTeasers.length}`}
+                    onClick={() => scrollToSlide(index)}
+                  >
+                    <span className="sr-only">
+                      Image {index + 1} / {seriesTeasers.length}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="absolute bottom-3 right-3 z-20 grid h-10 w-10 place-items-center rounded-full border border-[#171715] bg-[#f4f2ec]/90 text-[#171715] transition hover:bg-[#171715] hover:text-[#f4f2ec] md:bottom-4 lg:right-[-60px]"
+            aria-label="Skip to next section"
+            onClick={skipSection}
+          >
+            <svg
+              className="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 21L7 16M12 21L17 16M12 21V3"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VideoPanel({ src, label }: { src: string; label: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const toggleVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      void video.play();
+      setIsPaused(false);
+    } else {
+      video.pause();
+      setIsPaused(true);
+    }
+  };
+
+  return (
+    <div className="relative aspect-[1.08] overflow-hidden bg-[#e1ddd2]">
+      <video
+        ref={videoRef}
+        className="h-full w-full object-cover"
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label={label}
+      />
+      <button
+        type="button"
+        className="absolute bottom-3 right-3 grid h-12 w-12 place-items-center rounded-full text-white outline-none transition focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black md:bottom-4 md:right-4"
+        aria-label={isPaused ? "Play" : "Pause"}
+        aria-pressed={!isPaused}
+        onClick={toggleVideo}
+      >
+        <svg
+          className="h-12 w-12"
+          viewBox="0 0 60 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <circle cx="30" cy="30" r="24" stroke="rgba(255,255,255,0.45)" strokeWidth="3" />
+          <circle cx="30" cy="30" r="20" fill="rgba(0,0,0,0.68)" />
+          {isPaused ? (
+            <path d="M25 20L40 30L25 40V20Z" fill="currentColor" />
+          ) : (
+            <>
+              <rect x="24" y="20" width="3" height="20" fill="currentColor" rx="1.5" />
+              <rect x="33" y="20" width="3" height="20" fill="currentColor" rx="1.5" />
+            </>
+          )}
+        </svg>
+        <span className="sr-only">Video</span>
+      </button>
+    </div>
+  );
+}
+
 export function DiscoverSubZeroPage() {
   return (
     <main className="bg-[#f4f2ec] text-[#171715]">
       <HeroVideo />
 
-      <section className="px-6 py-20 md:px-12 md:py-28">
-        <div className="mx-auto grid max-w-[1392px] gap-4 lg:grid-cols-3">
-          {seriesCards.map((card) => (
-            <Link key={card.title} href={card.href} className="group bg-[#fbfaf6]">
-              <div className="relative aspect-[1.05] overflow-hidden bg-[#ece9df]">
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-contain p-10 transition duration-700 group-hover:scale-[1.04]"
-                />
-              </div>
-              <div className="px-8 pb-10 pt-8">
-                <h2 className="font-serif text-4xl leading-none md:text-5xl">{card.title}</h2>
-                <p className="mt-5 max-w-[360px] text-base leading-relaxed text-[#5c5a55]">
-                  {card.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="px-6 pb-20 md:px-12 md:pb-28">
-        <div className="mx-auto grid max-w-[1180px] gap-10 bg-[#fbfaf6] p-6 md:grid-cols-[0.48fr_0.52fr] md:p-8 lg:gap-20">
-          <div className="relative min-h-[360px] overflow-hidden">
-            <Image src={assets.showroom} alt="Showroom consultation" fill sizes="50vw" className="object-cover" />
-          </div>
-          <div className="flex flex-col justify-center py-8 md:py-14">
-            <h2 className="font-serif text-[clamp(3rem,5vw,5.5rem)] leading-[0.98]">
-              Start your journey
-              <br />
-              in a showroom
-            </h2>
-            <p className="mt-8 max-w-[430px] text-lg leading-relaxed">
-              Explore products in person and get expert advice on your next refrigeration project.
-            </p>
-            <div className="mt-9">
-              <Link
-                href="/showroom/appointment"
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#171715] px-9 text-sm font-bold text-white"
-              >
-                Get started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#e7e3d8] px-6 py-24 md:px-12 md:py-32">
-        <div className="mx-auto max-w-[1392px]">
-          <div className="grid gap-10 lg:grid-cols-[0.48fr_0.52fr]">
-            <h2 className="font-serif text-[clamp(3.5rem,7vw,8rem)] leading-[0.92]">
-              A pioneer
-              <br />
-              for 80 years
-            </h2>
-            <p className="max-w-[600px] text-lg leading-relaxed text-[#3b3934] lg:pt-7">
-              For decades, Sub-Zero has pioneered preservation with advanced technology, quality
-              materials, and rigorous testing. Today&apos;s products continue that legacy, keeping food
-              fresher while elevating the way kitchens are designed and experienced.
-            </p>
-          </div>
-          <div className="mt-16 grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="relative min-h-[460px] overflow-hidden">
-              <Image src={assets.preservationOne} alt="Sub-Zero preservation detail" fill sizes="45vw" className="object-cover" />
-            </div>
-            <div className="grid gap-4">
-              <div className="relative min-h-[260px] overflow-hidden">
-                <Image src={assets.preservationTwo} alt="Sub-Zero kitchen refrigeration" fill sizes="55vw" className="object-cover" />
-              </div>
-              <video className="h-[320px] w-full object-cover" src={assets.preservationVideo} autoPlay muted loop playsInline />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-20 md:px-12 md:py-28">
-        <div className="mx-auto max-w-[1392px] space-y-6">
-          {featurePanels.map((panel, index) => (
-            <div
-              key={panel.title}
-              className={`grid min-h-[560px] bg-[#fbfaf6] lg:grid-cols-2 ${
-                index % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
-              }`}
+      <section className="px-6 pb-7 pt-8 md:px-12 md:pb-8 md:pt-10">
+        <div className="mx-auto flex max-w-[1392px] flex-col items-center text-center">
+          <Image
+            src="/assets/subzero/sub-zero-logo.svg"
+            alt="Sub-Zero"
+            width={156}
+            height={36}
+            className="h-auto w-[118px] md:w-[132px]"
+            priority
+          />
+          <h1 className="mt-6 max-w-[980px] font-serif text-[clamp(2.75rem,3.25vw,4rem)] leading-[1.06] lg:whitespace-nowrap">
+            The pinnacle of food preservation
+          </h1>
+          <p className="mt-5 max-w-[860px] text-base leading-snug text-[#171715] md:text-lg">
+            Our refrigerators and freezers keep food fresher longer, protecting every ingredient with
+            precision and care. Built on a long legacy of excellence, Sub-Zero stands alone in its
+            class.
+          </p>
+          <div className="mt-6">
+            <Link
+              href="/showroom"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#171715] px-9 text-sm font-bold text-white transition hover:bg-[#34322e]"
             >
-              <div className="relative min-h-[360px] overflow-hidden">
-                <MediaBlock src={panel.media} type={panel.type} alt={panel.title} />
-              </div>
-              <div className="flex flex-col justify-center px-8 py-14 md:px-16">
-                <h2 className="font-serif text-[clamp(3rem,5vw,6rem)] leading-[0.94]">{panel.title}</h2>
-                <p className="mt-8 max-w-[430px] text-lg leading-relaxed text-[#3b3934]">
-                  {panel.description}
-                </p>
-                <div className="mt-9">
-                  <OutlineButton>{panel.cta}</OutlineButton>
-                </div>
-              </div>
+              Experience in a showroom
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <LayeredImages />
+
+      <section className="px-6 pb-24 pt-10 md:px-12 md:pb-32 md:pt-16">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mx-auto flex max-w-[1392px] flex-col items-center text-center">
+            <h2 className="font-serif text-[clamp(4rem,7.2vw,8.2rem)] leading-[0.86] tracking-normal lg:whitespace-nowrap">
+              A pioneer for 80 years
+            </h2>
+            <p className="mt-5 max-w-[710px] font-serif text-[clamp(1.35rem,1.9vw,1.75rem)] leading-[1.08] text-[#171715]">
+              Decades of innovation. Precision craftsmanship. Rigorous testing. Every Sub-Zero is
+              engineered to deliver over 20 years of flawless performance.
+            </p>
+            <Link
+              href="/refrigeration/view-all-refrigeration"
+              className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-[#171715] px-7 text-sm font-bold text-white transition hover:bg-[#34322e]"
+            >
+              Explore Sub-Zero products
+            </Link>
+          </div>
+
+          <div className="mt-24 grid items-center gap-12 lg:grid-cols-[0.56fr_0.44fr] lg:gap-12">
+            <div className="relative aspect-[1.08] overflow-hidden bg-[#e1ddd2]">
+              <Image
+                src={assets.freshness}
+                alt="Fresh vegetables in a Sub-Zero refrigerator drawer"
+                fill
+                sizes="(min-width: 1024px) 56vw, 100vw"
+                className="object-cover"
+              />
             </div>
-          ))}
+            <div className="lg:pl-3">
+              <h3 className="font-serif text-[clamp(2.35rem,3vw,3rem)] leading-tight">
+                Peak freshness, longer
+              </h3>
+              <p className="mt-5 max-w-[440px] text-base leading-snug text-[#171715]">
+                With revolutionary dual refrigeration, air purification, and vacuum-sealed doors,
+                our products help keep your fruits bright and flavorful, your vegetables crisp, and
+                your proteins in their prime longer.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-24 grid items-center gap-12 lg:grid-cols-[0.44fr_0.56fr] lg:gap-12">
+            <div className="lg:pr-3">
+              <h3 className="font-serif text-[clamp(2.2rem,2.35vw,2.85rem)] leading-tight lg:whitespace-nowrap">
+                Intuitive and thoughtful
+              </h3>
+              <p className="mt-6 max-w-[520px] text-[clamp(1rem,1.05vw,1.12rem)] leading-snug text-[#171715]">
+                With ClearSight<sup className="text-[0.55em]">&reg;</sup> LED lighting that fully
+                illuminates the interior, Night Mode for dim environments, and a flip-up dairy
+                compartment for added convenience, every detail enhances the experience of owning a
+                full-size Sub-Zero.
+              </p>
+            </div>
+            <VideoPanel src={assets.intuitive} label="Sub-Zero refrigerator interior video" />
+          </div>
+
+          <div className="mt-24 grid items-center gap-12 lg:grid-cols-[0.56fr_0.44fr] lg:gap-12">
+            <VideoPanel src={assets.decades} label="Sub-Zero product quality video" />
+            <div className="lg:pl-3">
+              <h3 className="font-serif text-[clamp(2.2rem,2.35vw,2.85rem)] leading-tight">
+                Yours for decades to come
+              </h3>
+              <p className="mt-6 max-w-[520px] text-[clamp(1rem,1.05vw,1.12rem)] leading-snug text-[#171715]">
+                Our legendary reliability starts with advanced engineering, superior-grade
+                materials, and exacting craftsmanship. Exhaustive testing on every component ensures
+                your Sub-Zero can handle at least 20 years of everyday use.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
