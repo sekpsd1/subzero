@@ -53,7 +53,7 @@ export const mainNavigation: NavItem[] = [
     href: "/products/refrigeration",
     description: "Sub-Zero preservation, wine, and undercounter systems.",
     children: [
-      { title: "Discover Sub-Zero", href: "/products/refrigeration/discover-sub-zero", featured: true },
+      { title: "Discover Sub-Zero", href: "/refrigeration/discover-sub-zero", featured: true },
       { title: "Classic Series", href: "/products/refrigeration/classic-series", featured: true },
       { title: "Designer Series", href: "/products/refrigeration/designer-series", featured: true },
       { title: "PRO Series", href: "/products/refrigeration/pro-series", featured: true },

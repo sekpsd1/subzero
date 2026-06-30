@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
+import { DiscoverSubZeroPage } from "@/components/ProductPages/DiscoverSubZeroPage";
 import { ProductGrid } from "@/components/ProductGrid/ProductGrid";
 import { SectionHeader } from "@/components/SharedUI/SectionHeader";
 import { imageLibrary, products } from "@/lib/site-data";
@@ -12,6 +13,16 @@ type ProductRouteProps = {
 
 export async function generateMetadata({ params }: ProductRouteProps) {
   const { slug } = await params;
+  const routePath = slug.join("/");
+
+  if (routePath === "refrigeration/discover-sub-zero") {
+    return {
+      title: "Discover Sub-Zero",
+      description:
+        "Explore Sub-Zero refrigeration, food preservation, integrated design, and showroom planning.",
+    };
+  }
+
   const title = slug.map((part) => part.replace(/-/g, " ")).join(" / ");
 
   return {
@@ -22,6 +33,18 @@ export async function generateMetadata({ params }: ProductRouteProps) {
 
 export default async function ProductRoutePage({ params }: ProductRouteProps) {
   const { slug } = await params;
+  const routePath = slug.join("/");
+
+  if (routePath === "refrigeration/discover-sub-zero") {
+    return (
+      <>
+        <Header />
+        <DiscoverSubZeroPage />
+        <Footer />
+      </>
+    );
+  }
+
   const lastSlug = slug.at(-1) ?? "";
   const product = products.find((item) => item.model.toLowerCase() === lastSlug.replace(/-/g, ""));
   const title = product?.model ?? slug.map((part) => part.replace(/-/g, " ")).join(" / ");
