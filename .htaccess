@@ -1,0 +1,4 @@
+# Plesk + Node.js/Passenger runs this Next.js app through app.js.
+# Do not add Apache rewrite fallbacks here. Rewriting app routes to / can
+# create an internal redirect loop and cause AH00124 / 500 errors.
+

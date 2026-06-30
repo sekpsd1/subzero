@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sub-Zero Wolf SEA
+
+Next.js site for `new.subzerowolf-sea.com`.
 
 ## Getting Started
 
@@ -29,8 +31,23 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Plesk Deploy Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project runs on Plesk Node.js / Passenger with `app.js` as the startup file.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use this flow after pulling new code on Plesk:
+
+```bash
+npm install
+npm run build
+```
+
+Then click **Restart App** in Plesk Node.js.
+
+Important:
+
+- Keep `.htaccess` free of rewrite rules. Passenger/Next.js handles app routing.
+- Do not restore old `.htaccess` rewrite fallback files. They can cause `AH00124`
+  internal redirect loops and 500 errors on routes such as
+  `/refrigeration/discover-sub-zero`.
+- If a backup exists on the server, keep it as `.htaccess.bak`.

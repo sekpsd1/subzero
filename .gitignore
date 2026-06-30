@@ -25,6 +25,7 @@
 .DS_Store
 *.pem
 .tmp-*.html
+.htaccess.bak
 
 # local planning/reference files
 PROJECT_BRIEF.md
