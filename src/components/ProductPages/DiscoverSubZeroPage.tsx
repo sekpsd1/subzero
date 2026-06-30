@@ -223,23 +223,23 @@ function HeroVideo() {
 
   return (
     <section
-      className="section hero-container relative min-h-[calc(100vh-72px)] overflow-hidden bg-[#111]"
+      className="section hero-container relative h-[100svh] overflow-hidden bg-[#111]"
       data-palette="none"
       data-brand="sub-zero"
       role="region"
     >
-      <div className="hero-wrapper h-full min-h-[calc(100vh-72px)]">
-        <div className="hero block h-full min-h-[calc(100vh-72px)]">
-          <div className="relative h-full min-h-[calc(100vh-72px)]">
+      <div className="hero-wrapper h-full">
+        <div className="hero block h-full">
+          <div className="relative h-full">
             <div
-              className="media-item-wrapper hero-media-video relative h-full min-h-[calc(100vh-72px)]"
+              className="media-item-wrapper hero-media-video relative h-full"
               role="group"
               aria-label="woman smiling while placing a plate of salad into an open Sub-Zero refrigerator"
             >
-              <div className="frame h-full min-h-[calc(100vh-72px)]">
+              <div className="frame h-full">
                 <video
                   ref={videoRef}
-                  className="h-full min-h-[calc(100vh-72px)] w-full object-cover"
+                  className="block h-full w-full object-cover"
                   poster={heroPoster}
                   autoPlay
                   muted
@@ -259,7 +259,7 @@ function HeroVideo() {
                   />
                 </video>
               </div>
-              <div className="absolute bottom-5 right-5 z-20 md:bottom-8 md:right-8">
+              <div className="absolute bottom-5 right-5 z-30 md:bottom-8 md:right-8">
                 <button
                   type="button"
                   className="group grid h-[60px] w-[60px] place-items-center rounded-full text-white outline-none transition hover:text-[#f4f2ec] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
