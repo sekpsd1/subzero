@@ -88,6 +88,27 @@ const immersiveSeries = [
   },
 ];
 
+const layeredSeriesTeasers = [
+  {
+    title: "Classic",
+    label: "series",
+    image: assets.immersivePro,
+    href: "/refrigeration/classic-series",
+  },
+  {
+    title: "Designer",
+    label: "series",
+    image: assets.immersiveDesigner,
+    href: "/refrigeration/designer-series",
+  },
+  {
+    title: "PRO",
+    label: "series",
+    image: assets.immersiveClassic,
+    href: "/refrigeration/pro-series",
+  },
+];
+
 const productComparison = [
   {
     title: "Classic Series",
@@ -408,6 +429,176 @@ function HeroVideo() {
   );
 }
 
+function LayeredImages() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const syncProgress = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const scrollable = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+
+      setScrollProgress(progress);
+    };
+
+    syncProgress();
+    window.addEventListener("scroll", syncProgress, { passive: true });
+    window.addEventListener("resize", syncProgress);
+
+    return () => {
+      window.removeEventListener("scroll", syncProgress);
+      window.removeEventListener("resize", syncProgress);
+    };
+  }, []);
+
+  const clamp = (value: number, min = 0, max = 1) => Math.min(Math.max(value, min), max);
+  const ease = (value: number) => {
+    const t = clamp(value);
+    return t * t * (3 - 2 * t);
+  };
+
+  const timelineProgress = scrollProgress * layeredSeriesTeasers.length * 2;
+  const progressLineHeight = 8 + scrollProgress * 92;
+
+  const scrollToSlide = (index: number) => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const scrollable = Math.max(section.offsetHeight - window.innerHeight, 1);
+    const targetStage = index === 0 ? 0 : index * 2 + 1;
+    const targetProgress = targetStage / (layeredSeriesTeasers.length * 2);
+    const top = section.getBoundingClientRect().top + window.scrollY + scrollable * targetProgress;
+
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
+  const skipSection = () => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    window.scrollTo({
+      top: section.getBoundingClientRect().bottom + window.scrollY,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section
+      ref={sectionRef}
+      className="section layered-images-container relative h-[360svh] px-6 pb-24 md:px-12 md:pb-32"
+      data-palette="stone--dark"
+      role="region"
+      aria-label="Sub-Zero refrigeration series"
+    >
+      <div className="sticky top-[72px] flex h-[calc(100svh-72px)] items-start justify-center pt-5 md:pt-6">
+        <div className="relative w-full max-w-[1320px]">
+          <ul className="relative aspect-[1.6] min-h-[520px] overflow-hidden bg-[#d8d2c5]">
+            {layeredSeriesTeasers.map((card, index) => {
+              const enterStart = index === 0 ? 0 : index * 2;
+              const imageSettle = index === 0 ? 1 : enterStart + 1;
+              const overlayStart = imageSettle + 0.28;
+              const overlayEnd = imageSettle + 0.95;
+              const enterProgress = index === 0 ? 1 : ease(timelineProgress - enterStart);
+              const zoomProgress = ease((timelineProgress - imageSettle + 0.9) / 0.9);
+              const overlayOpacity = ease((timelineProgress - overlayStart) / (overlayEnd - overlayStart));
+              const translateY = index === 0 ? 0 : (1 - enterProgress) * 110;
+              const imageScale = 1.15 - zoomProgress * 0.15;
+              const isActive =
+                timelineProgress >= enterStart &&
+                (index === layeredSeriesTeasers.length - 1 ||
+                  timelineProgress < (index + 1) * 2);
+
+              return (
+                <li
+                  key={card.title}
+                  className="absolute inset-0 transition-transform duration-150 ease-out"
+                  style={{ transform: `translateY(${translateY}%)`, zIndex: index + 1 }}
+                  aria-hidden={!isActive}
+                >
+                  <Link href={card.href} className="relative block h-full w-full overflow-hidden">
+                    <Image
+                      src={card.image}
+                      alt={`${card.title} ${card.label}`}
+                      fill
+                      sizes="(min-width: 1440px) 1320px, calc(100vw - 48px)"
+                      className="object-cover"
+                      style={{ transform: `scale(${imageScale})` }}
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-black"
+                      style={{ opacity: overlayOpacity * 0.62 }}
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-white"
+                      style={{
+                        opacity: overlayOpacity,
+                        transform: `translateY(${(1 - overlayOpacity) * 10}px)`,
+                      }}
+                    >
+                      <h2 className="font-serif text-[clamp(3rem,4vw,4.75rem)] leading-none">
+                        {card.title}
+                      </h2>
+                      <p className="mt-4 text-xs font-semibold uppercase tracking-[0.34em] md:text-sm">
+                        {card.label}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="absolute right-[-32px] top-1/2 hidden -translate-y-1/2 lg:block">
+            <div className="relative h-[100px] w-px bg-[#171715]/35">
+              <div
+                className="absolute left-0 top-0 w-px bg-[#171715]"
+                style={{ height: `${progressLineHeight}%` }}
+              />
+              <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 flex-col justify-between">
+                {layeredSeriesTeasers.map((card, index) => (
+                  <button
+                    key={card.title}
+                    type="button"
+                    className="h-6 w-6 -translate-x-1/2"
+                    aria-label={`Show ${card.title} ${card.label}`}
+                    onClick={() => scrollToSlide(index)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="absolute bottom-3 right-3 z-20 grid h-10 w-10 place-items-center rounded-full border border-[#171715] bg-[#f4f2ec]/90 text-[#171715] transition hover:bg-[#171715] hover:text-[#f4f2ec] md:bottom-4 lg:right-[-60px]"
+            aria-label="Skip to next section"
+            onClick={skipSection}
+          >
+            <svg
+              className="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 21L7 16M12 21L17 16M12 21V3"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function VideoPanel({ src, label }: { src: string; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -517,6 +708,53 @@ function ImmersiveSeries() {
           </article>
         </div>
       ))}
+    </section>
+  );
+}
+
+function IceMakerPromo() {
+  return (
+    <section className="bg-[#f4f2ec] px-6 pb-20 pt-20 md:px-12 md:pb-28 md:pt-36">
+      <div className="mx-auto grid max-w-[1392px] overflow-hidden bg-[#fbfaf6] lg:min-h-[696px] lg:grid-cols-2">
+        <div className="flex flex-col justify-center px-7 py-14 md:px-16 lg:px-6 xl:px-6">
+          <div className="mx-auto w-full max-w-[580px]">
+            <p className="text-[0.78rem] font-medium uppercase tracking-[0.38em] text-[#2b2925]">
+              Designer undercounter ice maker
+            </p>
+            <h2 className="mt-8 font-serif text-[clamp(3.35rem,4vw,4.35rem)] leading-[1.02] text-[#171715]">
+              The future of ice
+              <br />
+              making is here
+            </h2>
+            <p className="mt-8 max-w-[500px] text-[1.05rem] leading-snug text-[#3b3934] md:text-lg">
+              Created for luxury homes where quiet, convenience, and performance matter.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/products/designer-undercounter-indoor-outdoor-clear-ice-maker-de50i/de50i"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#171715] px-8 text-base font-bold text-white transition hover:bg-[#34322e]"
+              >
+                View product
+              </Link>
+              <Link
+                href="/refrigeration/undercounter/designer-ice-maker"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-[#171715] px-8 text-base font-bold text-[#171715] transition hover:bg-[#171715] hover:text-white"
+              >
+                Learn more
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="relative min-h-[520px] overflow-hidden lg:min-h-[696px]">
+          <Image
+            src="/assets/subzero/dice-unveil-cut-wr.avif"
+            alt="The New Designer Undercounter Ice Maker from Sub-Zero showcased in a black room, sitting on blocks of ice."
+            fill
+            sizes="(min-width: 1024px) 696px, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
+      </div>
     </section>
   );
 }
@@ -839,9 +1077,27 @@ export function DiscoverSubZeroPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-24 pt-10 md:px-12 md:pb-32 md:pt-16">
+      <LayeredImages />
+
+      <section className="px-6 pb-24 pt-20 md:px-12 md:pb-32 md:pt-28">
         <div className="mx-auto max-w-[1280px]">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.56fr_0.44fr] lg:gap-12">
+          <div className="mx-auto flex max-w-[1392px] flex-col items-center text-center">
+            <h2 className="font-serif text-[clamp(3.25rem,5.2vw,6rem)] leading-[0.92] tracking-normal lg:whitespace-nowrap">
+              A pioneer for 80 years
+            </h2>
+            <p className="mt-5 max-w-[720px] font-serif text-[clamp(1.15rem,1.45vw,1.4rem)] leading-[1.16] text-[#171715]">
+              Decades of innovation. Precision craftsmanship. Rigorous testing. Every Sub-Zero is
+              engineered to deliver over 20 years of flawless performance.
+            </p>
+            <Link
+              href="/refrigeration/view-all-refrigeration"
+              className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-[#171715] px-7 text-sm font-bold text-white transition hover:bg-[#34322e]"
+            >
+              Explore Sub-Zero products
+            </Link>
+          </div>
+
+          <div className="mt-24 grid items-center gap-12 lg:grid-cols-[0.56fr_0.44fr] lg:gap-12">
             <div className="relative aspect-[1.08] overflow-hidden bg-[#e1ddd2]">
               <Image
                 src={assets.freshness}
@@ -894,39 +1150,7 @@ export function DiscoverSubZeroPage() {
         </div>
       </section>
 
-      <ProductComparison />
-
-      <section className="bg-[#e7e3d8] px-6 py-16 md:px-12 md:py-20">
-        <div className="mx-auto grid max-w-[1120px] items-center bg-[#fbfaf6] p-6 md:grid-cols-[426px_1fr] md:gap-16 lg:gap-[104px]">
-          <div className="relative aspect-square w-full overflow-hidden">
-            <Image
-              src={assets.showroom}
-              alt="Showroom consultation with Sub-Zero and Wolf appliances"
-              fill
-              sizes="(min-width: 1024px) 430px, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col justify-center py-8 md:py-0">
-            <h2 className="max-w-[520px] font-serif text-[clamp(3rem,3.2vw,4rem)] leading-[1.05]">
-              <span className="block md:whitespace-nowrap">Start your journey</span>
-              <span className="block">in a showroom</span>
-            </h2>
-            <p className="mt-7 max-w-[470px] text-[1.05rem] leading-snug text-[#171715] md:text-[1.08rem]">
-              Our showrooms are where inspiration turns into informed decisions. Learn how a visit
-              helps you plan, compare, and move forward with confidence.
-            </p>
-            <div className="mt-8">
-              <Link
-                href="/showroom/appointment"
-                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#171715] px-8 text-base font-bold text-white transition hover:bg-[#34322e]"
-              >
-                Get started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <IceMakerPromo />
 
       <ImmersiveSeries />
 
@@ -981,48 +1205,41 @@ export function DiscoverSubZeroPage() {
         </div>
       </section>
 
-      <section className="bg-[#e7e3d8] px-6 pb-20 pt-20 md:px-12 md:pb-28 md:pt-36">
-        <div className="mx-auto grid max-w-[1392px] overflow-hidden bg-[#fbfaf6] lg:min-h-[696px] lg:grid-cols-2">
-          <div className="flex flex-col justify-center px-7 py-14 md:px-16 lg:px-6 xl:px-6">
-            <div className="mx-auto w-full max-w-[580px]">
-              <p className="text-[0.78rem] font-medium uppercase tracking-[0.38em] text-[#2b2925]">
-                Designer undercounter ice maker
-              </p>
-              <h2 className="mt-8 font-serif text-[clamp(3.35rem,4vw,4.35rem)] leading-[1.02] text-[#171715]">
-                The future of ice
-                <br />
-                making is here
-              </h2>
-              <p className="mt-8 max-w-[500px] text-[1.05rem] leading-snug text-[#3b3934] md:text-lg">
-                Created for luxury homes where quiet, convenience, and performance matter.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/products/designer-undercounter-indoor-outdoor-clear-ice-maker-de50i/de50i"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#171715] px-8 text-base font-bold text-white transition hover:bg-[#34322e]"
-                >
-                  View product
-                </Link>
-                <Link
-                  href="/refrigeration/undercounter/designer-ice-maker"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-[#171715] px-8 text-base font-bold text-[#171715] transition hover:bg-[#171715] hover:text-white"
-                >
-                  Learn more
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="relative min-h-[520px] overflow-hidden lg:min-h-[696px]">
+      <ProductComparison />
+
+      <section className="bg-[#e7e3d8] px-6 py-16 md:px-12 md:py-20">
+        <div className="mx-auto grid max-w-[1120px] items-center bg-[#fbfaf6] p-6 md:grid-cols-[426px_1fr] md:gap-16 lg:gap-[104px]">
+          <div className="relative aspect-square w-full overflow-hidden">
             <Image
-              src="/assets/subzero/dice-unveil-cut-wr.avif"
-              alt="The New Designer Undercounter Ice Maker from Sub-Zero showcased in a black room, sitting on blocks of ice."
+              src={assets.showroom}
+              alt="Showroom consultation with Sub-Zero and Wolf appliances"
               fill
-              sizes="(min-width: 1024px) 696px, 100vw"
-              className="object-cover object-center"
+              sizes="(min-width: 1024px) 430px, 100vw"
+              className="object-cover"
             />
+          </div>
+          <div className="flex flex-col justify-center py-8 md:py-0">
+            <h2 className="max-w-[520px] font-serif text-[clamp(3rem,3.2vw,4rem)] leading-[1.05]">
+              <span className="block md:whitespace-nowrap">Start your journey</span>
+              <span className="block">in a showroom</span>
+            </h2>
+            <p className="mt-7 max-w-[470px] text-[1.05rem] leading-snug text-[#171715] md:text-[1.08rem]">
+              Our showrooms are where inspiration turns into informed decisions. Learn how a visit
+              helps you plan, compare, and move forward with confidence.
+            </p>
+            <div className="mt-8">
+              <Link
+                href="/showroom/appointment"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#171715] px-8 text-base font-bold text-white transition hover:bg-[#34322e]"
+              >
+                Get started
+              </Link>
+            </div>
           </div>
         </div>
       </section>
+
+      <DesignInspirationCarousel />
 
       <section className="bg-[#e7e3d8] px-6 py-20 md:px-12 md:py-28">
         <div className="mx-auto max-w-[1392px]">
@@ -1068,8 +1285,6 @@ export function DiscoverSubZeroPage() {
           </div>
         </div>
       </section>
-
-      <DesignInspirationCarousel />
 
       <DiscoverMoreBrands />
     </main>
