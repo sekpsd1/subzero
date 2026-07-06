@@ -55,7 +55,7 @@ export const mainNavigation: NavItem[] = [
     children: [
       { title: "Discover Sub-Zero", href: "/refrigeration/discover-sub-zero", featured: true },
       { title: "Classic Series", href: "/refrigeration/classic-series", featured: true },
-      { title: "Designer Series", href: "/products/refrigeration/designer-series", featured: true },
+      { title: "Designer Series", href: "/refrigeration/designer-series", featured: true },
       { title: "PRO Series", href: "/products/refrigeration/pro-series", featured: true },
       { title: "Wine Storage", href: "/products/refrigeration/wine-storage", featured: true },
       { title: "Undercounter", href: "/products/refrigeration/undercounter", featured: true },

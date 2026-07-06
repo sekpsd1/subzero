@@ -40,6 +40,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     redirect("/refrigeration/classic-series");
   }
 
+  if (routePath === "refrigeration/designer-series") {
+    redirect("/refrigeration/designer-series");
+  }
+
   if (routePath === "refrigeration/discover-sub-zero") {
     return (
       <>

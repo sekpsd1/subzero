@@ -26,7 +26,7 @@ const footerRows: FooterRow[] = [
         links: [
           ["Discover Sub-Zero", "/products/refrigeration/discover-sub-zero"],
           ["Classic Series", "/refrigeration/classic-series"],
-          ["Designer Series", "/products/refrigeration/designer-series"],
+          ["Designer Series", "/refrigeration/designer-series"],
           ["PRO Series", "/products/refrigeration/pro-series"],
           ["Wine Storage", "/products/refrigeration/wine-storage"],
           ["Undercounter", "/products/refrigeration/undercounter"],
