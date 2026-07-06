@@ -4,6 +4,7 @@ import { DiscoverSubZeroPage } from "@/components/ProductPages/DiscoverSubZeroPa
 import { ProductGrid } from "@/components/ProductGrid/ProductGrid";
 import { SectionHeader } from "@/components/SharedUI/SectionHeader";
 import { imageLibrary, products } from "@/lib/site-data";
+import { redirect } from "next/navigation";
 
 type ProductRouteProps = {
   params: Promise<{
@@ -34,6 +35,10 @@ export async function generateMetadata({ params }: ProductRouteProps) {
 export default async function ProductRoutePage({ params }: ProductRouteProps) {
   const { slug } = await params;
   const routePath = slug.join("/");
+
+  if (routePath === "refrigeration/classic-series") {
+    redirect("/refrigeration/classic-series");
+  }
 
   if (routePath === "refrigeration/discover-sub-zero") {
     return (

@@ -5,7 +5,16 @@ import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const designCategories = [
+type DesignCategory = {
+  label: string;
+  images: string[];
+  captions?: {
+    title: string;
+    copy: string;
+  }[];
+};
+
+const designCategories: DesignCategory[] = [
   {
     label: "Transitional",
     images: [
@@ -38,10 +47,25 @@ const designCategories = [
   },
 ];
 
-export function DesignedWithYou() {
+export function DesignedWithYou({
+  categories = designCategories,
+  title = "Designed with you in mind",
+  copy = "From midcentury modern to mountain lodge aesthetics, get inspired by award-winning, one-of-a-kind kitchens featuring Sub-Zero and Wolf.",
+  ctaLabel = "Discover the possibilities",
+  ctaHref = "/inspiration",
+  showTabs = true,
+}: {
+  categories?: DesignCategory[];
+  title?: string;
+  copy?: string;
+  ctaLabel?: string | null;
+  ctaHref?: string;
+  showTabs?: boolean;
+}) {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
-  const category = designCategories[activeCategory];
+  const category = categories[activeCategory];
+  const activeCaption = category.captions?.[activeSlide];
   const nextSlide = (activeSlide + 1) % category.images.length;
 
   function selectCategory(index: number) {
@@ -63,33 +87,34 @@ export function DesignedWithYou() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,760px)_1fr] lg:items-end">
           <div className="bg-transparent">
             <h2 className="bg-transparent font-serif text-[44px] leading-[1.04] md:text-[58px] lg:whitespace-nowrap">
-              Designed with you in mind
+              {title}
             </h2>
-            <p className="mt-6 max-w-[520px] text-base leading-[1.35]">
-              From midcentury modern to mountain lodge aesthetics, get inspired
-              by award-winning, one-of-a-kind kitchens featuring Sub-Zero and Wolf.
-            </p>
+            {copy ? <p className="mt-6 max-w-[520px] text-base leading-[1.35]">{copy}</p> : null}
           </div>
         </div>
 
         <div className="mt-5 flex items-center justify-between gap-4">
-          <div className="inline-flex rounded-full border border-[#c8c3b7] bg-[#f7f5ef] p-1">
-            {designCategories.map((item, index) => (
-              <button
-                key={item.label}
-                type="button"
-                onClick={() => selectCategory(index)}
-                className={cn(
-                  "h-8 rounded-full px-5 text-sm font-semibold transition",
-                  activeCategory === index
-                    ? "bg-[#11110f] text-white"
-                    : "text-[#171715] hover:bg-[#e4e0d5]",
-                )}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+          {showTabs ? (
+            <div className="inline-flex rounded-full border border-[#c8c3b7] bg-[#f7f5ef] p-1">
+              {categories.map((item, index) => (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => selectCategory(index)}
+                  className={cn(
+                    "h-8 rounded-full px-5 text-sm font-semibold transition",
+                    activeCategory === index
+                      ? "bg-[#11110f] text-white"
+                      : "text-[#171715] hover:bg-[#e4e0d5]",
+                  )}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <span aria-hidden="true" />
+          )}
 
           <div className="flex items-center justify-end gap-4">
             <span className="text-base">
@@ -139,16 +164,26 @@ export function DesignedWithYou() {
           </div>
         </div>
 
+        {activeCaption ? (
+          <div className="mt-4 max-w-[560px] text-base leading-snug">
+            <p>
+              <strong>{activeCaption.title}</strong>
+              <br />
+              {activeCaption.copy}
+            </p>
+          </div>
+        ) : null}
+
       </div>
 
-      <div className="flex w-full justify-center pt-14">
+      {ctaLabel ? <div className="flex w-full justify-center pt-14">
         <a
-          href="/inspiration"
+          href={ctaHref}
           className="inline-flex h-12 min-w-[224px] items-center justify-center rounded-full border border-[#171715] px-8 text-sm font-semibold text-[#171715] transition hover:bg-[#171715] hover:text-white"
         >
-          Discover the possibilities
+          {ctaLabel}
         </a>
-      </div>
+      </div> : null}
 
       <style jsx global>{`
         @keyframes designImageFade {
