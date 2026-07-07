@@ -56,6 +56,8 @@ export function DesignedWithYou({
   showTabs = true,
   theme = "light",
   previewImageClassName = "",
+  titleClassName = "",
+  sectionClassName = "",
 }: {
   categories?: DesignCategory[];
   title?: string;
@@ -65,6 +67,8 @@ export function DesignedWithYou({
   showTabs?: boolean;
   theme?: "light" | "dark";
   previewImageClassName?: string;
+  titleClassName?: string;
+  sectionClassName?: string;
 }) {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -91,12 +95,13 @@ export function DesignedWithYou({
       className={cn(
         "overflow-hidden px-5 pb-24 pt-6 md:px-8 md:pb-32 md:pt-7",
         isDark ? "bg-[#171715] text-white" : "bg-[#f4f2ec] text-[#171715]",
+        sectionClassName,
       )}
     >
       <div className="mx-auto max-w-[1392px]">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,760px)_1fr] lg:items-end">
           <div className="bg-transparent">
-            <h2 className="bg-transparent font-serif text-[44px] leading-[1.04] md:text-[58px] lg:whitespace-nowrap">
+            <h2 className={cn("bg-transparent font-serif text-[44px] leading-[1.04] md:text-[58px] lg:whitespace-nowrap", titleClassName)}>
               {title}
             </h2>
             {copy ? <p className="mt-6 max-w-[520px] text-base leading-[1.35]">{copy}</p> : null}

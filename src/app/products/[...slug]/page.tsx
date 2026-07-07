@@ -58,6 +58,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     redirect("/refrigeration/pro-series");
   }
 
+  if (routePath === "refrigeration/wine-storage") {
+    redirect("/refrigeration/wine-storage");
+  }
+
   const lastSlug = slug.at(-1) ?? "";
   const product = products.find((item) => item.model.toLowerCase() === lastSlug.replace(/-/g, ""));
   const title = product?.model ?? slug.map((part) => part.replace(/-/g, " ")).join(" / ");

@@ -57,7 +57,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Classic Series", href: "/refrigeration/classic-series", featured: true },
       { title: "Designer Series", href: "/refrigeration/designer-series", featured: true },
       { title: "PRO Series", href: "/refrigeration/pro-series", featured: true },
-      { title: "Wine Storage", href: "/products/refrigeration/wine-storage", featured: true },
+      { title: "Wine Storage", href: "/refrigeration/wine-storage", featured: true },
       { title: "Undercounter", href: "/products/refrigeration/undercounter", featured: true },
       { title: "Ice Makers - NEW", href: "/products/refrigeration/ice-makers" },
       { title: "French Door", href: "/products/refrigeration/french-door" },
