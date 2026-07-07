@@ -54,6 +54,8 @@ export function DesignedWithYou({
   ctaLabel = "Discover the possibilities",
   ctaHref = "/inspiration",
   showTabs = true,
+  theme = "light",
+  previewImageClassName = "",
 }: {
   categories?: DesignCategory[];
   title?: string;
@@ -61,12 +63,15 @@ export function DesignedWithYou({
   ctaLabel?: string | null;
   ctaHref?: string;
   showTabs?: boolean;
+  theme?: "light" | "dark";
+  previewImageClassName?: string;
 }) {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const category = categories[activeCategory];
   const activeCaption = category.captions?.[activeSlide];
   const nextSlide = (activeSlide + 1) % category.images.length;
+  const isDark = theme === "dark";
 
   function selectCategory(index: number) {
     setActiveCategory(index);
@@ -82,7 +87,12 @@ export function DesignedWithYou({
   }
 
   return (
-    <section className="overflow-hidden bg-[#f4f2ec] px-5 pb-24 pt-6 text-[#171715] md:px-8 md:pb-32 md:pt-7">
+    <section
+      className={cn(
+        "overflow-hidden px-5 pb-24 pt-6 md:px-8 md:pb-32 md:pt-7",
+        isDark ? "bg-[#171715] text-white" : "bg-[#f4f2ec] text-[#171715]",
+      )}
+    >
       <div className="mx-auto max-w-[1392px]">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,760px)_1fr] lg:items-end">
           <div className="bg-transparent">
@@ -95,7 +105,12 @@ export function DesignedWithYou({
 
         <div className="mt-5 flex items-center justify-between gap-4">
           {showTabs ? (
-            <div className="inline-flex rounded-full border border-[#c8c3b7] bg-[#f7f5ef] p-1">
+            <div
+              className={cn(
+                "inline-flex rounded-full border p-1",
+                isDark ? "border-white/35 bg-[#171715]" : "border-[#c8c3b7] bg-[#f7f5ef]",
+              )}
+            >
               {categories.map((item, index) => (
                 <button
                   key={item.label}
@@ -104,8 +119,12 @@ export function DesignedWithYou({
                   className={cn(
                     "h-8 rounded-full px-5 text-sm font-semibold transition",
                     activeCategory === index
-                      ? "bg-[#11110f] text-white"
-                      : "text-[#171715] hover:bg-[#e4e0d5]",
+                      ? isDark
+                        ? "bg-white text-[#171715]"
+                        : "bg-[#11110f] text-white"
+                      : isDark
+                        ? "text-white hover:bg-white/12"
+                        : "text-[#171715] hover:bg-[#e4e0d5]",
                   )}
                 >
                   {item.label}
@@ -125,7 +144,12 @@ export function DesignedWithYou({
                 type="button"
                 onClick={goToPrevious}
                 aria-label="Previous design"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#171715] text-[#171715] transition hover:bg-[#171715] hover:text-white"
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-full border transition",
+                  isDark
+                    ? "border-white text-white hover:bg-white hover:text-[#171715]"
+                    : "border-[#171715] text-[#171715] hover:bg-[#171715] hover:text-white",
+                )}
               >
                 <ChevronLeft size={18} strokeWidth={1.35} />
               </button>
@@ -133,7 +157,12 @@ export function DesignedWithYou({
                 type="button"
                 onClick={goToNext}
                 aria-label="Next design"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#171715] text-[#171715] transition hover:bg-[#171715] hover:text-white"
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-full border transition",
+                  isDark
+                    ? "border-white text-white hover:bg-white hover:text-[#171715]"
+                    : "border-[#171715] text-[#171715] hover:bg-[#171715] hover:text-white",
+                )}
               >
                 <ChevronRight size={18} strokeWidth={1.35} />
               </button>
@@ -142,7 +171,12 @@ export function DesignedWithYou({
         </div>
 
         <div className="mt-6 flex items-start gap-2 md:gap-3 xl:w-[calc(100%+((100vw-1392px)/2))]">
-          <div className="relative h-[470px] min-w-0 flex-[1_1_auto] overflow-hidden bg-[#dedbd1] md:h-[654px] lg:h-[668px]">
+          <div
+            className={cn(
+              "relative h-[470px] min-w-0 flex-[1_1_auto] overflow-hidden md:h-[654px] lg:h-[668px]",
+              isDark ? "bg-[#232320]" : "bg-[#dedbd1]",
+            )}
+          >
             <Image
               key={`${category.label}-${activeSlide}`}
               src={category.images[activeSlide]}
@@ -152,14 +186,19 @@ export function DesignedWithYou({
               className="animate-[designImageFade_520ms_ease_both] object-cover"
             />
           </div>
-          <div className="relative hidden h-[470px] w-[26%] shrink-0 overflow-hidden bg-[#dedbd1] md:block lg:h-[523px]">
+          <div
+            className={cn(
+              "relative hidden h-[470px] w-[26%] shrink-0 overflow-hidden md:block lg:h-[523px]",
+              isDark ? "bg-[#232320]" : "bg-[#dedbd1]",
+            )}
+          >
             <Image
               key={`${category.label}-next-${nextSlide}`}
               src={category.images[nextSlide]}
               alt={`${category.label} kitchen inspiration preview`}
               fill
               sizes="360px"
-              className="animate-[designImageFade_520ms_ease_both] object-cover"
+              className={cn("animate-[designImageFade_520ms_ease_both] object-cover", previewImageClassName)}
             />
           </div>
         </div>
@@ -179,7 +218,12 @@ export function DesignedWithYou({
       {ctaLabel ? <div className="flex w-full justify-center pt-14">
         <a
           href={ctaHref}
-          className="inline-flex h-12 min-w-[224px] items-center justify-center rounded-full border border-[#171715] px-8 text-sm font-semibold text-[#171715] transition hover:bg-[#171715] hover:text-white"
+          className={cn(
+            "inline-flex h-12 min-w-[224px] items-center justify-center rounded-full border px-8 text-sm font-semibold transition",
+            isDark
+              ? "border-white text-white hover:bg-white hover:text-[#171715]"
+              : "border-[#171715] text-[#171715] hover:bg-[#171715] hover:text-white",
+          )}
         >
           {ctaLabel}
         </a>
