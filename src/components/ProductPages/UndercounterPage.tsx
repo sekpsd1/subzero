@@ -12,8 +12,7 @@ const aemSvg = (id: string, file: string) =>
   `https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:${id}/renditions/original/as/${file}`;
 
 const assets = {
-  heroVideo:
-    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:0e8d1cf0-0a9e-4102-b665-3e4ea0bd5c0d/play?assetname=Undercounter-hero.mp4#t=0.001",
+  heroVideo: "/assets/subzero/undercounter/Undercounter-hero.mp4",
   heroPoster: aem(
     "6d98d052-9046-4db5-b992-b4002c84c746",
     "undercounter-fallback.avif?assetname=undercounter-fallback.png",
@@ -200,17 +199,40 @@ function Hero() {
     setProgress(duration ? video.currentTime / duration : 0);
   };
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+
+    const playVideo = () => {
+      void video.play().then(syncVideoState).catch(syncVideoState);
+    };
+
+    if (video.readyState >= 2) {
+      playVideo();
+    } else {
+      video.addEventListener("canplay", playVideo, { once: true });
+    }
+
+    syncVideoState();
+
+    return () => {
+      video.removeEventListener("canplay", playVideo);
+    };
+  }, []);
+
   const toggleVideo = () => {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
-      void video.play();
+      void video.play().then(syncVideoState).catch(syncVideoState);
     } else {
       video.pause();
+      syncVideoState();
     }
-
-    syncVideoState();
   };
 
   return (
@@ -222,7 +244,7 @@ function Hero() {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         className="h-full w-full object-cover"
         onLoadedMetadata={syncVideoState}
         onTimeUpdate={syncVideoState}
