@@ -737,7 +737,7 @@ function IceMakerPromo() {
                 View product
               </Link>
               <Link
-                href="/refrigeration/undercounter/designer-ice-maker"
+                href="/refrigeration/ice-makers"
                 className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-[#171715] px-8 text-base font-bold text-[#171715] transition hover:bg-[#171715] hover:text-white"
               >
                 Learn more

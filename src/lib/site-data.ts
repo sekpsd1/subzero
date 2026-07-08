@@ -59,7 +59,7 @@ export const mainNavigation: NavItem[] = [
       { title: "PRO Series", href: "/refrigeration/pro-series", featured: true },
       { title: "Wine Storage", href: "/refrigeration/wine-storage", featured: true },
       { title: "Undercounter", href: "/refrigeration/undercounter", featured: true },
-      { title: "Ice Makers - NEW", href: "/products/refrigeration/ice-makers" },
+      { title: "Ice Makers - NEW", href: "/refrigeration/ice-makers" },
       { title: "French Door", href: "/products/refrigeration/french-door" },
       { title: "Side-by-Side", href: "/products/refrigeration/side-by-side" },
       { title: "Over-and-Under", href: "/products/refrigeration/over-and-under" },
@@ -132,7 +132,7 @@ export const mainNavigation: NavItem[] = [
     description: "Appliances for complete open-air kitchens.",
     children: [
       { title: "Discover Outdoor", href: "/products/outdoor/discover-outdoor", featured: true },
-      { title: "Ice Makers - NEW", href: "/products/refrigeration/ice-makers" },
+      { title: "Ice Makers - NEW", href: "/refrigeration/ice-makers" },
       { title: "Refrigeration", href: "/products/outdoor?default.categories=outdoor%2Frefrigeration" },
       { title: "Grilling", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
       { title: "Cooking", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },

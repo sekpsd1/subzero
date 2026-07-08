@@ -29,7 +29,7 @@ const footerRows: FooterRow[] = [
           ["Designer Series", "/refrigeration/designer-series"],
           ["PRO Series", "/refrigeration/pro-series"],
           ["Wine Storage", "/refrigeration/wine-storage"],
-          ["Undercounter", "/products/refrigeration/undercounter"],
+          ["Undercounter", "/refrigeration/undercounter"],
         ],
       },
       {
@@ -56,7 +56,7 @@ const footerRows: FooterRow[] = [
       {
         heading: "More Products",
         links: [
-          ["Ice Makers - NEW", "/products/refrigeration/ice-makers"],
+          ["Ice Makers - NEW", "/refrigeration/ice-makers"],
           ["Microwaves", "/products/cooking/microwaves"],
           ["Drawers", "/products/cooking/drawers"],
           ["Accessories", "/support/accessories"],
