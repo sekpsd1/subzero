@@ -58,6 +58,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     redirect("/refrigeration/pro-series");
   }
 
+  if (routePath === "refrigeration/french-door") {
+    redirect("/refrigeration/french-door");
+  }
+
   if (routePath === "refrigeration/wine-storage") {
     redirect("/refrigeration/wine-storage");
   }
