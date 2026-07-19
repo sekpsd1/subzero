@@ -64,7 +64,7 @@ const promos = [
   {
     eyebrow: "Ranges",
     title: "Ranges that say “yes, chef”",
-    href: "/products/cooking/ranges",
+    href: "/cooking/ranges",
     image:
       "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:670ced7a-fae2-4f8e-b8bf-5f686584e5e6/as/W_BohoBelize_IR36551_Close_002.avif?assetname=W_BohoBelize_IR36551_Close_002.jpg&width=1920&max-quality=90",
   },
@@ -102,7 +102,7 @@ const wolfInspirationCategories = [
 const wolfLayeredCards = [
   {
     title: "Ranges",
-    href: "/products/cooking/ranges",
+    href: "/cooking/ranges",
     image:
       "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:126a8411-83aa-4ae4-a1e8-23de7cab5f79/as/Ada_003v2.avif?assetname=Ada_003v2.png&width=1920&max-quality=90",
   },
@@ -129,7 +129,7 @@ const wolfLayeredCards = [
 const wolfCategoryGridItems = [
   {
     title: "Ranges",
-    href: "/products/cooking/ranges",
+    href: "/cooking/ranges",
     image: "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:151bd4d0-4a55-4f4c-b5c8-815313d7bbe2/renditions/original/as/Ranges.svg?assetname=Ranges.svg",
   },
   {

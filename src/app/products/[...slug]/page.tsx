@@ -4,7 +4,7 @@ import { DiscoverSubZeroPage } from "@/components/ProductPages/DiscoverSubZeroPa
 import { ProductGrid } from "@/components/ProductGrid/ProductGrid";
 import { SectionHeader } from "@/components/SharedUI/SectionHeader";
 import { imageLibrary, products } from "@/lib/site-data";
-import { redirect } from "next/navigation";
+import { permanentRedirect, redirect } from "next/navigation";
 
 type ProductRouteProps = {
   params: Promise<{
@@ -60,6 +60,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
 
   if (routePath === "cooking/discover-wolf") {
     redirect("/cooking/discover-wolf");
+  }
+
+  if (routePath === "cooking/ranges" || routePath === "cooking/dual-fuel-ranges") {
+    permanentRedirect("/cooking/ranges");
   }
 
   if (routePath === "refrigeration/french-door") {

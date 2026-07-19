@@ -78,10 +78,10 @@ export const mainNavigation: NavItem[] = [
       { title: "Discover Wolf", href: "/cooking/discover-wolf", featured: true },
       {
         title: "Ranges",
-        href: "/products/cooking/ranges",
+        href: "/cooking/ranges",
         featured: true,
         children: [
-          { title: "Dual Fuel Ranges", href: "/products/cooking/dual-fuel-ranges" },
+          { title: "Dual Fuel Ranges", href: "/cooking/ranges" },
           { title: "Induction Ranges", href: "/products/cooking/induction-ranges" },
           { title: "Professional Induction Ranges", href: "/products/cooking/professional-induction-ranges" },
           { title: "Transitional Induction Ranges", href: "/products/cooking/transitional-induction-ranges" },

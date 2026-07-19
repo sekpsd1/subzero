@@ -1,0 +1,573 @@
+# Page Commands
+
+Use this file to continue page-by-page work quickly. Each page entry lists the route, main files, current state, and the fastest safe checks.
+
+## Page Work Template
+
+When the user asks for a specific page:
+
+1. Read this page's entry.
+2. Read the route file and the main component.
+3. Change only that page unless the request is clearly global.
+4. Run `npm run lint`.
+5. Run `npm run build` at the end or before deploy.
+6. For visual/scroll behavior, verify in browser at desktop and mobile.
+
+## Global Shell
+
+Route scope: all public pages
+
+Main files:
+
+- `src/components/Header/Header.tsx`
+- `src/components/Footer/Footer.tsx`
+- `src/components/MegaMenu/MegaMenu.tsx`
+- `src/components/MobileMenu/MobileMenu.tsx`
+- `src/components/SearchOverlay/SearchOverlay.tsx`
+- `src/lib/site-data.ts`
+
+Use when:
+
+- The request mentions header, menu, search, footer, navigation, global CTA, or sitemap structure.
+
+Checks:
+
+```powershell
+npm run lint
+npm run build
+```
+
+Do not use this scope for page-only spacing/image requests.
+
+## Home
+
+Route: `/`
+
+Main files:
+
+- `src/app/page.tsx`
+- `src/components/Hero/Hero.tsx`
+- `src/components/Home/TriBrandShowcase.tsx`
+- `src/components/Home/ShowroomJourney.tsx`
+- `src/components/Home/IceMakerFeature.tsx`
+- `src/components/Home/LayeredVideos.tsx`
+- `src/components/Home/TrustedByBest.tsx`
+- `src/components/Home/DesignedWithYou.tsx`
+- `src/components/Home/ExperienceMore.tsx`
+
+State:
+
+- Main luxury landing page scaffold is built.
+- Uses shared home sections that may also be referenced by product pages.
+
+Fast check:
+
+```text
+http://localhost:3000/
+```
+
+## Discover Sub-Zero
+
+Route: `/refrigeration/discover-sub-zero`
+
+Main files:
+
+- `src/app/refrigeration/discover-sub-zero/page.tsx`
+- `src/components/ProductPages/DiscoverSubZeroPage.tsx`
+
+State:
+
+- Strong reference page for refrigeration storytelling.
+- Contains layered image behavior, immersive series, product comparison, and design inspiration carousel.
+- Good source pattern for future refrigeration pages.
+
+Fast check:
+
+```text
+http://localhost:3000/refrigeration/discover-sub-zero
+```
+
+## Classic Series
+
+Route: `/refrigeration/classic-series`
+
+Main files:
+
+- `src/app/refrigeration/classic-series/page.tsx`
+- `src/components/ProductPages/ClassicSeriesPage.tsx`
+
+State:
+
+- Polished product-series page.
+- Contains hero video, intro, sticky showroom CTA, hotspot feature, fading media/copy, design gallery, model gallery, expanding media, and related discovery.
+
+Fast check:
+
+```text
+http://localhost:3000/refrigeration/classic-series
+```
+
+## Designer Series
+
+Route: `/refrigeration/designer-series`
+
+Main files:
+
+- `src/app/refrigeration/designer-series/page.tsx`
+- `src/components/ProductPages/DesignerSeriesPage.tsx`
+
+State:
+
+- Polished product-series page.
+- Recent prior work focused on:
+  - `Integrated door hinge`
+  - `Designed to fit your vision`
+  - color palette / wheel behavior
+- Treat as sensitive: small visual changes can require browser verification.
+
+Fast check:
+
+```text
+http://localhost:3000/refrigeration/designer-series
+```
+
+## PRO Series
+
+Route: `/refrigeration/pro-series`
+
+Main files:
+
+- `src/app/refrigeration/pro-series/page.tsx`
+- `src/components/ProductPages/ProSeriesPage.tsx`
+
+State:
+
+- Polished product-series page.
+- Contains hero video, parallax media, features, hotspot feature, model gallery, expanding image, compare series, and discovery sections.
+
+Fast check:
+
+```text
+http://localhost:3000/refrigeration/pro-series
+```
+
+## Wine Storage
+
+Route: `/refrigeration/wine-storage`
+
+Main files:
+
+- `src/app/refrigeration/wine-storage/page.tsx`
+- `src/components/ProductPages/WineStoragePage.tsx`
+
+State:
+
+- Latest and most detailed page.
+- Current reference for page-specific visual implementation because it has repeated browser-verified tuning.
+- Includes:
+  - hero video
+  - intro
+  - sticky showroom CTA
+  - two-slide layered images
+  - `Crafted for connoisseurs`
+  - feature rows
+  - two-image media break with `Complements any space`
+  - Wine Storage-specific showroom card
+  - tension zoom expanding media
+  - Wine Storage model carousel
+  - design gallery
+  - two-tile `Complete your kitchen`
+  - `More to discover`
+
+Fast check:
+
+```text
+http://localhost:3000/refrigeration/wine-storage
+```
+
+Extra visual checks:
+
+- Layered titles stay two lines.
+- Tension zoom border collapses while scrolling.
+- Showroom card uses the Wine-specific implementation, not shared `ShowroomJourney`.
+- `Complete your kitchen` has exactly two tiles.
+
+## Undercounter
+
+Route: `/refrigeration/undercounter`
+
+Main files:
+
+- `src/app/refrigeration/undercounter/page.tsx`
+- `src/components/ProductPages/UndercounterPage.tsx`
+
+State:
+
+- Dedicated Sub-Zero Undercounter page exists.
+- Treat as a product-family page, not a shared listing page.
+
+Fast check:
+
+```text
+http://localhost:3000/refrigeration/undercounter
+```
+
+## Ice Makers
+
+Route: `/refrigeration/ice-makers`
+
+Main files:
+
+- `src/app/refrigeration/ice-makers/page.tsx`
+- `src/components/ProductPages/DesignerIceMakerPage.tsx`
+
+State:
+
+- Dedicated Designer Undercounter Ice Maker page exists.
+- Reference target is the USA Designer Ice Maker page.
+
+Fast check:
+
+```text
+http://localhost:3000/refrigeration/ice-makers
+```
+
+## Refrigeration Category Listing Pattern
+
+Routes:
+
+- `/refrigeration/french-door`
+- `/refrigeration/side-by-side`
+- `/refrigeration/over-and-under`
+- `/refrigeration/column-refrigeration`
+- `/refrigeration/column-freezer`
+- `/refrigeration/outdoor`
+
+Main files:
+
+- `src/components/ProductPages/RefrigerationCategoryPage.tsx`
+- `src/components/ProductPages/DetailedProductCard.tsx`
+- `src/components/ProductPages/FrenchDoorPage.tsx`
+- `src/app/refrigeration/french-door/page.tsx`
+- `src/app/refrigeration/side-by-side/page.tsx`
+- `src/app/refrigeration/over-and-under/page.tsx`
+- `src/app/refrigeration/column-refrigeration/page.tsx`
+- `src/app/refrigeration/column-freezer/page.tsx`
+- `src/app/refrigeration/outdoor/page.tsx`
+- `src/lib/site-data.ts`
+
+State:
+
+- French Door is the baseline category/listing pattern.
+- The five sibling routes reuse the same `RefrigerationCategoryPage` data-driven component.
+- Navigation paths in `src/lib/site-data.ts` now point to `/refrigeration/...` for these category routes.
+- `npm.cmd run lint` and `npm.cmd run build` passed on 2026-07-19.
+
+Fast checks:
+
+```text
+http://localhost:3000/refrigeration/french-door
+http://localhost:3000/refrigeration/side-by-side
+http://localhost:3000/refrigeration/over-and-under
+http://localhost:3000/refrigeration/column-refrigeration
+http://localhost:3000/refrigeration/column-freezer
+http://localhost:3000/refrigeration/outdoor
+```
+
+Next pass:
+
+- Browser-check these routes against `/refrigeration/french-door` first.
+- Compare with USA filtered category references only for category content and product-card direction.
+- Keep this as a listing/category pattern, not a cinematic storytelling page.
+- Avoid editing Classic, Designer, PRO, Discover, Wine, Undercounter, or Ice Makers while tuning this batch.
+
+## Products Catalog
+
+Route: `/products`
+
+Main files:
+
+- `src/app/products/page.tsx`
+- `src/components/ProductGrid/ProductGrid.tsx`
+- `src/components/ProductCard/ProductCard.tsx`
+- `src/lib/site-data.ts`
+
+State:
+
+- Catalog scaffold exists.
+- Public pricing intentionally hidden.
+- Uses static seed products from `site-data.ts`.
+
+Fast check:
+
+```text
+http://localhost:3000/products
+```
+
+## Product Or Category Detail
+
+Route: `/products/[...slug]`
+
+Main file:
+
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Dynamic route scaffold exists.
+- Redirects some old refrigeration product paths to dedicated routes.
+- Shows framework for hero, specs, filters, related products.
+
+Fast checks:
+
+```text
+http://localhost:3000/products/refrigeration/undercounter
+http://localhost:3000/products/icbcl3650rid
+```
+
+Next.js caution:
+
+- This file uses async `params`. Read local Next.js route/metadata docs before changing params, `generateMetadata`, `redirect`, or routing behavior.
+
+## Wolf Ranges
+
+Route: `/cooking/ranges`
+
+Main files:
+
+- `src/app/cooking/ranges/page.tsx`
+- `src/components/ProductPages/WolfRangesPage.tsx`
+- `src/lib/site-data.ts`
+
+State:
+
+- Wolf Ranges landing/category page modeled on the USA `/cooking/ranges` reference.
+- Old `/products/cooking/ranges` and `/products/cooking/dual-fuel-ranges` paths permanently redirect to the canonical route.
+- Primary menu/CTA wording is `Explore the Wolf Range`.
+
+Fast check:
+
+```text
+http://localhost:3000/cooking/ranges
+```
+
+## Showroom
+
+Route: `/showroom`
+
+Main file:
+
+- `src/app/showroom/page.tsx`
+
+State:
+
+- Regional Experience scaffold.
+
+Fast check:
+
+```text
+http://localhost:3000/showroom
+```
+
+## Showroom Appointment
+
+Route: `/showroom/appointment`
+
+Main file:
+
+- `src/app/showroom/appointment/page.tsx`
+
+State:
+
+- Static form scaffold exists.
+- Needs real validation, persistence, country routing, and notification flow.
+
+Fast check:
+
+```text
+http://localhost:3000/showroom/appointment
+```
+
+Backend-related files for future work:
+
+- `prisma/schema.prisma`
+- `src/app/api/showrooms/route.ts`
+- future appointment API route to be created.
+
+## Dealers
+
+Route: `/showroom/dealers`
+
+Main file:
+
+- `src/app/showroom/dealers/page.tsx`
+
+State:
+
+- Dealers scaffold exists.
+- Needs country/city dealer data and filters.
+
+Fast check:
+
+```text
+http://localhost:3000/showroom/dealers
+```
+
+## Admin
+
+Route: `/admin`
+
+Main files:
+
+- `src/app/admin/page.tsx`
+- `src/lib/site-data.ts`
+- `prisma/schema.prisma`
+
+State:
+
+- Static admin dashboard scaffold exists.
+- Shows modules for posts, products, inventory, appointments, SEO/AEO, users.
+- Not yet protected by authentication.
+- Not yet connected to database.
+
+Fast check:
+
+```text
+http://localhost:3000/admin
+```
+
+System checks before real admin work:
+
+```powershell
+npx prisma validate
+npm run lint
+npm run build
+```
+
+## Journal
+
+Route: `/journal`
+
+Main files:
+
+- `src/app/journal/page.tsx`
+- `src/lib/site-data.ts`
+
+State:
+
+- Journal/Culinary scaffold exists.
+- Uses static seed post data.
+- Needs post detail pages, categories, tags, and CMS connection.
+
+Fast check:
+
+```text
+http://localhost:3000/journal
+```
+
+## Inspiration
+
+Route: `/inspiration`
+
+Main file:
+
+- `src/app/inspiration/page.tsx`
+
+State:
+
+- Scaffold exists.
+- Needs final content and imagery.
+
+Fast check:
+
+```text
+http://localhost:3000/inspiration
+```
+
+## Our Story
+
+Route: `/our-story`
+
+Main file:
+
+- `src/app/our-story/page.tsx`
+
+State:
+
+- Scaffold exists.
+- Needs Sub-Zero story, milestones, and sustainability subpage expansion.
+
+Fast check:
+
+```text
+http://localhost:3000/our-story
+```
+
+## Owner Resources
+
+Route: `/support`
+
+Main file:
+
+- `src/app/support/page.tsx`
+
+State:
+
+- Owner Resources scaffold exists.
+- Needs Product Information, Accessories, Recipes, Use and Care Videos, Warranty, Product Support, Owner Technique Guide, and Customer Care subpages.
+
+Fast check:
+
+```text
+http://localhost:3000/support
+```
+
+## Professionals
+
+Route: `/trade`
+
+Main file:
+
+- `src/app/trade/page.tsx`
+
+State:
+
+- Professionals scaffold exists.
+- Needs Specification Library, Brochure, Future Products, and Kitchen Design Contest flows.
+
+Fast check:
+
+```text
+http://localhost:3000/trade
+```
+
+## API Routes
+
+Routes:
+
+- `/api/journal`
+- `/api/products`
+- `/api/showrooms`
+
+Main files:
+
+- `src/app/api/journal/route.ts`
+- `src/app/api/products/route.ts`
+- `src/app/api/showrooms/route.ts`
+
+State:
+
+- Static route handlers exist.
+- Future work should connect Prisma/MySQL once DB provider and migration flow are final.
+
+Fast check:
+
+```text
+http://localhost:3000/api/products
+http://localhost:3000/api/journal
+http://localhost:3000/api/showrooms
+```
+
+Next.js caution:
+
+- Read local route handler docs before changing request/response behavior.

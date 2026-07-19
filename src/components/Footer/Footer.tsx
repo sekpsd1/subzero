@@ -35,8 +35,8 @@ const footerRows: FooterRow[] = [
       {
         heading: "Wolf Cooking",
         links: [
-          ["Discover Wolf", "/products/cooking/discover-wolf"],
-          ["Ranges", "/products/cooking/ranges"],
+          ["Discover Wolf", "/cooking/discover-wolf"],
+          ["Ranges", "/cooking/ranges"],
           ["Built-In Ovens", "/products/cooking/built-in-ovens"],
           ["Cooktops & Rangetops", "/products/cooking/cooktops-rangetops"],
           ["Ventilation", "/products/cooking/ventilation"],
