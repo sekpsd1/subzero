@@ -351,6 +351,33 @@ Fast check:
 http://localhost:3000/cooking/ranges
 ```
 
+## Wolf Dual Fuel Ranges
+
+Route: `/cooking/ranges/dual-fuel`
+
+Main files:
+
+- `src/app/cooking/ranges/dual-fuel/page.tsx`
+- `src/components/ProductPages/DualFuelRangesPage.tsx`
+- `src/lib/site-data.ts`
+- `src/components/MegaMenu/MegaMenu.tsx`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- USA-inspired range listing/filter page with real Wolf assets and one aggregate Dual Fuel family card matching the filtered USA result structure.
+- Cooking > Ranges > Dual Fuel menu path points to the canonical route.
+- Legacy `/products/cooking/dual-fuel-ranges` permanently redirects here.
+- Typography baseline: 40px hero title, 24px card title, and 14px filters/specs.
+
+Fast checks:
+
+```text
+http://localhost:3000/cooking/ranges/dual-fuel
+http://localhost:3000/cooking/ranges
+http://localhost:3000/products/cooking/dual-fuel-ranges
+```
+
 ## Showroom
 
 Route: `/showroom`

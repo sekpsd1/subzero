@@ -81,7 +81,7 @@ export const mainNavigation: NavItem[] = [
         href: "/cooking/ranges",
         featured: true,
         children: [
-          { title: "Dual Fuel Ranges", href: "/cooking/ranges" },
+          { title: "Dual Fuel", href: "/cooking/ranges/dual-fuel" },
           { title: "Induction Ranges", href: "/products/cooking/induction-ranges" },
           { title: "Professional Induction Ranges", href: "/products/cooking/professional-induction-ranges" },
           { title: "Transitional Induction Ranges", href: "/products/cooking/transitional-induction-ranges" },

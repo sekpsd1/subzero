@@ -1,6 +1,6 @@
 # Work Summary
 
-Updated: 2026-07-19
+Updated: 2026-07-20
 
 ## Project State
 
@@ -54,6 +54,14 @@ Updated: 2026-07-19
   - `/trade`
 
 ## Latest Focus
+
+Wolf Dual Fuel Range listing completed:
+
+- Added `/cooking/ranges/dual-fuel` as the canonical Wolf Dual Fuel listing/filter route.
+- Added a USA-inspired full-height hero, cooking category navigation, restrained listing typography, 14px filter controls, a single aggregate Dual Fuel family card, product specification summary, confidence statement, and two-card Discover More section.
+- Updated only the Cooking > Ranges > Dual Fuel navigation entry and made the mega menu initialize with Cooking and Ranges active on `/cooking/ranges/...` routes.
+- Updated the legacy `/products/cooking/dual-fuel-ranges` redirect to point to the new canonical route.
+- Reference measurements and implementation notes are recorded in `docs/COOKING_DUAL_FUEL_RANGES_NOTES.md`.
 
 Wolf Ranges landing page completed:
 

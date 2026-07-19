@@ -3,6 +3,7 @@
 import { ChevronRight, MapPin, Store, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { imageLibrary, mainNavigation, type NavItem } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -67,6 +68,8 @@ const menuVisualImages: Record<string, string> = {
   Cooking: imageLibrary.cooking,
   "Discover Wolf": imageLibrary.cooking,
   Ranges: imageLibrary.cooking,
+  "Dual Fuel":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:2531eee3-6eb2-407f-8a4a-a5417ee84d10/as/dual-fuel.avif?assetname=dual-fuel.png&width=1920&max-quality=90",
   "Built-in Ovens": imageLibrary.kitchenDark,
   "Cooktops & Rangetops": imageLibrary.cooking,
   Outdoor: imageLibrary.outdoor,
@@ -135,9 +138,13 @@ function getMenuVisual(item?: NavItem | null, fallback?: NavItem | null) {
 }
 
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
-  const [activeItem, setActiveItem] = useState<NavItem | null>(null);
-  const [activeChild, setActiveChild] = useState<NavItem | undefined>();
-  const [hoveredItem, setHoveredItem] = useState<NavItem | null>(null);
+  const pathname = usePathname();
+  const cookingItem = mainNavigation.find((item) => item.title === "Cooking") ?? null;
+  const rangesItem = cookingItem?.children?.find((item) => item.title === "Ranges");
+  const isCookingRangeRoute = pathname.startsWith("/cooking/ranges");
+  const [activeItem, setActiveItem] = useState<NavItem | null>(isCookingRangeRoute ? cookingItem : null);
+  const [activeChild, setActiveChild] = useState<NavItem | undefined>(isCookingRangeRoute ? rangesItem : undefined);
+  const [hoveredItem, setHoveredItem] = useState<NavItem | null>(isCookingRangeRoute ? cookingItem : null);
 
   if (!open) {
     return null;
