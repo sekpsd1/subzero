@@ -56,7 +56,10 @@ export function DesignedWithYou({
   showTabs = true,
   theme = "light",
   previewImageClassName = "",
+  previewObjectPosition = "center",
   titleClassName = "",
+  headerClassName = "",
+  galleryClassName = "",
   sectionClassName = "",
 }: {
   categories?: DesignCategory[];
@@ -67,7 +70,10 @@ export function DesignedWithYou({
   showTabs?: boolean;
   theme?: "light" | "dark";
   previewImageClassName?: string;
+  previewObjectPosition?: string;
   titleClassName?: string;
+  headerClassName?: string;
+  galleryClassName?: string;
   sectionClassName?: string;
 }) {
   const [activeCategory, setActiveCategory] = useState(0);
@@ -99,7 +105,7 @@ export function DesignedWithYou({
       )}
     >
       <div className="mx-auto max-w-[1392px]">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,760px)_1fr] lg:items-end">
+        <div className={cn("grid gap-8 lg:grid-cols-[minmax(0,760px)_1fr] lg:items-end", headerClassName)}>
           <div className="bg-transparent">
             <h2 className={cn("bg-transparent font-serif text-[44px] leading-[1.04] md:text-[58px] lg:whitespace-nowrap", titleClassName)}>
               {title}
@@ -175,7 +181,7 @@ export function DesignedWithYou({
           </div>
         </div>
 
-        <div className="mt-6 flex items-start gap-2 md:gap-3 xl:w-[calc(100%+((100vw-1392px)/2))]">
+        <div className={cn("mt-6 flex items-start gap-2 md:gap-3 xl:w-[calc(100%+((100vw-1392px)/2))]", galleryClassName)}>
           <div
             className={cn(
               "relative h-[470px] min-w-0 flex-[1_1_auto] overflow-hidden md:h-[654px] lg:h-[668px]",
@@ -193,7 +199,7 @@ export function DesignedWithYou({
           </div>
           <div
             className={cn(
-              "relative hidden h-[470px] w-[26%] shrink-0 overflow-hidden md:block lg:h-[523px]",
+              "relative hidden h-[470px] w-[22%] shrink-0 overflow-hidden md:block lg:h-[523px]",
               isDark ? "bg-[#232320]" : "bg-[#dedbd1]",
             )}
           >
@@ -203,6 +209,7 @@ export function DesignedWithYou({
               alt={`${category.label} kitchen inspiration preview`}
               fill
               sizes="360px"
+              style={{ objectPosition: previewObjectPosition }}
               className={cn("animate-[designImageFade_520ms_ease_both] object-cover", previewImageClassName)}
             />
           </div>
@@ -220,11 +227,11 @@ export function DesignedWithYou({
 
       </div>
 
-      {ctaLabel ? <div className="flex w-full justify-center pt-14">
+      {ctaLabel ? <div className="flex w-full justify-center pt-16">
         <a
           href={ctaHref}
           className={cn(
-            "inline-flex h-12 min-w-[224px] items-center justify-center rounded-full border px-8 text-sm font-semibold transition",
+            "inline-flex h-[54px] min-w-[218px] items-center justify-center rounded-full border px-8 text-sm font-semibold transition",
             isDark
               ? "border-white text-white hover:bg-white hover:text-[#171715]"
               : "border-[#171715] text-[#171715] hover:bg-[#171715] hover:text-white",

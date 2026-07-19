@@ -75,7 +75,7 @@ export const mainNavigation: NavItem[] = [
     href: "/products/cooking",
     description: "Wolf performance for refined indoor and outdoor kitchens.",
     children: [
-      { title: "Discover Wolf", href: "/products/cooking/discover-wolf", featured: true },
+      { title: "Discover Wolf", href: "/cooking/discover-wolf", featured: true },
       {
         title: "Ranges",
         href: "/products/cooking/ranges",
