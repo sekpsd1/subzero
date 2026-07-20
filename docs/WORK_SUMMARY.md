@@ -60,7 +60,7 @@ Wolf Dual Fuel Range listing completed:
 - Added `/cooking/ranges/dual-fuel` as the canonical Wolf Dual Fuel listing/filter route.
 - Added a USA-inspired full-height hero, cooking category navigation, restrained listing typography, 14px filter controls, a single aggregate Dual Fuel family card, product specification summary, confidence statement, and two-card Discover More section.
 - Updated only the Cooking > Ranges > Dual Fuel navigation entry and made the mega menu initialize with Cooking and Ranges active on `/cooking/ranges/...` routes.
-- Updated the legacy `/products/cooking/dual-fuel-ranges` redirect to point to the new canonical route.
+- Kept `/cooking/ranges/dual-fuel` as the canonical filtered listing, while the legacy `/products/cooking/dual-fuel-ranges` URL now returns to the main `/cooking/ranges` landing page.
 - Reference measurements and implementation notes are recorded in `docs/COOKING_DUAL_FUEL_RANGES_NOTES.md`.
 
 Wolf Ranges landing page completed:
@@ -70,6 +70,9 @@ Wolf Ranges landing page completed:
 - Added permanent redirects from `/products/cooking/ranges` and `/products/cooking/dual-fuel-ranges` to the canonical route.
 - Matched the USA desktop typography measurements: 80px hero heading, 60px section headings, and 18px intro copy at approximately 912px width; mobile remains responsive without horizontal overflow.
 - Refined the page against the supplied full-page USA capture with the light editorial layout, alternating top-down range families, comparison overview, compact showroom/product features, inspiration gallery, and related-content cards.
+- Latest Wolf Ranges pass added the compact USA showroom-experience card, changed the primary CTA to `Explore the Wolf Range`, and locked measured desktop typography to 80px/60px (mobile 56px/42px).
+- Browser smoke tests passed for desktop, mobile, zero horizontal overflow, and the legacy redirect. Source lint passed with `.next-codex` excluded. The standard build remains blocked by a Windows lock in `node_modules/.prisma`; direct Next compilation succeeded, then type-check stopped because the locked Prisma client has no generated `PrismaClient` export.
+- Added `/cooking/ranges-induction` as the dedicated Wolf Induction Ranges route. Replaced the generic dark catalog scaffold with the USA-inspired light listing, real Transitional/Professional product cards, filtering, confidence content, and Discover more. Updated the Cooking menu and Wolf Ranges Induction CTAs, with a permanent redirect from `/products/cooking/induction-ranges`.
 
 The latest verified work closed the Refrigeration category batch:
 

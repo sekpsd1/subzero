@@ -344,6 +344,7 @@ State:
 - Wolf Ranges landing/category page modeled on the USA `/cooking/ranges` reference.
 - Old `/products/cooking/ranges` and `/products/cooking/dual-fuel-ranges` paths permanently redirect to the canonical route.
 - Primary menu/CTA wording is `Explore the Wolf Range`.
+- Includes the compact USA-style `The showroom experience` visual card after the intro.
 
 Fast check:
 
@@ -367,7 +368,7 @@ State:
 
 - USA-inspired range listing/filter page with real Wolf assets and one aggregate Dual Fuel family card matching the filtered USA result structure.
 - Cooking > Ranges > Dual Fuel menu path points to the canonical route.
-- Legacy `/products/cooking/dual-fuel-ranges` permanently redirects here.
+- The Dual Fuel listing remains at this route, while legacy `/products/cooking/dual-fuel-ranges` redirects to the main `/cooking/ranges` landing page.
 - Typography baseline: 40px hero title, 24px card title, and 14px filters/specs.
 
 Fast checks:
@@ -376,6 +377,32 @@ Fast checks:
 http://localhost:3000/cooking/ranges/dual-fuel
 http://localhost:3000/cooking/ranges
 http://localhost:3000/products/cooking/dual-fuel-ranges
+```
+
+## Wolf Induction Ranges
+
+Route: `/cooking/ranges-induction`
+
+Main files:
+
+- `src/app/cooking/ranges-induction/page.tsx`
+- `src/components/ProductPages/InductionRangesPage.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Dedicated USA-inspired Wolf Induction listing with real hero and product assets.
+- Includes selected Induction filtering, Transitional and Professional family cards, confidence copy, and Discover more content.
+- Cooking menu and Wolf Ranges Induction CTAs point to the canonical route.
+- Legacy `/products/cooking/induction-ranges` permanently redirects to `/cooking/ranges-induction`.
+- Detailed measurements and verification are recorded in `docs/COOKING_INDUCTION_RANGES_NOTES.md`.
+
+Fast checks:
+
+```text
+http://localhost:3000/cooking/ranges-induction
+http://localhost:3000/products/cooking/induction-ranges
 ```
 
 ## Showroom
