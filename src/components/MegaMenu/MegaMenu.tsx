@@ -71,13 +71,9 @@ const menuVisualImages: Record<string, string> = {
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:126a8411-83aa-4ae4-a1e8-23de7cab5f79/as/Ada_003v2.avif?assetname=Ada_003v2.png&width=1920&max-quality=90",
   "Dual Fuel":
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:2531eee3-6eb2-407f-8a4a-a5417ee84d10/as/dual-fuel.avif?assetname=dual-fuel.png&width=1920&max-quality=90",
-  "Induction Ranges":
+  Induction:
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b29f8814-9492-4044-a1fd-bacc27826349/as/IR-animation-still.avif?assetname=IR-animation-still.jpg&width=1600&max-quality=90",
-  "Professional Induction Ranges":
-    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:d8d4b3f1-02f8-462c-9bc5-2c566a9dcfbe/as/IR36551_S_P_SSBEZEL_REDKNOB_SH.avif?assetname=IR36551_S_P_SSBEZEL_REDKNOB_SH.png&width=1600&max-quality=90",
-  "Transitional Induction Ranges":
-    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:950c5c2a-9d60-4e1f-b77f-974d08018500/as/PROIR36_TOP.avif?assetname=PROIR36_TOP.png&width=1600&max-quality=90",
-  "Gas Ranges":
+  Gas:
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:644afbd7-f2ca-4a65-b99f-85506c061c07/as/GR364C_RedKnob_SSBezel_SH_comparison.avif?assetname=GR364C_RedKnob_SSBezel_SH_comparison.png&width=1600&max-quality=90",
   "Built-in Ovens": imageLibrary.kitchenDark,
   "Cooktops & Rangetops": imageLibrary.cooking,
