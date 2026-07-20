@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.next-*/
 /out/
 /public/_next/
 
@@ -31,6 +32,8 @@
 PROJECT_BRIEF.md
 CLAUDE.md
 AGENTS.md
+local-*.png
+reference-*.png
 *.pdf
 *.docx
 img-SUB-ZERO/

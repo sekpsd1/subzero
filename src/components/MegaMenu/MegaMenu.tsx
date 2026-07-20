@@ -67,9 +67,18 @@ const menuVisualImages: Record<string, string> = {
   Undercounter: "/assets/subzero/dice-unveil-cut-wr.avif",
   Cooking: imageLibrary.cooking,
   "Discover Wolf": imageLibrary.cooking,
-  Ranges: imageLibrary.cooking,
+  Ranges:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:126a8411-83aa-4ae4-a1e8-23de7cab5f79/as/Ada_003v2.avif?assetname=Ada_003v2.png&width=1920&max-quality=90",
   "Dual Fuel":
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:2531eee3-6eb2-407f-8a4a-a5417ee84d10/as/dual-fuel.avif?assetname=dual-fuel.png&width=1920&max-quality=90",
+  "Induction Ranges":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b29f8814-9492-4044-a1fd-bacc27826349/as/IR-animation-still.avif?assetname=IR-animation-still.jpg&width=1600&max-quality=90",
+  "Professional Induction Ranges":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:d8d4b3f1-02f8-462c-9bc5-2c566a9dcfbe/as/IR36551_S_P_SSBEZEL_REDKNOB_SH.avif?assetname=IR36551_S_P_SSBEZEL_REDKNOB_SH.png&width=1600&max-quality=90",
+  "Transitional Induction Ranges":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:950c5c2a-9d60-4e1f-b77f-974d08018500/as/PROIR36_TOP.avif?assetname=PROIR36_TOP.png&width=1600&max-quality=90",
+  "Gas Ranges":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:644afbd7-f2ca-4a65-b99f-85506c061c07/as/GR364C_RedKnob_SSBezel_SH_comparison.avif?assetname=GR364C_RedKnob_SSBezel_SH_comparison.png&width=1600&max-quality=90",
   "Built-in Ovens": imageLibrary.kitchenDark,
   "Cooktops & Rangetops": imageLibrary.cooking,
   Outdoor: imageLibrary.outdoor,
@@ -135,6 +144,18 @@ function getMenuVisual(item?: NavItem | null, fallback?: NavItem | null) {
     href: item?.href ?? fallback?.href ?? "/",
     image: menuVisualImages[title] ?? menuVisualImages[fallback?.title ?? ""] ?? imageLibrary.kitchenDark,
   };
+}
+
+function getPanelCardTitle(card: NavItem, item: NavItem, fallback: NavItem) {
+  if (card.title === item.title) {
+    return `Explore the ${fallback.title === "Cooking" ? "Wolf " : ""}${item.title.replace(/s$/, "")}`;
+  }
+
+  if (fallback.title === "Cooking" && item.title === "Ranges") {
+    return card.title.replace(/\s+Ranges$/, "");
+  }
+
+  return card.title;
 }
 
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
@@ -321,7 +342,8 @@ function MenuVisualPanel({
   onClose: () => void;
 }) {
   const visual = getMenuVisual(item, fallback);
-  const cards = showCards ? item.children ?? [] : [];
+  const isWolfRangesPanel = fallback.title === "Cooking" && item.title === "Ranges";
+  const cards = showCards ? (isWolfRangesPanel ? [item, ...(item.children ?? [])] : item.children ?? []) : [];
 
   if (showCards && cards.length) {
     return (
@@ -330,26 +352,30 @@ function MenuVisualPanel({
           key={item.title}
           className="flex flex-col gap-6 animate-[menuVisualFade_520ms_ease_both]"
         >
-          {cards.map((card, index) => (
-            <Link
-              key={card.title}
-              href={card.href}
-              onClick={onClose}
-              className="group relative block h-[315px] overflow-hidden bg-[#24211e] focus:outline-none focus-visible:ring-1 focus-visible:ring-white/70"
-            >
-              <Image
-                src={menuVisualImages[card.title] ?? cardVisualImages[index % cardVisualImages.length]}
-                alt={card.title}
-                fill
-                sizes="(min-width: 1024px) 60vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-[1.025]"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.12)_52%,rgba(0,0,0,0.72)_100%)]" />
-              <h3 className="absolute bottom-6 left-7 font-serif text-[40px] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
-                {index === 0 ? `Explore the ${fallback.title === "Cooking" ? "Wolf " : ""}${item.title.replace(/s$/, "")}` : card.title}
-              </h3>
-            </Link>
-          ))}
+          {cards.map((card, index) => {
+            const cardTitle = getPanelCardTitle(card, item, fallback);
+
+            return (
+              <Link
+                key={card.title}
+                href={card.href}
+                onClick={onClose}
+                className="group relative block h-[315px] overflow-hidden bg-[#24211e] focus:outline-none focus-visible:ring-1 focus-visible:ring-white/70"
+              >
+                <Image
+                  src={menuVisualImages[card.title] ?? cardVisualImages[index % cardVisualImages.length]}
+                  alt={cardTitle}
+                  fill
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-[1.025]"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.12)_52%,rgba(0,0,0,0.72)_100%)]" />
+                <h3 className="absolute bottom-6 left-7 font-serif text-[40px] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
+                  {cardTitle}
+                </h3>
+              </Link>
+            );
+          })}
         </div>
         <style jsx global>{`
           @keyframes menuVisualFade {
