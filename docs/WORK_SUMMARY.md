@@ -55,6 +55,15 @@ Updated: 2026-07-20
 
 ## Latest Focus
 
+Wolf Gas Range listing completed:
+
+- Added `/cooking/ranges/gas` as the canonical Wolf Gas Range listing/filter route.
+- Added the USA-reference full-height hero, Ranges category strip, selected Gas Range filter, GR Series family card, aggregate specifications, confidence copy, showroom/brochure CTAs, and related discovery content.
+- Extracted the repeated listing shell into `WolfRangeCategoryPage` so Gas, Dual Fuel, and Induction share the same visual and responsive pattern.
+- Updated only Cooking > Ranges > Gas Ranges navigation and added a permanent redirect from `/products/cooking/gas-ranges`.
+- Browser checks passed at desktop and 390px mobile with no horizontal overflow. Measured typography is 60px for the category heading, 24px for the product-card title, and 14px for filter controls.
+- `npm.cmd run lint` passed. Standard build remains blocked before compilation by the existing Windows Prisma client file lock; direct Next compilation passed.
+
 Wolf Dual Fuel Range listing completed:
 
 - Added `/cooking/ranges/dual-fuel` as the canonical Wolf Dual Fuel listing/filter route.

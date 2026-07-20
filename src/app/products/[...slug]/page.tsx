@@ -74,6 +74,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/ranges-induction");
   }
 
+  if (routePath === "cooking/gas-ranges") {
+    permanentRedirect("/cooking/ranges/gas");
+  }
+
   if (routePath === "refrigeration/french-door") {
     redirect("/refrigeration/french-door");
   }

@@ -405,6 +405,34 @@ http://localhost:3000/cooking/ranges-induction
 http://localhost:3000/products/cooking/induction-ranges
 ```
 
+## Wolf Gas Ranges
+
+Route: `/cooking/ranges/gas`
+
+Main files:
+
+- `src/app/cooking/ranges/gas/page.tsx`
+- `src/components/ProductPages/GasRangesPage.tsx`
+- `src/components/ProductPages/WolfRangeCategoryPage.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- USA-inspired Wolf Gas Range listing/filter page with the real Wolf hero and Gas Range product asset.
+- Includes the selected Gas Range filter, GR Series aggregate card, widths, burner configurations, fuel, finish, gas oven summary, and showroom/brochure CTAs.
+- Cooking > Ranges > Gas Ranges points to the canonical route.
+- Legacy `/products/cooking/gas-ranges` permanently redirects to `/cooking/ranges/gas`.
+- Typography baseline: 60px category heading, 24px card title, and 14px filters.
+
+Fast checks:
+
+```text
+http://localhost:3000/cooking/ranges/gas
+http://localhost:3000/cooking/ranges
+http://localhost:3000/products/cooking/gas-ranges
+```
+
 ## Showroom
 
 Route: `/showroom`
