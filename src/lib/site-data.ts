@@ -87,14 +87,21 @@ export const mainNavigation: NavItem[] = [
       },
       {
         title: "Built-in Ovens",
-        href: "/products/cooking/built-in-ovens",
+        href: "/cooking/built-in-ovens",
         featured: true,
         children: [
-          { title: "Convection Ovens", href: "/products/cooking/convection-ovens" },
-          { title: "M Series Ovens", href: "/products/cooking/m-series-ovens" },
-          { title: "E Series Ovens", href: "/products/cooking/e-series-ovens" },
-          { title: "Convection Steam Ovens", href: "/products/cooking/convection-steam-ovens" },
-          { title: "Combi-Microwaves with Grill", href: "/products/cooking/combi-microwaves-with-grill" },
+          {
+            title: "Convection",
+            href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Single+Oven%2CDouble+Oven",
+          },
+          {
+            title: "Convection Steam",
+            href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Convection+Steam+Oven",
+          },
+          {
+            title: "Convection Speed",
+            href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Speed+Oven",
+          },
         ],
       },
       {

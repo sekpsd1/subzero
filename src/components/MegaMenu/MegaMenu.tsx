@@ -75,7 +75,14 @@ const menuVisualImages: Record<string, string> = {
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b29f8814-9492-4044-a1fd-bacc27826349/as/IR-animation-still.avif?assetname=IR-animation-still.jpg&width=1600&max-quality=90",
   Gas:
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:644afbd7-f2ca-4a65-b99f-85506c061c07/as/GR364C_RedKnob_SSBezel_SH_comparison.avif?assetname=GR364C_RedKnob_SSBezel_SH_comparison.png&width=1600&max-quality=90",
-  "Built-in Ovens": imageLibrary.kitchenDark,
+  "Built-in Ovens":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:40415b70-4117-4008-a0ef-058cf61eeea9/as/Chiselwood_Eco_Homes_Fossdyke_Paddock_Saxilby_09-(1).avif?assetname=Chiselwood_Eco_Homes_Fossdyke_Paddock_Saxilby_09+%281%29.png&width=1280&max-quality=90",
+  Convection:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:3b379ad1-971a-4423-93f7-72b53a5e770e/as/Wolf-Oven.avif?assetname=Wolf+Oven.png&width=1280&max-quality=90",
+  "Convection Steam":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:21f20ae9-0a09-4e0e-b76b-2f5694e4191f/as/image.avif?width=1280&max-quality=90",
+  "Convection Speed":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:cbea8c0d-97fa-4f51-9ebd-30a3af8d9324/as/WOVEN12_modal.avif?assetname=WOVEN12_modal.jpg&width=1280&max-quality=90",
   "Cooktops & Rangetops": imageLibrary.cooking,
   Outdoor: imageLibrary.outdoor,
   "Discover Outdoor": imageLibrary.outdoor,
@@ -144,6 +151,10 @@ function getMenuVisual(item?: NavItem | null, fallback?: NavItem | null) {
 
 function getPanelCardTitle(card: NavItem, item: NavItem, fallback: NavItem) {
   if (card.title === item.title) {
+    if (fallback.title === "Cooking" && item.title === "Built-in Ovens") {
+      return "Explore Built-in Ovens";
+    }
+
     return `Explore the ${fallback.title === "Cooking" ? "Wolf " : ""}${item.title.replace(/s$/, "")}`;
   }
 
@@ -338,8 +349,13 @@ function MenuVisualPanel({
   onClose: () => void;
 }) {
   const visual = getMenuVisual(item, fallback);
-  const isWolfRangesPanel = fallback.title === "Cooking" && item.title === "Ranges";
-  const cards = showCards ? (isWolfRangesPanel ? [item, ...(item.children ?? [])] : item.children ?? []) : [];
+  const hasWolfOverviewCard =
+    fallback.title === "Cooking" && (item.title === "Ranges" || item.title === "Built-in Ovens");
+  const cards = showCards
+    ? hasWolfOverviewCard
+      ? [item, ...(item.children ?? [])]
+      : item.children ?? []
+    : [];
 
   if (showCards && cards.length) {
     return (
