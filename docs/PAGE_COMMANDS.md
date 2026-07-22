@@ -352,6 +352,34 @@ Fast check:
 http://127.0.0.1:3000/cooking/built-in-ovens
 ```
 
+## Wolf Convection Ovens Listing
+
+Route: `/cooking/built-in-ovens/convection`
+
+Main files:
+
+- `src/app/cooking/built-in-ovens/convection/page.tsx`
+- `src/components/ProductPages/ConvectionOvensPage.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Canonical filtered listing for Wolf Single Oven and Double Oven convection models.
+- Matches the supplied USA full-page capture with a full-height oven hero, category strip, Series/Width/Finish filters, exactly 10 product cards in a three-column desktop grid, the light confidence statement, and Discover more cards.
+- Hero uses the exact USA AEM kitchen image supplied with the reference markup; it is intentionally static and has no video controls.
+- Cooking > Built-in Ovens > Convection points to this route.
+- Legacy `/products/cooking/convection-ovens` permanently redirects here.
+- Typography baseline: 54px desktop category heading, 20px model titles, and 13px filter controls.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/built-in-ovens/convection
+http://127.0.0.1:3000/cooking/built-in-ovens
+http://127.0.0.1:3000/products/cooking/convection-ovens
+```
+
 ## Wolf Ranges
 
 Route: `/cooking/ranges`

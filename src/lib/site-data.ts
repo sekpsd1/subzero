@@ -92,7 +92,7 @@ export const mainNavigation: NavItem[] = [
         children: [
           {
             title: "Convection",
-            href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Single+Oven%2CDouble+Oven",
+            href: "/cooking/built-in-ovens/convection",
           },
           {
             title: "Convection Steam",

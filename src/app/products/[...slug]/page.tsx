@@ -82,6 +82,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/ranges/gas");
   }
 
+  if (routePath === "cooking/convection-ovens") {
+    permanentRedirect("/cooking/built-in-ovens/convection");
+  }
+
   if (routePath === "refrigeration/french-door") {
     redirect("/refrigeration/french-door");
   }

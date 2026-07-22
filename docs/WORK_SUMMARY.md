@@ -1,6 +1,6 @@
 # Work Summary
 
-Updated: 2026-07-20
+Updated: 2026-07-22
 
 ## Project State
 
@@ -54,6 +54,17 @@ Updated: 2026-07-20
   - `/trade`
 
 ## Latest Focus
+
+Wolf Built-In Ovens convection listing completed:
+
+- Added `/cooking/built-in-ovens/convection` as the canonical filtered Wolf Built-In Ovens listing for Single Oven and Double Oven convection models.
+- Refined the page against the supplied USA and local full-page PDF captures: full-height media hero, USA category strip and intro, Series/Width/Finish filters, exactly 10 convection product cards in a three-column desktop grid, the light confidence statement, and the two-card Discover more section.
+- Updated only Cooking > Built-in Ovens > Convection navigation and the parent Built-In Ovens convection CTA to use the canonical route.
+- Added a permanent redirect from `/products/cooking/convection-ovens` to the canonical route.
+- Listing proportions now match the supplied 1905px reference: a 1392px listing canvas, 1440px category strip, 60px desktop category heading, 20px model titles, and enlarged product renders.
+- Browser checks passed at desktop and 390px mobile with no horizontal overflow; the static USA hero asset, mega-menu state, parent route, metadata, and the 308 legacy redirect were verified.
+- `npm.cmd run lint` passed. Standard build is blocked before compilation by the existing Windows Prisma client file lock; direct Next compilation completed successfully before the existing Prisma client export prevented the project-wide type-check.
+- Detailed implementation and verification notes are in `docs/COOKING_CONVECTION_OVENS_NOTES.md`.
 
 Wolf Built-In Ovens landing page completed:
 

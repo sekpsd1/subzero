@@ -55,7 +55,7 @@ const families = [
     title: "Convection ovens",
     copy: "The secret to Wolf’s consistent, flavorful results lies in its patented Dual VertiFlow™ convection system, where two fans circulate hot air to ensure even cooking and uniform browning throughout.",
     image: assets.convection,
-    href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Single+Oven%2CDouble+Oven",
+    href: "/cooking/built-in-ovens/convection",
     learn: "Learn more about convection ovens",
     view: "View all convection oven models",
   },
