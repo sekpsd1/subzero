@@ -55,6 +55,16 @@ Updated: 2026-07-22
 
 ## Latest Focus
 
+Wolf Convection Steam Ovens listing completed:
+
+- Added `/cooking/built-in-ovens/convection-steam` as the canonical Wolf Convection Steam Oven filtered listing.
+- Reused the established Convection listing proportions and now uses the exact static USA `Faster heat, better airflow` hero asset.
+- Matched the supplied USA capture with the selected Convection Steam Oven filter, five cards in USA order, 24/30-inch widths, finish and plumbed-optional summaries, the confidence statement, and the shared Sub-Zero/Cove `Discover more` cards.
+- Updated only Cooking > Built-in Ovens > Convection Steam navigation and the matching parent-page CTA.
+- Added a permanent redirect from `/products/cooking/convection-steam-ovens`.
+- Browser checks passed at desktop and 390px mobile with no horizontal overflow; metadata, parent route, mega-menu state, and the legacy redirect were verified.
+- Detailed implementation notes are in `docs/COOKING_CONVECTION_STEAM_OVENS_NOTES.md`.
+
 Wolf Built-In Ovens convection listing completed:
 
 - Added `/cooking/built-in-ovens/convection` as the canonical filtered Wolf Built-In Ovens listing for Single Oven and Double Oven convection models.

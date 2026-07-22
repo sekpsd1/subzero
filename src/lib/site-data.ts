@@ -96,7 +96,7 @@ export const mainNavigation: NavItem[] = [
           },
           {
             title: "Convection Steam",
-            href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Convection+Steam+Oven",
+            href: "/cooking/built-in-ovens/convection-steam",
           },
           {
             title: "Convection Speed",

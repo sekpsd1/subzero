@@ -63,7 +63,7 @@ const families = [
     title: "Convection steam ovens",
     copy: "Unmatched versatility, endless benefits. Engineered with a climate sensor, it ensures perfect results in everything from artisan-quality breads and baked goods to succulent meats, poultry, and vegetables.",
     image: assets.steam,
-    href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Convection+Steam+Oven",
+    href: "/cooking/built-in-ovens/convection-steam",
     learn: "Learn more about convection steam ovens",
     view: "View all convection steam oven models",
   },

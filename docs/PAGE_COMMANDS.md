@@ -380,6 +380,35 @@ http://127.0.0.1:3000/cooking/built-in-ovens
 http://127.0.0.1:3000/products/cooking/convection-ovens
 ```
 
+## Wolf Convection Steam Ovens Listing
+
+Route: `/cooking/built-in-ovens/convection-steam`
+
+Main files:
+
+- `src/app/cooking/built-in-ovens/convection-steam/page.tsx`
+- `src/components/ProductPages/ConvectionSteamOvensPage.tsx`
+- `src/components/ProductPages/BuiltInOvensHero.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Canonical filtered listing for five Wolf Convection Steam Oven models.
+- Uses the Convection listing hierarchy and dimensions with the exact static USA `Faster heat, better airflow` hero image.
+- Selected filter is Convection Steam Oven; cards summarize 24/30-inch widths, convection steam oven type, finish, and plumbed optional.
+- Cooking > Built-in Ovens > Convection Steam points to this route.
+- Legacy `/products/cooking/convection-steam-ovens` permanently redirects here.
+- Typography baseline: 60px desktop/46px mobile category heading, 20px model titles, and 13px filters.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/built-in-ovens/convection-steam
+http://127.0.0.1:3000/cooking/built-in-ovens
+http://127.0.0.1:3000/products/cooking/convection-steam-ovens
+```
+
 ## Wolf Ranges
 
 Route: `/cooking/ranges`
