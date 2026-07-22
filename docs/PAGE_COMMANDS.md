@@ -409,6 +409,37 @@ http://127.0.0.1:3000/cooking/built-in-ovens
 http://127.0.0.1:3000/products/cooking/convection-steam-ovens
 ```
 
+## Wolf Speed Ovens Listing
+
+Route: `/cooking/built-in-ovens/convection-speed`
+
+Main files:
+
+- `src/app/cooking/built-in-ovens/convection-speed/page.tsx`
+- `src/components/ProductPages/SpeedOvensPage.tsx`
+- `src/components/ProductPages/BuiltInOvensHero.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Canonical filtered listing for five Wolf Convection Speed Oven model families.
+- Uses the exact static USA `Faster heat, better airflow` hero image and the established convection/steam listing proportions.
+- Selected filter is Speed Oven; cards summarize width, oven type, finish, and convection/broil/microwave capability.
+- Cooking > Built-in Ovens > Convection Speed points to this route.
+- Legacy `/cooking/view-all-cooking/built-in-ovens?default.mnseries=Speed+Oven`, `/cooking/built-in-ovens/speed`, `/products/cooking/convection-speed-ovens`, and `/products/cooking/speed-ovens` permanently redirect here.
+- Typography baseline: 60px desktop/46px mobile category heading, 44px desktop product-group heading, 20px model titles, and 13px filters.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/built-in-ovens/convection-speed
+http://127.0.0.1:3000/cooking/built-in-ovens
+http://127.0.0.1:3000/cooking/view-all-cooking/built-in-ovens?default.mnseries=Speed+Oven
+http://127.0.0.1:3000/products/cooking/convection-speed-ovens
+http://127.0.0.1:3000/products/cooking/speed-ovens
+```
+
 ## Wolf Ranges
 
 Route: `/cooking/ranges`

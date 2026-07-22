@@ -71,7 +71,7 @@ const families = [
     title: "Convection speed",
     copy: "The performance you expect from Wolf—only faster and smaller. Delight in convection and broil capabilities combined with the power of a microwave in one easy-to-use appliance.",
     image: assets.speed,
-    href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Speed+Oven",
+    href: "/cooking/built-in-ovens/convection-speed",
     learn: "Learn more about convection speed ovens",
     view: "View all convection speed oven models",
   },

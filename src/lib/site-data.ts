@@ -100,7 +100,7 @@ export const mainNavigation: NavItem[] = [
           },
           {
             title: "Convection Speed",
-            href: "/cooking/view-all-cooking/built-in-ovens?default.mnseries=Speed+Oven",
+            href: "/cooking/built-in-ovens/convection-speed",
           },
         ],
       },

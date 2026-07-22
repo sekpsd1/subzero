@@ -55,6 +55,15 @@ Updated: 2026-07-22
 
 ## Latest Focus
 
+Wolf Speed Ovens listing completed:
+
+- Added `/cooking/built-in-ovens/convection-speed` as the canonical Wolf Convection Speed Oven filtered listing.
+- Reused the established convection/steam listing hierarchy with the exact static USA `Faster heat, better airflow` hero image, category strip, selected Speed Oven filter, five model cards, confidence statement, related oven categories, and shared Discover more cards.
+- Updated only Cooking > Built-in Ovens > Convection Speed navigation and added permanent redirects from the former query-string listing, `/cooking/built-in-ovens/speed`, `/products/cooking/convection-speed-ovens`, and `/products/cooking/speed-ovens`.
+- Browser checks passed at 1440px desktop and 390px mobile: 60px category title, 44px group/statement titles, 20px card titles, 13px filters, five loaded product images, and no horizontal overflow.
+- `npm.cmd run lint` passed. Standard build remains blocked before compilation by the existing Windows Prisma client lock; direct Next compilation passed, then the existing missing `PrismaClient` export stopped the project-wide type-check.
+- Detailed implementation notes are in `docs/COOKING_SPEED_OVENS_NOTES.md`.
+
 Wolf Convection Steam Ovens listing completed:
 
 - Added `/cooking/built-in-ovens/convection-steam` as the canonical Wolf Convection Steam Oven filtered listing.

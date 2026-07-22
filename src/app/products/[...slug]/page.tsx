@@ -90,6 +90,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/built-in-ovens/convection-steam");
   }
 
+  if (routePath === "cooking/convection-speed-ovens" || routePath === "cooking/speed-ovens") {
+    permanentRedirect("/cooking/built-in-ovens/convection-speed");
+  }
+
   if (routePath === "refrigeration/french-door") {
     redirect("/refrigeration/french-door");
   }
