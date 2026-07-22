@@ -55,6 +55,14 @@ Updated: 2026-07-20
 
 ## Latest Focus
 
+Wolf Built-In Ovens landing page completed:
+
+- Added `/cooking/built-in-ovens` as the canonical Wolf editorial landing page with the USA-reference hero, three alternating oven-family stories, E/M Series promos, detailed comparison overview, Built-In Ovens inspiration gallery, related editorial content, complete-kitchen tiles, and shared pre-footer CTAs.
+- Added a permanent redirect from `/products/cooking/built-in-ovens` and made the mega menu initialize with Cooking > Built-in Ovens active on the canonical route.
+- Matched the restrained desktop type hierarchy used by the reference: 76px hero title, 44px oven-family headings, 30px promo headings, 28px comparison headings, and 13px CTA labels; responsive mobile checks keep the page free of horizontal overflow.
+- Detailed page notes and verification status are recorded in `docs/COOKING_BUILT_IN_OVENS_NOTES.md`.
+- Refined the page against the second 1920px comparison capture: removed the extra early showroom card and duplicate CTA band, expanded the comparison from four to eight specification rows, widened the editorial canvas to 1392px, and replaced the generic range gallery with the nine Built-In Ovens assets from the USA markup.
+
 Wolf Gas Range listing completed:
 
 - Added `/cooking/ranges/gas` as the canonical Wolf Gas Range listing/filter route.

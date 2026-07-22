@@ -169,10 +169,14 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const pathname = usePathname();
   const cookingItem = mainNavigation.find((item) => item.title === "Cooking") ?? null;
   const rangesItem = cookingItem?.children?.find((item) => item.title === "Ranges");
+  const builtInOvensItem = cookingItem?.children?.find((item) => item.title === "Built-in Ovens");
   const isCookingRangeRoute = pathname.startsWith("/cooking/ranges");
-  const [activeItem, setActiveItem] = useState<NavItem | null>(isCookingRangeRoute ? cookingItem : null);
-  const [activeChild, setActiveChild] = useState<NavItem | undefined>(isCookingRangeRoute ? rangesItem : undefined);
-  const [hoveredItem, setHoveredItem] = useState<NavItem | null>(isCookingRangeRoute ? cookingItem : null);
+  const isBuiltInOvensRoute = pathname.startsWith("/cooking/built-in-ovens");
+  const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute;
+  const initialCookingChild = isBuiltInOvensRoute ? builtInOvensItem : isCookingRangeRoute ? rangesItem : undefined;
+  const [activeItem, setActiveItem] = useState<NavItem | null>(isCookingProductRoute ? cookingItem : null);
+  const [activeChild, setActiveChild] = useState<NavItem | undefined>(initialCookingChild);
+  const [hoveredItem, setHoveredItem] = useState<NavItem | null>(isCookingProductRoute ? cookingItem : null);
 
   if (!open) {
     return null;

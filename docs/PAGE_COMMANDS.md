@@ -329,6 +329,29 @@ Next.js caution:
 
 - This file uses async `params`. Read local Next.js route/metadata docs before changing params, `generateMetadata`, `redirect`, or routing behavior.
 
+## Wolf Built-In Ovens
+
+Route: `/cooking/built-in-ovens`
+
+Main files:
+
+- `src/app/cooking/built-in-ovens/page.tsx`
+- `src/components/ProductPages/WolfBuiltInOvensPage.tsx`
+
+State:
+
+- USA-reference editorial landing page with real Wolf video and image assets.
+- The overview has eight specification rows per oven family and the inspiration tabs use Built-In Ovens-specific USA assets.
+- Uses the shared Footer pre-footer only; do not add a second page-level CTA band.
+- Cooking > Built-in Ovens initializes as the active mega-menu branch.
+- Legacy `/products/cooking/built-in-ovens` permanently redirects to the canonical route.
+
+Fast check:
+
+```text
+http://127.0.0.1:3000/cooking/built-in-ovens
+```
+
 ## Wolf Ranges
 
 Route: `/cooking/ranges`

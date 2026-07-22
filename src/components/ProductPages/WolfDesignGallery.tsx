@@ -6,7 +6,12 @@ import { useEffect, useState } from "react";
 const scene7 = "https://s7d9.scene7.com/is/image/szw/";
 const delivery = "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:";
 
-const galleries = [
+export type WolfDesignGalleryCategory = {
+  label: string;
+  images: readonly [string, string, string];
+};
+
+const defaultGalleries = [
   {
     label: "Contemporary",
     images: [
@@ -31,12 +36,12 @@ const galleries = [
       `${scene7}003_LG_SLG_92817?wid=1920&qlt=90`,
     ],
   },
-] as const;
+] as const satisfies readonly WolfDesignGalleryCategory[];
 
-export function WolfDesignGallery() {
+export function WolfDesignGallery({ categories = defaultGalleries }: { categories?: readonly WolfDesignGalleryCategory[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedImage, setExpandedImage] = useState<string | null>(null);
-  const active = galleries[activeIndex];
+  const active = categories[activeIndex];
 
   useEffect(() => {
     if (!expandedImage) return;
@@ -66,7 +71,7 @@ export function WolfDesignGallery() {
   return (
     <>
       <div className="mt-12 inline-flex min-h-11 rounded-full border border-black/15 bg-[#f8f7f3] p-1" role="tablist" aria-label="Kitchen design style">
-        {galleries.map((gallery, index) => <button key={gallery.label} type="button" role="tab" aria-selected={index === activeIndex} onClick={() => setActiveIndex(index)} className={`min-h-9 rounded-full px-4 text-sm font-bold transition ${index === activeIndex ? "bg-[#171715] text-white" : "hover:bg-black/5"}`}>{gallery.label}</button>)}
+        {categories.map((gallery, index) => <button key={gallery.label} type="button" role="tab" aria-selected={index === activeIndex} onClick={() => setActiveIndex(index)} className={`min-h-9 rounded-full px-4 text-sm font-bold transition ${index === activeIndex ? "bg-[#171715] text-white" : "hover:bg-black/5"}`}>{gallery.label}</button>)}
       </div>
       <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto md:grid md:grid-cols-[2fr_1fr] md:overflow-visible">
         {galleryImage(active.images[0], 0, "h-[72vw] min-h-[360px] min-w-[88%] snap-center md:h-[696px] md:min-h-0 md:min-w-0", "(min-width: 768px) 918px, 88vw")}

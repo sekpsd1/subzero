@@ -66,6 +66,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/ranges");
   }
 
+  if (routePath === "cooking/built-in-ovens") {
+    permanentRedirect("/cooking/built-in-ovens");
+  }
+
   if (routePath === "cooking/dual-fuel-ranges") {
     permanentRedirect("/cooking/ranges");
   }
