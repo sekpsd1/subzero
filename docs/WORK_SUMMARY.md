@@ -121,6 +121,16 @@ Wolf Ranges landing page completed:
 - Browser smoke tests passed for desktop, mobile, zero horizontal overflow, and the legacy redirect. Source lint passed with `.next-codex` excluded. The standard build remains blocked by a Windows lock in `node_modules/.prisma`; direct Next compilation succeeded, then type-check stopped because the locked Prisma client has no generated `PrismaClient` export.
 - Added `/cooking/ranges-induction` as the dedicated Wolf Induction Ranges route. Replaced the generic dark catalog scaffold with the USA-inspired light listing, real Transitional/Professional product cards, filtering, confidence content, and Discover more. Updated the Cooking menu and Wolf Ranges Induction CTAs, with a permanent redirect from `/products/cooking/induction-ranges`.
 
+Wolf Cooktops and Rangetops landing page completed:
+
+- Added `/cooking/cooktops-rangetops` with the USA-reference video hero, showroom experience, Gas Rangetops options, Gas Cooktops, Induction Cooktops, comparison overview, showroom journey, and interactive inspiration gallery.
+- Updated the Cooking menu and footer link to the canonical route; the mobile submenu also includes a direct overview link.
+- Added a permanent redirect from `/products/cooking/cooktops-rangetops`.
+- Browser checks passed at desktop and 390px mobile with no broken images or horizontal overflow. Typography is restrained to 60px/42px for the desktop hero/product headings and 42px/36px on mobile.
+- The hero uses the USA AEM video and poster with a 44–48px accessible play/pause control that remains clear of the headline and CTA.
+- `npm.cmd run lint -- --ignore-pattern '.next-*/**' --ignore-pattern '.tmp/**'` passed. `npm.cmd run build` passed; the only warning is the existing unrelated Turbopack AVIF optimization warning.
+- Detailed notes are in `docs/COOKING_COOKTOPS_RANGETOPS_NOTES.md`.
+
 The latest verified work closed the Refrigeration category batch:
 
 - `/refrigeration/french-door`

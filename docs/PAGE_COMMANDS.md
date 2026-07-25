@@ -764,3 +764,28 @@ http://localhost:3000/api/showrooms
 Next.js caution:
 
 - Read local route handler docs before changing request/response behavior.
+
+## Wolf Cooktops and Rangetops
+
+Route: `/cooking/cooktops-rangetops`
+
+Main files:
+
+- `src/app/cooking/cooktops-rangetops/page.tsx`
+- `src/components/ProductPages/WolfCooktopsRangetopsPage.tsx`
+- `src/components/ProductPages/WolfCooktopsHero.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- USA-inspired Wolf landing page with video hero, compact type scale, showroom content, three product families, rangetop configuration options, overview cards, and inspiration gallery.
+- Cooking navigation and footer use the canonical route.
+- Legacy `/products/cooking/cooktops-rangetops` permanently redirects to the canonical route.
+
+Fast checks:
+
+```text
+http://localhost:3000/cooking/cooktops-rangetops
+http://localhost:3000/products/cooking/cooktops-rangetops
+```

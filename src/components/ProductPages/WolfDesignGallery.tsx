@@ -38,7 +38,13 @@ const defaultGalleries = [
   },
 ] as const satisfies readonly WolfDesignGalleryCategory[];
 
-export function WolfDesignGallery({ categories = defaultGalleries }: { categories?: readonly WolfDesignGalleryCategory[] }) {
+export function WolfDesignGallery({
+  categories = defaultGalleries,
+  thirdImageAspectClass = "md:aspect-[2.05]",
+}: {
+  categories?: readonly WolfDesignGalleryCategory[];
+  thirdImageAspectClass?: string;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedImage, setExpandedImage] = useState<string | null>(null);
   const active = categories[activeIndex];
@@ -76,7 +82,12 @@ export function WolfDesignGallery({ categories = defaultGalleries }: { categorie
       <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto md:grid md:grid-cols-[2fr_1fr] md:overflow-visible">
         {galleryImage(active.images[0], 0, "h-[72vw] min-h-[360px] min-w-[88%] snap-center md:h-[696px] md:min-h-0 md:min-w-0", "(min-width: 768px) 918px, 88vw")}
         {galleryImage(active.images[1], 1, "h-[72vw] min-h-[360px] min-w-[88%] snap-center md:h-[696px] md:min-h-0 md:min-w-0", "(min-width: 768px) 459px, 88vw")}
-        {galleryImage(active.images[2], 2, "h-[72vw] min-h-[360px] min-w-[88%] snap-center md:col-span-2 md:h-auto md:min-h-0 md:min-w-0 md:aspect-[2.05]", "(min-width: 768px) 1392px, 88vw")}
+        {galleryImage(
+          active.images[2],
+          2,
+          `h-[72vw] min-h-[360px] min-w-[88%] snap-center md:col-span-2 md:h-auto md:min-h-0 md:min-w-0 ${thirdImageAspectClass}`,
+          "(min-width: 768px) 1392px, 88vw",
+        )}
       </div>
       {expandedImage && (
         <div role="dialog" aria-modal="true" aria-label="Expanded kitchen image" className="fixed inset-0 z-[100] grid place-items-center bg-black/90 p-4 md:p-10" onClick={() => setExpandedImage(null)}>

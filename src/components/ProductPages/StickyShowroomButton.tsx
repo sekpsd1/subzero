@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export function StickyShowroomButton({ triggerId }: { triggerId: string }) {
+export function StickyShowroomButton({
+  triggerId,
+  tone = "dark",
+}: {
+  triggerId: string;
+  tone?: "dark" | "gray";
+}) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -31,7 +37,9 @@ export function StickyShowroomButton({ triggerId }: { triggerId: string }) {
     >
       <Link
         href="/showroom/appointment"
-        className="inline-flex min-h-11 whitespace-nowrap items-center justify-center rounded-full bg-[#171715] px-6 text-[13px] font-bold text-white shadow-[0_3px_12px_rgba(0,0,0,0.2)] transition hover:bg-[#393834] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
+        className={`inline-flex min-h-11 whitespace-nowrap items-center justify-center rounded-full px-6 text-[13px] font-bold text-white shadow-[0_3px_12px_rgba(0,0,0,0.2)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/60 ${
+          tone === "gray" ? "bg-[#77746e] hover:bg-[#5f5c57]" : "bg-[#171715] hover:bg-[#393834]"
+        }`}
         tabIndex={isVisible ? 0 : -1}
       >
         Visit a showroom

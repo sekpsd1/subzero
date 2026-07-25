@@ -70,6 +70,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/built-in-ovens");
   }
 
+  if (routePath === "cooking/cooktops-rangetops") {
+    permanentRedirect("/cooking/cooktops-rangetops");
+  }
+
   if (routePath === "cooking/dual-fuel-ranges") {
     permanentRedirect("/cooking/ranges");
   }
