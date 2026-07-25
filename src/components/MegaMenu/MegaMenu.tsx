@@ -83,7 +83,14 @@ const menuVisualImages: Record<string, string> = {
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:21f20ae9-0a09-4e0e-b76b-2f5694e4191f/as/image.avif?width=1280&max-quality=90",
   "Convection Speed":
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:cbea8c0d-97fa-4f51-9ebd-30a3af8d9324/as/WOVEN12_modal.avif?assetname=WOVEN12_modal.jpg&width=1280&max-quality=90",
-  "Cooktops & Rangetops": imageLibrary.cooking,
+  "Cooktops & Rangetops":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:92d41196-f45c-4fe5-8212-a0a5d813d197/as/SLG_MED_081522_3.avif?assetname=SLG_MED_081522_3.jpg&width=1920&max-quality=90",
+  "Gas Rangetops":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:b5281bf3-d74c-4f75-8597-e4d7e5a2d658/as/W08.avif?assetname=W08.jpg&width=1920&max-quality=90",
+  "Gas Cooktops":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:08d067af-ba6c-4123-b629-601ce6d37f0d/as/SM_CG365T_S_SLG_042217_1.avif?assetname=SM_CG365T_S_SLG_042217_1.tif&width=1920&max-quality=90",
+  "Induction Cooktops":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:5f4186ae-0d91-4db3-ac46-c9175d6ac670/as/25-SUBZERO_CI36560TS_INDUCTION-COOKTOP.avif?assetname=25-SUBZERO_CI36560TS_INDUCTION-COOKTOP.jpg&width=1920&max-quality=90",
   Outdoor: imageLibrary.outdoor,
   "Discover Outdoor": imageLibrary.outdoor,
   Owners: imageLibrary.kitchenDark,
@@ -155,6 +162,10 @@ function getPanelCardTitle(card: NavItem, item: NavItem, fallback: NavItem) {
       return "Explore Built-in Ovens";
     }
 
+    if (fallback.title === "Cooking" && item.title === "Cooktops & Rangetops") {
+      return "Explore Cooktops & Rangetops";
+    }
+
     return `Explore the ${fallback.title === "Cooking" ? "Wolf " : ""}${item.title.replace(/s$/, "")}`;
   }
 
@@ -170,10 +181,18 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const cookingItem = mainNavigation.find((item) => item.title === "Cooking") ?? null;
   const rangesItem = cookingItem?.children?.find((item) => item.title === "Ranges");
   const builtInOvensItem = cookingItem?.children?.find((item) => item.title === "Built-in Ovens");
+  const cooktopsRangetopsItem = cookingItem?.children?.find((item) => item.title === "Cooktops & Rangetops");
   const isCookingRangeRoute = pathname.startsWith("/cooking/ranges");
   const isBuiltInOvensRoute = pathname.startsWith("/cooking/built-in-ovens");
-  const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute;
-  const initialCookingChild = isBuiltInOvensRoute ? builtInOvensItem : isCookingRangeRoute ? rangesItem : undefined;
+  const isCooktopsRangetopsRoute = pathname.startsWith("/cooking/cooktops-rangetops");
+  const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute || isCooktopsRangetopsRoute;
+  const initialCookingChild = isBuiltInOvensRoute
+    ? builtInOvensItem
+    : isCooktopsRangetopsRoute
+      ? cooktopsRangetopsItem
+      : isCookingRangeRoute
+        ? rangesItem
+        : undefined;
   const [activeItem, setActiveItem] = useState<NavItem | null>(isCookingProductRoute ? cookingItem : null);
   const [activeChild, setActiveChild] = useState<NavItem | undefined>(initialCookingChild);
   const [hoveredItem, setHoveredItem] = useState<NavItem | null>(isCookingProductRoute ? cookingItem : null);
@@ -354,7 +373,8 @@ function MenuVisualPanel({
 }) {
   const visual = getMenuVisual(item, fallback);
   const hasWolfOverviewCard =
-    fallback.title === "Cooking" && (item.title === "Ranges" || item.title === "Built-in Ovens");
+    fallback.title === "Cooking" &&
+    (item.title === "Ranges" || item.title === "Built-in Ovens" || item.title === "Cooktops & Rangetops");
   const cards = showCards
     ? hasWolfOverviewCard
       ? [item, ...(item.children ?? [])]
