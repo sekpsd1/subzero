@@ -789,3 +789,30 @@ Fast checks:
 http://localhost:3000/cooking/cooktops-rangetops
 http://localhost:3000/products/cooking/cooktops-rangetops
 ```
+
+## Wolf Gas Cooktops Listing
+
+Route: `/cooking/cooktops-rangetops/gas-cooktops`
+
+Main files:
+
+- `src/app/cooking/cooktops-rangetops/gas-cooktops/page.tsx`
+- `src/components/ProductPages/GasCooktopsPage.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Canonical filtered listing for Wolf Gas Cooktops.
+- Uses the established Wolf listing structure with compact filters, selected Gas Cooktop chip, four reference-matched model-group cards, detailed specifications, statement, and Discover more.
+- Cooking > Cooktops & Rangetops > Gas Cooktops points to this route.
+- Legacy `/products/cooking/gas-cooktops` permanently redirects here.
+- Typography baseline: 60px desktop/46px mobile category heading, 44px product-group and statement headings, 20px model titles, and 13px filters.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/cooktops-rangetops/gas-cooktops
+http://127.0.0.1:3000/cooking/cooktops-rangetops
+http://127.0.0.1:3000/products/cooking/gas-cooktops
+```

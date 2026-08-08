@@ -92,7 +92,7 @@ const families = [
     overviewCopy: "Experience precise temperature adjustment and proven performance with every turn of the knob.",
     learn: "Learn more about gas cooktops",
     view: "View all gas cooktop models",
-    href: "/products/cooking/gas-cooktops",
+    href: "/cooking/cooktops-rangetops/gas-cooktops",
     specs: [
       ["Widths", ["15″", "24″", "30″", "36″"]],
       ["Style", ["Transitional", "Professional", "Contemporary"]],

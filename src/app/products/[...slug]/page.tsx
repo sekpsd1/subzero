@@ -74,6 +74,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/cooktops-rangetops");
   }
 
+  if (routePath === "cooking/gas-cooktops") {
+    permanentRedirect("/cooking/cooktops-rangetops/gas-cooktops");
+  }
+
   if (routePath === "cooking/dual-fuel-ranges") {
     permanentRedirect("/cooking/ranges");
   }

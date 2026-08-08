@@ -55,6 +55,16 @@ Updated: 2026-07-22
 
 ## Latest Focus
 
+Wolf Gas Cooktops listing completed:
+
+- Added `/cooking/cooktops-rangetops/gas-cooktops` as the canonical Wolf Gas Cooktops filtered listing.
+- Reused the established Wolf listing hierarchy with a dark Wolf cooking hero, Cooktops & Rangetops category strip, selected Gas Cooktop filter, four reference-matched model-group cards, specification summaries, confidence statement, and Discover more.
+- Updated only Cooking > Cooktops & Rangetops > Gas Cooktops navigation and the matching parent-page links.
+- Added a permanent redirect from `/products/cooking/gas-cooktops`.
+- Typography baseline: 60px category heading, 44px product-group/statement headings, 20px card titles, and 13px filters.
+- Scoped source lint passed; direct Next compilation passed before the existing Prisma client export issue stopped the project-wide type-check.
+- Detailed implementation and verification notes are in `docs/COOKING_GAS_COOKTOPS_NOTES.md`.
+
 Wolf Speed Ovens listing completed:
 
 - Added `/cooking/built-in-ovens/convection-speed` as the canonical Wolf Convection Speed Oven filtered listing.
