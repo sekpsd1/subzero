@@ -55,6 +55,16 @@ Updated: 2026-07-22
 
 ## Latest Focus
 
+Wolf Cooktops & Rangetops view-all listing completed:
+
+- Added `/cooking/cooktops-rangetops/gas-rangetops` as the canonical listing while preserving `/cooking/cooktops-rangetops` as the editorial parent landing page; the former `/view-all` and misspelled `/das-rangetops` routes permanently redirect to the new path.
+- Reused the established Wolf listing pattern for category navigation, compact filters, model-group cards, specification summaries, confidence statement, CTAs, and Discover more.
+- Updated only Cooking > Cooktops & Rangetops > Gas Rangetops and the related legacy redirects to use the canonical `/gas-rangetops` path.
+- Browser checks passed for desktop/mobile layout, nine loaded product images, menu paths, metadata, parent route, redirects, and no horizontal overflow.
+- The supplied USA/local full-page comparison was used for a focused visual refinement of the dark hero, product-card proportions, model labels, carousel counts, and specification rows.
+- Scoped lint passed; direct Next compilation passed before the existing Prisma client export issue stopped the project-wide type-check. Standard build remains blocked by the existing Windows Prisma client file lock.
+- Detailed notes are in `docs/COOKING_COOKTOPS_RANGETOPS_VIEW_ALL_NOTES.md`.
+
 Wolf Gas Cooktops listing completed:
 
 - Added `/cooking/cooktops-rangetops/gas-cooktops` as the canonical Wolf Gas Cooktops filtered listing.

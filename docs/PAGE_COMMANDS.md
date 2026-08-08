@@ -790,6 +790,38 @@ http://localhost:3000/cooking/cooktops-rangetops
 http://localhost:3000/products/cooking/cooktops-rangetops
 ```
 
+## Wolf Cooktops and Rangetops View All
+
+Route: `/cooking/cooktops-rangetops/gas-rangetops`
+
+Main files:
+
+- `src/app/cooking/cooktops-rangetops/gas-rangetops/page.tsx`
+- `src/app/cooking/cooktops-rangetops/das-rangetops/page.tsx` (legacy typo redirect)
+- `src/app/cooking/cooktops-rangetops/view-all/page.tsx` (legacy redirect)
+- `src/components/ProductPages/CooktopsRangetopsViewAllPage.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Canonical all-model Wolf Cooktops & Rangetops listing; the parent editorial landing remains `/cooking/cooktops-rangetops`.
+- Includes Gas Rangetops (SRT), Gas Cooktops (CGP, CGTF, CGT, CGC, MMTF), and Induction Cooktops (CI60C, CI60T, CITF).
+- Cooking > Cooktops & Rangetops > Gas Rangetops points to this route.
+- Legacy `/cooking/cooktops-rangetops/view-all`, `/cooking/cooktops-rangetops/das-rangetops`, and `/products/cooking/cooktops-rangetops/view-all` permanently redirect here.
+- Typography baseline: 60px desktop/46px mobile category title, 44px desktop/38px mobile product-group headings, 20px card titles, and 13px filter labels.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/cooktops-rangetops/gas-rangetops
+http://127.0.0.1:3000/cooking/cooktops-rangetops/das-rangetops
+http://127.0.0.1:3000/cooking/cooktops-rangetops/view-all
+http://127.0.0.1:3000/cooking/cooktops-rangetops
+http://127.0.0.1:3000/products/cooking/cooktops-rangetops
+http://127.0.0.1:3000/products/cooking/cooktops-rangetops/view-all
+```
+
 ## Wolf Gas Cooktops Listing
 
 Route: `/cooking/cooktops-rangetops/gas-cooktops`

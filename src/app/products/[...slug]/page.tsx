@@ -74,6 +74,18 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/cooktops-rangetops");
   }
 
+  if (routePath === "cooking/cooktops-rangetops/view-all") {
+    permanentRedirect("/cooking/cooktops-rangetops/gas-rangetops");
+  }
+
+  if (routePath === "cooking/cooktops-rangetops/das-rangetops") {
+    permanentRedirect("/cooking/cooktops-rangetops/gas-rangetops");
+  }
+
+  if (routePath === "cooking/cooktops-rangetops/gas-rangetops") {
+    permanentRedirect("/cooking/cooktops-rangetops/gas-rangetops");
+  }
+
   if (routePath === "cooking/gas-cooktops") {
     permanentRedirect("/cooking/cooktops-rangetops/gas-cooktops");
   }
