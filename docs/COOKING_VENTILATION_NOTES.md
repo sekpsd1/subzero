@@ -2,13 +2,14 @@
 
 ## Route and scope
 
-- Route: `/products/cooking/ventilation`
+- Route: `/cooking/ventilation`
 - Added a dedicated static page over the existing `/products/[...slug]` fallback so other product and category routes remain unchanged.
 - Added `WolfVentilationPage` as a data-driven listing component.
 
 ## Navigation
 
-- The existing Cooking > Ventilation href already pointed to `/products/cooking/ventilation`.
+- Cooking > Ventilation links point to `/cooking/ventilation`.
+- The previous `/products/cooking/ventilation` route permanently redirects to the canonical path.
 - Mega-menu route initialization now opens Cooking and marks Ventilation active on this path.
 - No other menu category paths were changed.
 

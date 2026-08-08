@@ -57,7 +57,7 @@ Updated: 2026-07-22
 
 Wolf Ventilation listing completed:
 
-- Added `/products/cooking/ventilation` as a dedicated Wolf category/listing page without changing other Cooking routes.
+- Added `/cooking/ventilation` as the canonical Wolf category/listing page, with the previous `/products/cooking/ventilation` path redirecting permanently.
 - Reused the established Cooking listing pattern with the USA hero, category strip, compact filters, five ventilation groups, twelve AEM product cards, specification summaries, extraction statement, and showroom/brochure CTAs.
 - Updated the mega menu so Cooking and Ventilation initialize active on the route; the existing Ventilation href was already correct.
 - Matched measured USA desktop typography: 60px category title, 40px group/statement headings, 24px card titles, and 14px filters.

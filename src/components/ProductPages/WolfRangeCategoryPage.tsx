@@ -28,7 +28,7 @@ const discovery = {
 const cookingCategories = [
   ["All cooking", "/products/cooking"], ["Ranges", "/cooking/ranges"],
   ["Built-in ovens", "/products/cooking/built-in-ovens"], ["Cooktops and Rangetops", "/products/cooking/cooktops-rangetops"],
-  ["Ventilation", "/products/cooking/ventilation"], ["Coffee systems", "/products/cooking/coffee-systems"],
+  ["Ventilation", "/cooking/ventilation"], ["Coffee systems", "/products/cooking/coffee-systems"],
   ["Microwaves", "/products/cooking/microwaves"], ["Outdoor", "/products/outdoor"], ["Drawers", "/products/cooking/drawers"],
 ] as const;
 

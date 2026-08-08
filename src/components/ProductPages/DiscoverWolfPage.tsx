@@ -149,7 +149,7 @@ const wolfCategoryGridItems = [
   },
   {
     title: "Ventilation",
-    href: "/products/cooking/ventilation",
+    href: "/cooking/ventilation",
     image: "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:8ec8f3a0-7852-45e8-8050-65125ab99732/renditions/original/as/Ventilation.svg?assetname=Ventilation.svg",
   },
   {

@@ -39,7 +39,7 @@ const footerRows: FooterRow[] = [
           ["Ranges", "/cooking/ranges"],
           ["Built-In Ovens", "/cooking/built-in-ovens"],
           ["Cooktops & Rangetops", "/cooking/cooktops-rangetops"],
-          ["Ventilation", "/products/cooking/ventilation"],
+          ["Ventilation", "/cooking/ventilation"],
           ["Coffee Systems", "/products/cooking/coffee-systems"],
         ],
       },

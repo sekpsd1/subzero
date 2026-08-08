@@ -18,7 +18,7 @@ const cookingCategories = [
   ["Ranges", "/cooking/ranges"],
   ["Built-in ovens", "/cooking/built-in-ovens"],
   ["Cooktops & Rangetops", "/cooking/cooktops-rangetops"],
-  ["Ventilation", "/products/cooking/ventilation"],
+  ["Ventilation", "/cooking/ventilation"],
   ["Coffee systems", "/products/cooking/coffee-systems"],
   ["Microwaves", "/products/cooking/microwaves"],
   ["Outdoor", "/products/outdoor"],

@@ -114,7 +114,7 @@ export const mainNavigation: NavItem[] = [
           { title: "Induction Cooktops", href: "/cooking/cooktops-rangetops/induction-cooktops" },
         ],
       },
-      { title: "Ventilation", href: "/products/cooking/ventilation" },
+      { title: "Ventilation", href: "/cooking/ventilation" },
       { title: "Coffee Systems", href: "/products/cooking/coffee-systems" },
       { title: "Microwaves", href: "/products/cooking/microwaves" },
       { title: "Drawers", href: "/products/cooking/drawers" },

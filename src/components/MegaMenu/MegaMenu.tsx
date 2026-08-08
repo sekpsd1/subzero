@@ -186,7 +186,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const isCookingRangeRoute = pathname.startsWith("/cooking/ranges");
   const isBuiltInOvensRoute = pathname.startsWith("/cooking/built-in-ovens");
   const isCooktopsRangetopsRoute = pathname.startsWith("/cooking/cooktops-rangetops");
-  const isVentilationRoute = pathname === "/products/cooking/ventilation";
+  const isVentilationRoute = pathname === "/cooking/ventilation";
   const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute || isCooktopsRangetopsRoute || isVentilationRoute;
   const initialCookingChild = isBuiltInOvensRoute
     ? builtInOvensItem

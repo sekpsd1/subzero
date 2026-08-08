@@ -331,11 +331,12 @@ Next.js caution:
 
 ## Wolf Ventilation Listing
 
-Route: `/products/cooking/ventilation`
+Route: `/cooking/ventilation`
 
 Main files:
 
-- `src/app/products/cooking/ventilation/page.tsx`
+- `src/app/cooking/ventilation/page.tsx`
+- `src/app/products/cooking/ventilation/page.tsx` (permanent redirect)
 - `src/components/ProductPages/WolfVentilationPage.tsx`
 - `src/components/MegaMenu/MegaMenu.tsx`
 
@@ -349,7 +350,7 @@ State:
 Fast check:
 
 ```text
-http://127.0.0.1:3000/products/cooking/ventilation
+http://127.0.0.1:3000/cooking/ventilation
 ```
 
 ## Wolf Built-In Ovens
