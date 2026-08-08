@@ -848,3 +848,30 @@ http://127.0.0.1:3000/cooking/cooktops-rangetops/gas-cooktops
 http://127.0.0.1:3000/cooking/cooktops-rangetops
 http://127.0.0.1:3000/products/cooking/gas-cooktops
 ```
+
+## Wolf Induction Cooktops Listing
+
+Route: `/cooking/cooktops-rangetops/induction-cooktops`
+
+Main files:
+
+- `src/app/cooking/cooktops-rangetops/induction-cooktops/page.tsx`
+- `src/components/ProductPages/InductionCooktopsPage.tsx`
+- `src/lib/site-data.ts`
+- `src/app/products/[...slug]/page.tsx`
+
+State:
+
+- Canonical filtered listing for Wolf Induction Cooktops.
+- Uses the established Wolf listing structure with compact filters, selected Induction Cooktop chip, three USA-matched model-group cards, detailed specifications, reference-matched statement, and Discover more cards.
+- Cooking > Cooktops & Rangetops > Induction Cooktops points to this route.
+- Legacy `/products/cooking/induction-cooktops`, `/products/cooking/contemporary-induction-cooktops`, and `/products/cooking/transitional-induction-cooktops` permanently redirect here.
+- Typography baseline measured from USA: 60px desktop/46px mobile category heading, 40px group and statement headings, 24px desktop/20px mobile model titles, and 13px filters.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/cooktops-rangetops/induction-cooktops
+http://127.0.0.1:3000/cooking/cooktops-rangetops
+http://127.0.0.1:3000/products/cooking/induction-cooktops
+```

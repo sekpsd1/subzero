@@ -108,7 +108,7 @@ const families = [
     overviewCopy: "Discover rapid heat transfer, remarkable control, and effortless efficiency in an easy-to-clean package.",
     learn: "Learn more about induction",
     view: "View all induction models",
-    href: "/products/cooking/induction-cooktops",
+    href: "/cooking/cooktops-rangetops/induction-cooktops",
     specs: [
       ["Widths", ["15″", "24″", "30″", "36″"]],
       ["Style", ["Transitional", "Contemporary"]],

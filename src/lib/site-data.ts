@@ -111,7 +111,7 @@ export const mainNavigation: NavItem[] = [
         children: [
           { title: "Gas Cooktops", href: "/cooking/cooktops-rangetops/gas-cooktops" },
           { title: "Gas Rangetops", href: "/cooking/cooktops-rangetops/gas-rangetops" },
-          { title: "Induction Cooktops", href: "/products/cooking/induction-cooktops" },
+          { title: "Induction Cooktops", href: "/cooking/cooktops-rangetops/induction-cooktops" },
         ],
       },
       { title: "Ventilation", href: "/products/cooking/ventilation" },

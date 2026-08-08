@@ -90,6 +90,14 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/cooktops-rangetops/gas-cooktops");
   }
 
+  if (
+    routePath === "cooking/induction-cooktops" ||
+    routePath === "cooking/contemporary-induction-cooktops" ||
+    routePath === "cooking/transitional-induction-cooktops"
+  ) {
+    permanentRedirect("/cooking/cooktops-rangetops/induction-cooktops");
+  }
+
   if (routePath === "cooking/dual-fuel-ranges") {
     permanentRedirect("/cooking/ranges");
   }

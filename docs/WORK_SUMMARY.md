@@ -55,6 +55,15 @@ Updated: 2026-07-22
 
 ## Latest Focus
 
+Wolf Induction Cooktops listing completed:
+
+- Added `/cooking/cooktops-rangetops/induction-cooktops` as the canonical Wolf Induction Cooktops filtered listing.
+- Reused the established Cooktops & Rangetops listing structure with the USA dark-stone induction hero, selected Induction Cooktop filter, three model-group cards, specification summaries, reference-matched statement, and Discover more cards.
+- Updated only Cooking > Cooktops & Rangetops > Induction Cooktops navigation and the matching parent-page link.
+- Added permanent redirects from the legacy induction category paths under `/products/cooking/...`.
+- Measured the live USA desktop typography through browser developer tooling: 60px category title, 40px group/statement headings, 24px desktop card titles, and 13px filters.
+- Detailed implementation and verification notes are in `docs/COOKING_INDUCTION_COOKTOPS_NOTES.md`.
+
 Wolf Cooktops & Rangetops view-all listing completed:
 
 - Added `/cooking/cooktops-rangetops/gas-rangetops` as the canonical listing while preserving `/cooking/cooktops-rangetops` as the editorial parent landing page; the former `/view-all` and misspelled `/das-rangetops` routes permanently redirect to the new path.
