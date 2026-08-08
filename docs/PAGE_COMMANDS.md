@@ -329,6 +329,29 @@ Next.js caution:
 
 - This file uses async `params`. Read local Next.js route/metadata docs before changing params, `generateMetadata`, `redirect`, or routing behavior.
 
+## Wolf Ventilation Listing
+
+Route: `/products/cooking/ventilation`
+
+Main files:
+
+- `src/app/products/cooking/ventilation/page.tsx`
+- `src/components/ProductPages/WolfVentilationPage.tsx`
+- `src/components/MegaMenu/MegaMenu.tsx`
+
+State:
+
+- Dedicated Wolf Ventilation category/listing page using the established Cooking listing pattern.
+- Includes the USA hero, category navigation, Series/Width/Finish filter row, five ventilation groups, twelve real product cards, the extraction statement, and showroom/brochure CTAs.
+- Cooking and Ventilation initialize as the active mega-menu path on this route.
+- Typography baseline measured from USA: 60px category heading, 40px group/statement headings, 24px product-card titles, and 14px filter labels.
+
+Fast check:
+
+```text
+http://127.0.0.1:3000/products/cooking/ventilation
+```
+
 ## Wolf Built-In Ovens
 
 Route: `/cooking/built-in-ovens`

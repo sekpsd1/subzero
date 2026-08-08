@@ -55,6 +55,16 @@ Updated: 2026-07-22
 
 ## Latest Focus
 
+Wolf Ventilation listing completed:
+
+- Added `/products/cooking/ventilation` as a dedicated Wolf category/listing page without changing other Cooking routes.
+- Reused the established Cooking listing pattern with the USA hero, category strip, compact filters, five ventilation groups, twelve AEM product cards, specification summaries, extraction statement, and showroom/brochure CTAs.
+- Updated the mega menu so Cooking and Ventilation initialize active on the route; the existing Ventilation href was already correct.
+- Matched measured USA desktop typography: 60px category title, 40px group/statement headings, 24px card titles, and 14px filters.
+- Scoped source lint and direct Next compilation passed; standard checks remain blocked by existing generated-artifact lint errors and the existing locked/broken Prisma client.
+- The supplied USA/local full-page comparison was used for a focused refinement: USA-height cards no longer include extra model/CTA rows, and the missing two-card `Discover more` section now appears before the shared showroom band.
+- Detailed notes are in `docs/COOKING_VENTILATION_NOTES.md`.
+
 Wolf Induction Cooktops listing completed:
 
 - Added `/cooking/cooktops-rangetops/induction-cooktops` as the canonical Wolf Induction Cooktops filtered listing.
