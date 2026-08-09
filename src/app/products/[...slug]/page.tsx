@@ -66,6 +66,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/coffee-systems");
   }
 
+  if (routePath === "outdoor") {
+    permanentRedirect("/cooking/outdoor");
+  }
+
   if (routePath === "cooking/ranges") {
     permanentRedirect("/cooking/ranges");
   }

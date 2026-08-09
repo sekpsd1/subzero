@@ -2,6 +2,13 @@
 
 Updated: 2026-08-09
 
+## Latest Focus: Wolf Outdoor Cooking
+
+- Added the dedicated Wolf Outdoor Cooking listing at canonical `/cooking/outdoor`; `/products/outdoor` permanently redirects to it while `/refrigeration/outdoor` remains the separate Sub-Zero category.
+- Matched the USA structure with the outdoor-kitchen hero, active Cooking category strip, compact filters, Grills and Burners, Drawers, and Ventilation product groups, five real AEM product cards, reference statement, and Discover more cards.
+- Updated only Cooking > Outdoor navigation and route-aware desktop/mobile menu state. Typography follows the measured USA baseline: 60px H1, 40px group/statement headings, 24px desktop card titles, and 14px filters.
+- Verification status is recorded in `docs/COOKING_OUTDOOR_NOTES.md`.
+
 ## Project State
 
 - Project path: `C:\Codex projects\zub-zero`

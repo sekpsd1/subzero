@@ -118,7 +118,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Coffee Systems", href: "/cooking/coffee-systems" },
       { title: "Microwaves", href: "/cooking/microwaves" },
       { title: "Drawers", href: "/cooking/drawers" },
-      { title: "Outdoor", href: "/products/outdoor" },
+      { title: "Outdoor", href: "/cooking/outdoor" },
       { title: "Accessories", href: "/support/accessories" },
     ],
   },

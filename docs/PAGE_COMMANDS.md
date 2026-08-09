@@ -951,3 +951,22 @@ Fast checks:
 http://127.0.0.1:3000/cooking/drawers
 http://127.0.0.1:3000/products/cooking/drawers
 ```
+
+## Wolf Outdoor Cooking Listing
+
+- Route: `/cooking/outdoor`
+- Legacy redirect: `/products/outdoor`
+- Page: `src/app/cooking/outdoor/page.tsx`
+- Component: `src/components/ProductPages/WolfOutdoorCookingPage.tsx`
+- Navigation: Cooking > Outdoor uses `/cooking/outdoor` and initializes active in desktop and mobile menus.
+- Pattern: Wolf outdoor hero, horizontal Cooking category navigation, compact filters, grouped grill/burner, drawer, and ventilation cards, specification rows, reference statement, and Discover more.
+- Important: `/refrigeration/outdoor` remains the separate Sub-Zero outdoor refrigeration listing.
+- Reference: `https://www.subzero-wolf.com/cooking/view-all-cooking/outdoor`
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/outdoor
+http://127.0.0.1:3000/products/outdoor
+http://127.0.0.1:3000/refrigeration/outdoor
+```
