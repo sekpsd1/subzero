@@ -53,6 +53,15 @@ Updated: 2026-08-09
   - `/support`
   - `/trade`
 
+## Latest Focus: Wolf Microwaves
+
+- Added the dedicated Wolf listing/category page at canonical `/cooking/microwaves`; the former `/products/cooking/microwaves` URL permanently redirects to it.
+- Reused the established Wolf Cooking listing pattern: USA microwave hero, active Cooking category strip, compact filters, three product groups, nine reference models, specification summaries, showroom/brochure CTAs, statement, and Discover more cards.
+- Updated only the related desktop/mobile navigation state so Cooking opens with Microwaves active; the existing Microwaves href already targeted the new page.
+- Browser comparison used the live USA page at 1280px and the local page at desktop and 390px mobile. Verified 60px H1, 40px group headings, 24px desktop card titles, 14px category/filter labels, loaded product imagery, and no horizontal page overflow.
+- The supplied 03/04 comparison was used for a focused refinement: the hero now uses the correct USA kitchen image and the product grid/filter/statement sections use the compact USA structure.
+- Verification status: scoped lint passed; full lint and production build results are recorded in `docs/COOKING_MICROWAVES_NOTES.md`.
+
 ## Latest Focus: Wolf Coffee Systems
 
 - Added the dedicated listing/category experience at canonical `/cooking/coffee-systems`; the former `/products/cooking/coffee-systems` URL permanently redirects to it.

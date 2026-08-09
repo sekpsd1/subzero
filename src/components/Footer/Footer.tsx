@@ -57,7 +57,7 @@ const footerRows: FooterRow[] = [
         heading: "More Products",
         links: [
           ["Ice Makers - NEW", "/refrigeration/ice-makers"],
-          ["Microwaves", "/products/cooking/microwaves"],
+          ["Microwaves", "/cooking/microwaves"],
           ["Drawers", "/products/cooking/drawers"],
           ["Accessories", "/support/accessories"],
           ["View All Products", "/products"],

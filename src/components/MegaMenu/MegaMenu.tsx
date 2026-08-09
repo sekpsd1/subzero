@@ -69,6 +69,8 @@ const menuVisualImages: Record<string, string> = {
   "Discover Wolf": imageLibrary.cooking,
   "Coffee Systems":
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:16a8c1cf-f911-4c89-b740-f9ac83b25135/as/built-in-coffee.avif?assetname=built-in-coffee.jpeg&width=1280&max-quality=90",
+  Microwaves:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:d87361fd-098f-4e4b-8ba8-e350a42c3ea8/as/microwave.avif?assetname=microwave.png&width=1280&max-quality=90",
   Ranges:
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:126a8411-83aa-4ae4-a1e8-23de7cab5f79/as/Ada_003v2.avif?assetname=Ada_003v2.png&width=1920&max-quality=90",
   "Dual Fuel":
@@ -186,12 +188,14 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const cooktopsRangetopsItem = cookingItem?.children?.find((item) => item.title === "Cooktops & Rangetops");
   const ventilationItem = cookingItem?.children?.find((item) => item.title === "Ventilation");
   const coffeeSystemsItem = cookingItem?.children?.find((item) => item.title === "Coffee Systems");
+  const microwavesItem = cookingItem?.children?.find((item) => item.title === "Microwaves");
   const isCookingRangeRoute = pathname.startsWith("/cooking/ranges");
   const isBuiltInOvensRoute = pathname.startsWith("/cooking/built-in-ovens");
   const isCooktopsRangetopsRoute = pathname.startsWith("/cooking/cooktops-rangetops");
   const isVentilationRoute = pathname === "/cooking/ventilation";
   const isCoffeeSystemsRoute = pathname === "/cooking/coffee-systems";
-  const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute || isCooktopsRangetopsRoute || isVentilationRoute || isCoffeeSystemsRoute;
+  const isMicrowavesRoute = pathname === "/cooking/microwaves";
+  const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute || isCooktopsRangetopsRoute || isVentilationRoute || isCoffeeSystemsRoute || isMicrowavesRoute;
   const initialCookingChild = isBuiltInOvensRoute
     ? builtInOvensItem
     : isCooktopsRangetopsRoute
@@ -202,7 +206,9 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
           ? ventilationItem
           : isCoffeeSystemsRoute
             ? coffeeSystemsItem
-            : undefined;
+            : isMicrowavesRoute
+              ? microwavesItem
+              : undefined;
   const [activeItem, setActiveItem] = useState<NavItem | null>(isCookingProductRoute ? cookingItem : null);
   const [activeChild, setActiveChild] = useState<NavItem | undefined>(initialCookingChild);
   const [hoveredItem, setHoveredItem] = useState<NavItem | null>(isCookingProductRoute ? cookingItem : null);

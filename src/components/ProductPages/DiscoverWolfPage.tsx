@@ -159,7 +159,7 @@ const wolfCategoryGridItems = [
   },
   {
     title: "Microwaves",
-    href: "/products/cooking/microwaves",
+    href: "/cooking/microwaves",
     image: "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:589abff0-730e-490a-a196-94fb98fe8fc0/renditions/original/as/Microwaves.svg?assetname=Microwaves.svg",
   },
   {

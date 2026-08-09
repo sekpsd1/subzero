@@ -28,7 +28,7 @@ const cookingCategories = [
   ["Cooktops and Rangetops", "/cooking/cooktops-rangetops"],
   ["Ventilation", "/cooking/ventilation"],
   ["Coffee systems", "/cooking/coffee-systems"],
-  ["Microwaves", "/products/cooking/microwaves"],
+  ["Microwaves", "/cooking/microwaves"],
   ["Outdoor", "/products/outdoor"],
   ["Drawers", "/products/cooking/drawers"],
 ] as const;

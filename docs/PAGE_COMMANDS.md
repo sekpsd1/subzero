@@ -926,3 +926,11 @@ Fast check:
 http://127.0.0.1:3000/cooking/coffee-systems
 http://127.0.0.1:3000/products/cooking/coffee-systems
 ```
+# Wolf Microwaves listing
+
+- Route: `/cooking/microwaves`
+- Page: `src/app/cooking/microwaves/page.tsx`
+- Component: `src/components/ProductPages/WolfMicrowavesPage.tsx`
+- Navigation: Cooking > Microwaves uses `/cooking/microwaves` and initializes active in desktop and mobile menus; `/products/cooking/microwaves` redirects permanently.
+- Pattern: Wolf Cooking hero, horizontal category navigation, compact filters, grouped product cards, specification rows, statement/CTAs, Discover more.
+- Reference: `https://www.subzero-wolf.com/cooking/view-all-cooking/microwaves`

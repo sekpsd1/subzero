@@ -14,7 +14,7 @@ type MobileMenuProps = {
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const pathname = usePathname();
   const [active, setActive] = useState<NavItem | null>(() =>
-    pathname === "/cooking/coffee-systems"
+    pathname === "/cooking/coffee-systems" || pathname === "/cooking/microwaves"
       ? mainNavigation.find((item) => item.title === "Cooking") ?? null
       : null,
   );
