@@ -14,6 +14,14 @@ Updated: 2026-08-09
   - `บันทึก.md`
 - Important rule: before changing Next.js code, read the relevant guide in `node_modules/next/dist/docs/` because this repo uses Next.js 16 and the local docs are the source of truth.
 
+## Latest Focus: Wolf Drawers
+
+- Added the dedicated Wolf Drawers listing at canonical `/cooking/drawers`; `/products/cooking/drawers` now permanently redirects to it.
+- Matched the live USA structure with the warming-drawer hero, active Cooking category strip, Series/Width filters, Warming Drawers and Vacuum Seal Drawers groups, three real AEM product cards, the reference statement, and Discover more cards.
+- Updated Drawers links in the Cooking navigation, listing category strips, and footer to the canonical path. Desktop and mobile menus initialize at Cooking > Drawers on this route.
+- Browser QA passed at 1920px desktop and 390px mobile with loaded imagery and no horizontal overflow. Reference typography is 60px H1, 40px group/statement headings, 24px desktop card titles, and 14px filters.
+- Scoped ESLint and the Next.js production build passed on 2026-08-09. Full unscoped ESLint remains blocked by existing generated `.next-built-in-ovens` artifacts that are not excluded by the root ESLint configuration.
+
 ## Current Implementation
 
 - Global shell is in place:

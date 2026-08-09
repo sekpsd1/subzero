@@ -14,7 +14,7 @@ const cookingCategories = [
   ["All cooking", "/products/cooking"], ["Ranges", "/cooking/ranges"], ["Built-in ovens", "/cooking/built-in-ovens"],
   ["Cooktops and rangetops", "/products/cooking/cooktops-rangetops"], ["Ventilation", "/cooking/ventilation"],
   ["Coffee systems", "/cooking/coffee-systems"], ["Microwaves", "/cooking/microwaves"],
-  ["Outdoor", "/products/outdoor"], ["Drawers", "/products/cooking/drawers"],
+  ["Outdoor", "/products/outdoor"], ["Drawers", "/cooking/drawers"],
 ] as const;
 
 type OvenModel = { title: string; model: string; configuration: "single" | "double"; widths: string; finishes: readonly string[]; count?: string };

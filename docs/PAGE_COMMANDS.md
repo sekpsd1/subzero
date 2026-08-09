@@ -934,3 +934,20 @@ http://127.0.0.1:3000/products/cooking/coffee-systems
 - Navigation: Cooking > Microwaves uses `/cooking/microwaves` and initializes active in desktop and mobile menus; `/products/cooking/microwaves` redirects permanently.
 - Pattern: Wolf Cooking hero, horizontal category navigation, compact filters, grouped product cards, specification rows, statement/CTAs, Discover more.
 - Reference: `https://www.subzero-wolf.com/cooking/view-all-cooking/microwaves`
+
+## Wolf Drawers Listing
+
+- Route: `/cooking/drawers`
+- Legacy redirect: `/products/cooking/drawers`
+- Page: `src/app/cooking/drawers/page.tsx`
+- Component: `src/components/ProductPages/WolfDrawersPage.tsx`
+- Navigation: Cooking > Drawers uses `/cooking/drawers` and initializes active in desktop and mobile menus.
+- Pattern: Wolf Cooking hero, horizontal category navigation, Series/Width filters, grouped WWD/WWDO/VS cards, width summaries, reference statement, shared showroom/brochure CTAs, and Discover more.
+- Reference: `https://www.subzero-wolf.com/cooking/view-all-cooking/drawers`
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/cooking/drawers
+http://127.0.0.1:3000/products/cooking/drawers
+```

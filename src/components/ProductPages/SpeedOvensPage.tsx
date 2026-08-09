@@ -20,7 +20,7 @@ const cookingCategories = [
   ["Coffee systems", "/cooking/coffee-systems"],
   ["Microwaves", "/cooking/microwaves"],
   ["Outdoor", "/products/outdoor"],
-  ["Drawers", "/products/cooking/drawers"],
+  ["Drawers", "/cooking/drawers"],
 ] as const;
 
 type SpeedOven = {

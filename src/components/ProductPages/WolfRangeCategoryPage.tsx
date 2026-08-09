@@ -29,7 +29,7 @@ const cookingCategories = [
   ["All cooking", "/products/cooking"], ["Ranges", "/cooking/ranges"],
   ["Built-in ovens", "/products/cooking/built-in-ovens"], ["Cooktops and Rangetops", "/products/cooking/cooktops-rangetops"],
   ["Ventilation", "/cooking/ventilation"], ["Coffee systems", "/cooking/coffee-systems"],
-  ["Microwaves", "/cooking/microwaves"], ["Outdoor", "/products/outdoor"], ["Drawers", "/products/cooking/drawers"],
+  ["Microwaves", "/cooking/microwaves"], ["Outdoor", "/products/outdoor"], ["Drawers", "/cooking/drawers"],
 ] as const;
 
 function FilterButton({ children }: { children: string }) {
