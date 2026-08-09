@@ -66,7 +66,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Column Refrigeration", href: "/refrigeration/column-refrigeration" },
       { title: "Column Freezer", href: "/refrigeration/column-freezer" },
       { title: "Outdoor", href: "/refrigeration/outdoor" },
-      { title: "Accessories", href: "/support/accessories" },
+      { title: "Accessories", href: "/cooking/accessories" },
     ],
   },
   {
@@ -119,7 +119,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Microwaves", href: "/cooking/microwaves" },
       { title: "Drawers", href: "/cooking/drawers" },
       { title: "Outdoor", href: "/cooking/outdoor" },
-      { title: "Accessories", href: "/support/accessories" },
+      { title: "Accessories", href: "/cooking/accessories" },
     ],
   },
   {
@@ -134,7 +134,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Cooking", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
       { title: "Ventilation", href: "/products/outdoor?default.categories=outdoor%2Fventilation" },
       { title: "Drawers", href: "/products/outdoor?default.categories=outdoor%2Fwarming-drawers" },
-      { title: "Accessories", href: "/support/accessories" },
+      { title: "Accessories", href: "/cooking/accessories" },
     ],
   },
   {
@@ -143,7 +143,7 @@ export const mainNavigation: NavItem[] = [
     description: "Product information, care guides, warranty, and support.",
     children: [
       { title: "Product Information", href: "/support/product-information" },
-      { title: "Accessories", href: "/support/accessories" },
+      { title: "Accessories", href: "/cooking/accessories" },
       { title: "Recipes", href: "/journal/recipes" },
       { title: "Use and Care Videos", href: "/support/videos" },
       {

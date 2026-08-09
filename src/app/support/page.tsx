@@ -6,14 +6,14 @@ export const metadata = {
 };
 
 const resources = [
-  "Product Information",
-  "Accessories",
-  "Recipes",
-  "Use and Care Videos",
-  "Warranty Information",
-  "Product Support",
-  "Owner Technique Guide",
-  "Customer Care",
+  { title: "Product Information", href: "/support/product-information" },
+  { title: "Accessories", href: "/cooking/accessories" },
+  { title: "Recipes", href: "/journal/recipes" },
+  { title: "Use and Care Videos", href: "/support/videos" },
+  { title: "Warranty Information", href: "/support/warranty" },
+  { title: "Product Support", href: "/support/product-support" },
+  { title: "Owner Technique Guide", href: "/support/owner-technique-guide" },
+  { title: "Customer Care", href: "/support/customer-care" },
 ];
 
 export default function SupportPage() {
@@ -27,8 +27,8 @@ export default function SupportPage() {
         <h1 className="mt-5 font-serif text-5xl">Owner Resources</h1>
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {resources.map((resource) => (
-            <a key={resource} href="#" className="border border-white/10 p-6">
-              <p className="font-serif text-2xl">{resource}</p>
+            <a key={resource.title} href={resource.href} className="border border-white/10 p-6">
+              <p className="font-serif text-2xl">{resource.title}</p>
               <p className="mt-4 text-sm leading-7 text-stone-500">
                 Managed in the CMS with SEO and AEO controls.
               </p>

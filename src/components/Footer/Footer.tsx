@@ -59,7 +59,7 @@ const footerRows: FooterRow[] = [
           ["Ice Makers - NEW", "/refrigeration/ice-makers"],
           ["Microwaves", "/cooking/microwaves"],
           ["Drawers", "/cooking/drawers"],
-          ["Accessories", "/support/accessories"],
+          ["Accessories", "/cooking/accessories"],
           ["View All Products", "/products"],
         ],
       },
@@ -106,7 +106,7 @@ const footerRows: FooterRow[] = [
       {
         heading: "Shop",
         links: [
-          ["Accessories", "/support/accessories"],
+          ["Accessories", "/cooking/accessories"],
           ["Recipes", "/journal/recipes"],
         ],
       },

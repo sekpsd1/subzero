@@ -194,6 +194,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const microwavesItem = cookingItem?.children?.find((item) => item.title === "Microwaves");
   const drawersItem = cookingItem?.children?.find((item) => item.title === "Drawers");
   const outdoorItem = cookingItem?.children?.find((item) => item.title === "Outdoor");
+  const accessoriesItem = cookingItem?.children?.find((item) => item.title === "Accessories");
   const isCookingRangeRoute = pathname.startsWith("/cooking/ranges");
   const isBuiltInOvensRoute = pathname.startsWith("/cooking/built-in-ovens");
   const isCooktopsRangetopsRoute = pathname.startsWith("/cooking/cooktops-rangetops");
@@ -202,7 +203,8 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const isMicrowavesRoute = pathname === "/cooking/microwaves";
   const isDrawersRoute = pathname === "/cooking/drawers";
   const isOutdoorRoute = pathname === "/cooking/outdoor";
-  const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute || isCooktopsRangetopsRoute || isVentilationRoute || isCoffeeSystemsRoute || isMicrowavesRoute || isDrawersRoute || isOutdoorRoute;
+  const isAccessoriesRoute = pathname === "/cooking/accessories";
+  const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute || isCooktopsRangetopsRoute || isVentilationRoute || isCoffeeSystemsRoute || isMicrowavesRoute || isDrawersRoute || isOutdoorRoute || isAccessoriesRoute;
   const initialCookingChild = isBuiltInOvensRoute
     ? builtInOvensItem
     : isCooktopsRangetopsRoute
@@ -219,6 +221,8 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                 ? drawersItem
                 : isOutdoorRoute
                   ? outdoorItem
+                  : isAccessoriesRoute
+                    ? accessoriesItem
                   : undefined;
   const [activeItem, setActiveItem] = useState<NavItem | null>(isCookingProductRoute ? cookingItem : null);
   const [activeChild, setActiveChild] = useState<NavItem | undefined>(initialCookingChild);

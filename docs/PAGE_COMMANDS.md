@@ -720,6 +720,37 @@ Fast check:
 http://localhost:3000/our-story
 ```
 
+## Cooking Accessories
+
+Route: `/cooking/accessories`
+
+Legacy route:
+
+- `/support/accessories` permanently redirects to `/cooking/accessories`.
+
+Main files:
+
+- `src/app/cooking/accessories/page.tsx`
+- `src/components/ProductPages/AccessoriesPage.tsx`
+- `src/app/support/accessories/page.tsx`
+
+State:
+
+- Reference-matched light accessories landing page with category tabs, three illustrated category cards, registered-product/search placeholders, promotion, and parts/service content.
+- No checkout, payment, account, or product-registration backend behavior was added.
+- Accessories links in navigation, Owner Resources, and the footer use the canonical route.
+
+Fast check:
+
+```text
+http://localhost:3000/cooking/accessories
+http://localhost:3000/support/accessories
+```
+
+Detailed notes:
+
+- `docs/COOKING_ACCESSORIES_NOTES.md`
+
 ## Owner Resources
 
 Route: `/support`

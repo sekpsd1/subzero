@@ -2,6 +2,14 @@
 
 Updated: 2026-08-09
 
+## Latest Focus: Cooking Accessories
+
+- Added the reference-matched accessories landing page at canonical `/cooking/accessories`; legacy `/support/accessories` permanently redirects to it.
+- Recreated the store tabs, three illustrated accessory categories, registered-product placeholder, model search, promotion, and certified parts/service sections without checkout or account logic.
+- Updated only Accessories links across desktop/mobile navigation, Owner Resources, and the footer; the Cooking mega menu now initializes with Accessories active on the canonical route.
+- Browser QA passed at 1280px desktop and 390px mobile with loaded imagery, no horizontal overflow, correct metadata, and a verified legacy redirect.
+- Scoped ESLint passed. The direct Next production compile passed, then the existing broken/locked Prisma client stopped type-check; full details are in `docs/COOKING_ACCESSORIES_NOTES.md`.
+
 ## Latest Focus: Wolf Outdoor Cooking
 
 - Added the dedicated Wolf Outdoor Cooking listing at canonical `/cooking/outdoor`; `/products/outdoor` permanently redirects to it while `/refrigeration/outdoor` remains the separate Sub-Zero category.
