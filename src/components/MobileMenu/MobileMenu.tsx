@@ -2,6 +2,7 @@
 
 import { ChevronLeft, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { mainNavigation, type NavItem } from "@/lib/site-data";
 
@@ -11,7 +12,12 @@ type MobileMenuProps = {
 };
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
-  const [active, setActive] = useState<NavItem | null>(null);
+  const pathname = usePathname();
+  const [active, setActive] = useState<NavItem | null>(() =>
+    pathname === "/cooking/coffee-systems"
+      ? mainNavigation.find((item) => item.title === "Cooking") ?? null
+      : null,
+  );
   const items = active?.children ?? mainNavigation;
 
   if (!open) {
@@ -62,7 +68,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 key={item.title}
                 href={item.href}
                 onClick={onClose}
-                className="block border-b border-white/10 py-5 font-serif text-2xl"
+                aria-current={pathname === item.href ? "page" : undefined}
+                className={`block border-b border-white/10 py-5 font-serif text-2xl ${pathname === item.href ? "underline underline-offset-8" : ""}`}
               >
                 {item.title}
               </Link>

@@ -62,6 +62,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     redirect("/cooking/discover-wolf");
   }
 
+  if (routePath === "cooking/coffee-systems") {
+    permanentRedirect("/cooking/coffee-systems");
+  }
+
   if (routePath === "cooking/ranges") {
     permanentRedirect("/cooking/ranges");
   }

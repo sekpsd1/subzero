@@ -1,6 +1,6 @@
 # Work Summary
 
-Updated: 2026-07-22
+Updated: 2026-08-09
 
 ## Project State
 
@@ -52,6 +52,15 @@ Updated: 2026-07-22
   - `/showroom/dealers`
   - `/support`
   - `/trade`
+
+## Latest Focus: Wolf Coffee Systems
+
+- Added the dedicated listing/category experience at canonical `/cooking/coffee-systems`; the former `/products/cooking/coffee-systems` URL permanently redirects to it.
+- Reused the proven Wolf Cooking listing pattern: the USA coffee hero, Cooking category strip, compact filters, five reference-height AEM product cards with Width/Finish summaries, the USA coffee statement, and Discover more cards.
+- Added route-specific metadata and initialized both desktop and mobile navigation at Cooking > Coffee Systems; only the related coffee menu visual/state was changed.
+- Browser checks passed at 1280px desktop and 390px mobile with all six coffee images loaded and no horizontal overflow.
+- USA typography measurements used: 60px H1, 40px hero/statement headings, 24px desktop card titles, and 14px filters.
+- Project lint passed with generated output directories excluded. `npm.cmd run build` passed after running outside the sandbox so Prisma could regenerate its client; all 52 pages, including `/cooking/coffee-systems`, compiled and prerendered successfully.
 
 ## Latest Focus
 

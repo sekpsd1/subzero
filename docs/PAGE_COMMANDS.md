@@ -899,3 +899,30 @@ http://127.0.0.1:3000/cooking/cooktops-rangetops/induction-cooktops
 http://127.0.0.1:3000/cooking/cooktops-rangetops
 http://127.0.0.1:3000/products/cooking/induction-cooktops
 ```
+
+## Wolf Coffee Systems Listing
+
+Route: `/cooking/coffee-systems`
+
+Main files:
+
+- `src/components/ProductPages/WolfCoffeeSystemsPage.tsx`
+- `src/app/cooking/coffee-systems/page.tsx`
+- `src/app/products/[...slug]/page.tsx`
+- `src/components/MegaMenu/MegaMenu.tsx`
+- `src/components/MobileMenu/MobileMenu.tsx`
+
+State:
+
+- Dedicated USA-reference Wolf Coffee Systems listing at the canonical Cooking route.
+- Includes the real AEM coffee hero, Cooking category navigation, Series/Width/Finish filters, five USA-height M/E Series product cards with Width/Finish summaries, the reference coffee statement, and Discover more.
+- Cooking and Coffee Systems initialize active in the desktop mega menu; the mobile menu opens directly to Cooking and marks Coffee Systems current.
+- The former `/products/cooking/coffee-systems` route permanently redirects to the canonical path.
+- Typography baseline measured from USA: 60px desktop/46px mobile category heading, 40px hero and statement headings, 24px desktop/21px mobile card titles, and 14px filters.
+
+Fast check:
+
+```text
+http://127.0.0.1:3000/cooking/coffee-systems
+http://127.0.0.1:3000/products/cooking/coffee-systems
+```

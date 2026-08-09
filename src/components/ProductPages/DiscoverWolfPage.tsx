@@ -154,7 +154,7 @@ const wolfCategoryGridItems = [
   },
   {
     title: "Coffee systems",
-    href: "/products/cooking/coffee-systems",
+    href: "/cooking/coffee-systems",
     image: "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:ca9a8d04-c42b-40f4-a88f-d348c109c358/renditions/original/as/Coffee-Systems.svg?assetname=Coffee-Systems.svg",
   },
   {
