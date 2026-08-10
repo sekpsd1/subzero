@@ -1001,3 +1001,23 @@ http://127.0.0.1:3000/cooking/outdoor
 http://127.0.0.1:3000/products/outdoor
 http://127.0.0.1:3000/refrigeration/outdoor
 ```
+
+## Discover Outdoor Landing
+
+- Canonical route: `/outdoor/discover-outdoor`
+- Legacy redirect: `/products/outdoor/discover-outdoor` (308)
+- Page: `src/app/outdoor/discover-outdoor/page.tsx`
+- Component: `src/components/ProductPages/DiscoverOutdoorPage.tsx`
+- Navigation: top-level Outdoor opens active with Discover Outdoor selected; View all outdoor targets `/cooking/outdoor`.
+- Pattern: USA-reference editorial landing with full-width hero, hotspot-style highlights, outdoor product stories, inspiration, showroom, category overview, and Discover more.
+- Reference: `https://www.subzero-wolf.com/outdoor/discover-outdoor`
+- Important: this is separate from Wolf `/cooking/outdoor` and Sub-Zero `/refrigeration/outdoor` listings.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/outdoor/discover-outdoor
+http://127.0.0.1:3000/products/outdoor/discover-outdoor
+http://127.0.0.1:3000/cooking/outdoor
+http://127.0.0.1:3000/refrigeration/outdoor
+```

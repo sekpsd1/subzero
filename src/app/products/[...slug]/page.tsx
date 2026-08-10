@@ -70,6 +70,10 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
     permanentRedirect("/cooking/outdoor");
   }
 
+  if (routePath === "outdoor/discover-outdoor") {
+    permanentRedirect("/outdoor/discover-outdoor");
+  }
+
   if (routePath === "cooking/ranges") {
     permanentRedirect("/cooking/ranges");
   }

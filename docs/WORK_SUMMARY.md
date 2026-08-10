@@ -2,6 +2,15 @@
 
 Updated: 2026-08-09
 
+## Latest Focus: Discover Outdoor
+
+- Added the Outdoor brand/story landing at canonical `/outdoor/discover-outdoor`; legacy `/products/outdoor/discover-outdoor` permanently redirects to it.
+- Recreated the USA editorial sequence with the outdoor-kitchen hero, feature highlights, Sub-Zero/Wolf product stories, inspiration, showroom, category overview, and Discover more cards using the USA AEM imagery.
+- Updated only Outdoor > Discover Outdoor navigation and the related footer link. Desktop and mobile menus initialize with Outdoor open and Discover Outdoor active; View all outdoor continues to `/cooking/outdoor`.
+- Browser QA at 1920px and 390px confirmed the measured USA type hierarchy (80px H1, 60px section headings, 40px feature headings), loaded imagery, and no horizontal overflow. The legacy redirect returns 308 while `/cooking/outdoor` and `/refrigeration/outdoor` remain independent 200 routes.
+- Refined against the supplied `111.png`/`222.png` comparison: desktop media positions and sizes now track the USA capture within a few pixels, the first inspiration slide and right-edge preview are restored, category tiles use the original outline assets, and the Discover Wolf card uses the reference split layout.
+- Detailed notes are in `docs/OUTDOOR_DISCOVER_NOTES.md`.
+
 ## Latest Focus: Cooking Accessories
 
 - Added the reference-matched accessories landing page at canonical `/cooking/accessories`; legacy `/support/accessories` permanently redirects to it.

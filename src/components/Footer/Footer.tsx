@@ -46,7 +46,7 @@ const footerRows: FooterRow[] = [
       {
         heading: "Outdoor",
         links: [
-          ["Discover Outdoor", "/products/outdoor/discover-outdoor"],
+          ["Discover Outdoor", "/outdoor/discover-outdoor"],
           ["Outdoor Gas Grills", "/products/outdoor/outdoor-gas-grills"],
           ["Outdoor Modules", "/products/outdoor/outdoor-modules"],
           ["Side Burners", "/products/outdoor/side-burners"],

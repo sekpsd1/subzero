@@ -124,10 +124,10 @@ export const mainNavigation: NavItem[] = [
   },
   {
     title: "Outdoor",
-    href: "/products/outdoor",
+    href: "/cooking/outdoor",
     description: "Appliances for complete open-air kitchens.",
     children: [
-      { title: "Discover Outdoor", href: "/products/outdoor/discover-outdoor", featured: true },
+      { title: "Discover Outdoor", href: "/outdoor/discover-outdoor", featured: true },
       { title: "Ice Makers - NEW", href: "/refrigeration/ice-makers" },
       { title: "Refrigeration", href: "/products/outdoor?default.categories=outdoor%2Frefrigeration" },
       { title: "Grilling", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
