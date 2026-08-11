@@ -189,6 +189,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const outdoorBrandItem = mainNavigation.find((item) => item.title === "Outdoor") ?? null;
   const discoverOutdoorItem = outdoorBrandItem?.children?.find((item) => item.title === "Discover Outdoor");
   const outdoorRefrigerationItem = outdoorBrandItem?.children?.find((item) => item.title === "Refrigeration");
+  const outdoorGrillingItem = outdoorBrandItem?.children?.find((item) => item.title === "Grilling");
   const rangesItem = cookingItem?.children?.find((item) => item.title === "Ranges");
   const builtInOvensItem = cookingItem?.children?.find((item) => item.title === "Built-in Ovens");
   const cooktopsRangetopsItem = cookingItem?.children?.find((item) => item.title === "Cooktops & Rangetops");
@@ -208,6 +209,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const isOutdoorRoute = pathname === "/cooking/outdoor";
   const isDiscoverOutdoorRoute = pathname === "/outdoor/discover-outdoor";
   const isOutdoorRefrigerationRoute = pathname === "/outdoor/refrigeration";
+  const isOutdoorGrillingRoute = pathname === "/outdoor/grills";
   const isAccessoriesRoute = pathname === "/cooking/accessories";
   const isCookingProductRoute = isCookingRangeRoute || isBuiltInOvensRoute || isCooktopsRangetopsRoute || isVentilationRoute || isCoffeeSystemsRoute || isMicrowavesRoute || isDrawersRoute || isOutdoorRoute || isAccessoriesRoute;
   const initialCookingChild = isBuiltInOvensRoute
@@ -229,13 +231,15 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                   : isAccessoriesRoute
                     ? accessoriesItem
                   : undefined;
-  const initialMenuItem = isDiscoverOutdoorRoute || isOutdoorRefrigerationRoute ? outdoorBrandItem : isCookingProductRoute ? cookingItem : null;
+  const initialMenuItem = isDiscoverOutdoorRoute || isOutdoorRefrigerationRoute || isOutdoorGrillingRoute ? outdoorBrandItem : isCookingProductRoute ? cookingItem : null;
   const [activeItem, setActiveItem] = useState<NavItem | null>(initialMenuItem);
   const [activeChild, setActiveChild] = useState<NavItem | undefined>(
     isDiscoverOutdoorRoute
       ? discoverOutdoorItem
       : isOutdoorRefrigerationRoute
         ? outdoorRefrigerationItem
+        : isOutdoorGrillingRoute
+          ? outdoorGrillingItem
         : initialCookingChild,
   );
   const [hoveredItem, setHoveredItem] = useState<NavItem | null>(initialMenuItem);

@@ -130,7 +130,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Discover Outdoor", href: "/outdoor/discover-outdoor", featured: true },
       { title: "Ice Makers - NEW", href: "/refrigeration/ice-makers" },
       { title: "Refrigeration", href: "/outdoor/refrigeration" },
-      { title: "Grilling", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
+      { title: "Grilling", href: "/outdoor/grills" },
       { title: "Cooking", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
       { title: "Ventilation", href: "/products/outdoor?default.categories=outdoor%2Fventilation" },
       { title: "Drawers", href: "/products/outdoor?default.categories=outdoor%2Fwarming-drawers" },

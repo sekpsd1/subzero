@@ -1018,6 +1018,21 @@ http://127.0.0.1:3000/outdoor/refrigeration
 http://127.0.0.1:3000/refrigeration/outdoor
 ```
 
+## Outdoor Gas Grill Listing
+
+- Canonical route: `/outdoor/grills`
+- Page: `src/app/outdoor/grills/page.tsx`
+- Component: `src/components/ProductPages/OutdoorGrillsPage.tsx`
+- Navigation: Outdoor > Grilling points to the canonical route; desktop and mobile menus open Outdoor and mark Grilling current.
+- Pattern: Outdoor listing with the shared outdoor hero, `All Outdoor` intro, Outdoor Gas Grill selected filter, one Wolf OG product card, outdoor statement, and three-brand Discover more grid.
+- Existing `/cooking/outdoor`, `/outdoor/refrigeration`, and `/outdoor/discover-outdoor` routes remain separate.
+
+Fast check:
+
+```text
+http://127.0.0.1:3000/outdoor/grills
+```
+
 ## Discover Outdoor Landing
 
 - Canonical route: `/outdoor/discover-outdoor`

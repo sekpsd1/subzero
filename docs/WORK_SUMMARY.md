@@ -2,6 +2,15 @@
 
 Updated: 2026-08-11
 
+## Latest Focus: Outdoor Gas Grills
+
+- Added `/outdoor/grills` as the canonical filtered Outdoor Gas Grill listing.
+- Updated only Outdoor > Grilling to target the new route; desktop and mobile menus now open Outdoor on this route, with Grilling selected.
+- Reused the established Outdoor listing composition: full outdoor-kitchen hero, `All Outdoor` introduction, selected Outdoor Gas Grill filter, Wolf grill card, outdoor statement, and three-brand Discover more grid.
+- The existing `/cooking/outdoor`, `/outdoor/refrigeration`, and `/outdoor/discover-outdoor` routes remain unchanged.
+- Browser QA passed at desktop and 390px mobile: Grilling points to `/outdoor/grills`, initializes current, imagery loads above the fold, and the page has no horizontal overflow. ESLint and the production build passed.
+- Refined the page against `111.png`/`222.png` and the live USA page: the exact USA hero asset is now used, and the desktop product card, statement, and Discover more positions match the reference within roughly 1px. Mobile remains overflow-free; lint and build still pass.
+
 ## Latest Focus: Outdoor Refrigeration Navigation
 
 - Added `/outdoor/refrigeration` as the canonical menu destination for Outdoor > Refrigeration, reusing the established Sub-Zero outdoor refrigeration listing.
