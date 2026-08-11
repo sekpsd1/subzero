@@ -1070,6 +1070,25 @@ http://127.0.0.1:3000/products/outdoor/ventilation
 http://127.0.0.1:3000/cooking/ventilation
 ```
 
+## Outdoor Warming Drawers Listing
+
+- Canonical route: `/outdoor/warming-drawers`
+- Legacy redirects: `/products/outdoor?default.categories=outdoor%2Fwarming-drawers` and `/products/outdoor/warming-drawers` (308)
+- Page: `src/app/outdoor/warming-drawers/page.tsx`
+- Component: `src/components/ProductPages/OutdoorWarmingDrawersPage.tsx`
+- Navigation: Outdoor > Warming Drawers points to the canonical route; desktop and mobile menus open Outdoor and mark Warming Drawers current.
+- Pattern: USA-reference Outdoor listing with the shared outdoor hero, `All Outdoor` intro, selected Warming Drawer filter, compact WWDO / WWD30O product card with Width, outdoor statement, and Discover more.
+- Important: indoor Wolf `/cooking/drawers` and `/products/cooking/drawers` remain unchanged and separate.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/outdoor/warming-drawers
+http://127.0.0.1:3000/products/outdoor?default.categories=outdoor%2Fwarming-drawers
+http://127.0.0.1:3000/products/outdoor/warming-drawers
+http://127.0.0.1:3000/products/cooking/drawers
+```
+
 ## Discover Outdoor Landing
 
 - Canonical route: `/outdoor/discover-outdoor`

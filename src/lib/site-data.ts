@@ -134,7 +134,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Side Burners", href: "/outdoor/side-burners" },
       { title: "Cooking", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
       { title: "Ventilation", href: "/outdoor/ventilation" },
-      { title: "Drawers", href: "/products/outdoor?default.categories=outdoor%2Fwarming-drawers" },
+      { title: "Warming Drawers", href: "/outdoor/warming-drawers" },
       { title: "Accessories", href: "/cooking/accessories" },
     ],
   },

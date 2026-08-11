@@ -76,6 +76,10 @@ export default async function ProductRoutePage({ params, searchParams }: Product
       permanentRedirect("/outdoor/ventilation");
     }
 
+    if (categoryValues?.includes("outdoor/warming-drawers")) {
+      permanentRedirect("/outdoor/warming-drawers");
+    }
+
     const selectedSeries = query["default.mnseries"];
     const seriesValues = Array.isArray(selectedSeries) ? selectedSeries : selectedSeries?.split(",");
 
@@ -92,6 +96,10 @@ export default async function ProductRoutePage({ params, searchParams }: Product
 
   if (routePath === "outdoor/ventilation") {
     permanentRedirect("/outdoor/ventilation");
+  }
+
+  if (routePath === "outdoor/warming-drawers") {
+    permanentRedirect("/outdoor/warming-drawers");
   }
 
   if (routePath === "outdoor/discover-outdoor") {

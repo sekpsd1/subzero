@@ -2,6 +2,16 @@
 
 Updated: 2026-08-11
 
+## Latest Focus: Outdoor Warming Drawers
+
+- Added `/outdoor/warming-drawers` as the canonical Wolf Outdoor Warming Drawer listing for WWDO / WWD30O.
+- Added the selected Warming Drawer filter, compact WWDO / WWD30O product card, outdoor statement, and Discover more content.
+- Updated only Outdoor > Warming Drawers navigation; desktop and mobile menus now open Outdoor on this route and mark Warming Drawers current.
+- `/products/outdoor?default.categories=outdoor%2Fwarming-drawers` and `/products/outdoor/warming-drawers` permanently redirect to the canonical route. Indoor `/products/cooking/drawers` continues to redirect independently to `/cooking/drawers`.
+- The live USA page geo-routed the Thailand browser session to the international selector, so the supplied brief and the established USA-matched Outdoor listing pattern were used as the reference fallback. Browser QA passed at desktop and 390px mobile with loaded imagery and no horizontal overflow; lint and production build passed.
+- Detailed notes are in `docs/OUTDOOR_WARMING_DRAWERS_NOTES.md`.
+- Refined against the supplied `555.png` reference and `666.png` local capture: removed the extra category strip, product-group intro, model label, extended specifications, and card CTAs; the single WWDO card now starts at the left edge and follows the compact USA filtered-listing composition.
+
 ## Latest Focus: Outdoor Ventilation
 
 - Added `/outdoor/ventilation` as the canonical Outdoor listing for the Wolf Outdoor Pro Wall Hood family in 36, 48, and 60-inch widths.
