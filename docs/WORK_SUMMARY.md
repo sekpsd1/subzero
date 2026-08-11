@@ -2,6 +2,14 @@
 
 Updated: 2026-08-11
 
+## Latest Focus: Outdoor Ventilation
+
+- Added `/outdoor/ventilation` as the canonical Outdoor listing for the Wolf Outdoor Pro Wall Hood family in 36, 48, and 60-inch widths.
+- Updated only Outdoor > Ventilation navigation; desktop and mobile menus now open Outdoor on this route and mark Ventilation current.
+- Refined against the supplied `333.png` USA capture: the page now uses `All Outdoor`, Series/Width filters, one family card with a `1 / 3` counter and all three widths, the outdoor statement, and Discover more; the extra category strip, feature band, and related-category section were removed.
+- `/products/outdoor?default.categories=outdoor%2Fventilation` and `/products/outdoor/ventilation` permanently redirect to the canonical route; unfiltered `/products/outdoor` and indoor `/cooking/ventilation` remain independent.
+- The live USA page geo-routed the Thailand browser session to the international selector, so the supplied content brief plus the already USA-matched Outdoor listing implementations were used as the first-pass reference. Detailed QA status is in `docs/OUTDOOR_VENTILATION_NOTES.md`.
+
 ## Latest Focus: Outdoor Side Burners
 
 - Added `/outdoor/side-burners` as the canonical Outdoor listing for Wolf Side Burner and Built-In Burner Module products.

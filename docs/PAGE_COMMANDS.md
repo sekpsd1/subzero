@@ -1051,6 +1051,25 @@ http://127.0.0.1:3000/products/outdoor?default.mnseries=Burner+Module%2CSide+Bur
 http://127.0.0.1:3000/products/outdoor/side-burners
 ```
 
+## Outdoor Ventilation Listing
+
+- Canonical route: `/outdoor/ventilation`
+- Legacy redirects: `/products/outdoor?default.categories=outdoor%2Fventilation` and `/products/outdoor/ventilation` (308)
+- Page: `src/app/outdoor/ventilation/page.tsx`
+- Component: `src/components/ProductPages/OutdoorVentilationPage.tsx`
+- Navigation: Outdoor > Ventilation points to the canonical route; desktop and mobile menus open Outdoor and mark Ventilation current.
+- Pattern: USA-reference Outdoor listing with the shared outdoor hero, `All Outdoor` intro, selected Ventilation filter, one Outdoor Pro Wall Hood family card with 36/48/60-inch widths and `1 / 3` counter, outdoor statement, and three-brand Discover more grid.
+- Important: indoor Wolf `/cooking/ventilation` remains unchanged and separate.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/outdoor/ventilation
+http://127.0.0.1:3000/products/outdoor?default.categories=outdoor%2Fventilation
+http://127.0.0.1:3000/products/outdoor/ventilation
+http://127.0.0.1:3000/cooking/ventilation
+```
+
 ## Discover Outdoor Landing
 
 - Canonical route: `/outdoor/discover-outdoor`

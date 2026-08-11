@@ -69,6 +69,13 @@ export default async function ProductRoutePage({ params, searchParams }: Product
   }
 
   if (routePath === "outdoor") {
+    const selectedCategory = query["default.categories"];
+    const categoryValues = Array.isArray(selectedCategory) ? selectedCategory : selectedCategory?.split(",");
+
+    if (categoryValues?.includes("outdoor/ventilation")) {
+      permanentRedirect("/outdoor/ventilation");
+    }
+
     const selectedSeries = query["default.mnseries"];
     const seriesValues = Array.isArray(selectedSeries) ? selectedSeries : selectedSeries?.split(",");
 
@@ -81,6 +88,10 @@ export default async function ProductRoutePage({ params, searchParams }: Product
 
   if (routePath === "outdoor/side-burners") {
     permanentRedirect("/outdoor/side-burners");
+  }
+
+  if (routePath === "outdoor/ventilation") {
+    permanentRedirect("/outdoor/ventilation");
   }
 
   if (routePath === "outdoor/discover-outdoor") {
