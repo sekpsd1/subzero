@@ -2,6 +2,15 @@
 
 Updated: 2026-08-11
 
+## Latest Focus: Outdoor Side Burners
+
+- Added `/outdoor/side-burners` as the canonical Outdoor listing for Wolf Side Burner and Built-In Burner Module products.
+- Added only Outdoor > Side Burners navigation; desktop and mobile menus now open Outdoor on this route and mark Side Burners current.
+- Reused the reference-matched Outdoor Grills composition with the exact outdoor-kitchen hero, compact filters, BM13/SB13 AEM product cutouts, USA-matched Width/Fuel Type summaries, outdoor statement, and three-brand Discover more grid.
+- `/products/outdoor?default.mnseries=Burner+Module%2CSide+Burner` and `/products/outdoor/side-burners` permanently redirect to the canonical route; the unfiltered `/products/outdoor` behavior remains unchanged.
+- Browser QA confirmed the USA-reference type scale (60px H1, 40px group heading, 24px card titles), loaded product imagery, and no horizontal overflow at desktop or 390px mobile. ESLint and the production build passed; protected Outdoor/Cooking sibling routes remain 200.
+- Detailed notes are in `docs/OUTDOOR_SIDE_BURNERS_NOTES.md`.
+
 ## Latest Focus: Outdoor Gas Grills
 
 - Added `/outdoor/grills` as the canonical filtered Outdoor Gas Grill listing.

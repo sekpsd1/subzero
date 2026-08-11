@@ -1033,6 +1033,24 @@ Fast check:
 http://127.0.0.1:3000/outdoor/grills
 ```
 
+## Outdoor Side Burners Listing
+
+- Canonical route: `/outdoor/side-burners`
+- Legacy redirects: `/products/outdoor?default.mnseries=Burner+Module%2CSide+Burner` and `/products/outdoor/side-burners` (308)
+- Page: `src/app/outdoor/side-burners/page.tsx`
+- Component: `src/components/ProductPages/OutdoorSideBurnersPage.tsx`
+- Navigation: Outdoor > Side Burners points to the canonical route; desktop and mobile menus open Outdoor and mark Side Burners current.
+- Pattern: Outdoor listing with the shared outdoor hero, `All Outdoor` intro, Side Burner/Burner Module selected filters, BM13 and SB13 cards, outdoor statement, and three-brand Discover more grid.
+- Existing `/outdoor/grills`, `/outdoor/refrigeration`, `/outdoor/discover-outdoor`, and `/cooking/outdoor` routes remain separate.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/outdoor/side-burners
+http://127.0.0.1:3000/products/outdoor?default.mnseries=Burner+Module%2CSide+Burner
+http://127.0.0.1:3000/products/outdoor/side-burners
+```
+
 ## Discover Outdoor Landing
 
 - Canonical route: `/outdoor/discover-outdoor`

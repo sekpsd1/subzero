@@ -131,6 +131,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Ice Makers - NEW", href: "/refrigeration/ice-makers" },
       { title: "Refrigeration", href: "/outdoor/refrigeration" },
       { title: "Grilling", href: "/outdoor/grills" },
+      { title: "Side Burners", href: "/outdoor/side-burners" },
       { title: "Cooking", href: "/products/outdoor?default.categories=outdoor%2Fcooking-grilling" },
       { title: "Ventilation", href: "/products/outdoor?default.categories=outdoor%2Fventilation" },
       { title: "Drawers", href: "/products/outdoor?default.categories=outdoor%2Fwarming-drawers" },

@@ -10,6 +10,7 @@ type ProductRouteProps = {
   params: Promise<{
     slug: string[];
   }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export async function generateMetadata({ params }: ProductRouteProps) {
@@ -32,9 +33,10 @@ export async function generateMetadata({ params }: ProductRouteProps) {
   };
 }
 
-export default async function ProductRoutePage({ params }: ProductRouteProps) {
+export default async function ProductRoutePage({ params, searchParams }: ProductRouteProps) {
   const { slug } = await params;
   const routePath = slug.join("/");
+  const query = searchParams ? await searchParams : {};
 
   if (routePath === "refrigeration/classic-series") {
     redirect("/refrigeration/classic-series");
@@ -67,7 +69,18 @@ export default async function ProductRoutePage({ params }: ProductRouteProps) {
   }
 
   if (routePath === "outdoor") {
+    const selectedSeries = query["default.mnseries"];
+    const seriesValues = Array.isArray(selectedSeries) ? selectedSeries : selectedSeries?.split(",");
+
+    if (seriesValues?.includes("Burner Module") || seriesValues?.includes("Side Burner")) {
+      permanentRedirect("/outdoor/side-burners");
+    }
+
     permanentRedirect("/cooking/outdoor");
+  }
+
+  if (routePath === "outdoor/side-burners") {
+    permanentRedirect("/outdoor/side-burners");
   }
 
   if (routePath === "outdoor/discover-outdoor") {
