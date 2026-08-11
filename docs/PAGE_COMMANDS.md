@@ -1002,6 +1002,22 @@ http://127.0.0.1:3000/products/outdoor
 http://127.0.0.1:3000/refrigeration/outdoor
 ```
 
+## Outdoor Refrigeration Listing
+
+- Canonical route: `/outdoor/refrigeration`
+- Existing route retained: `/refrigeration/outdoor`
+- Page: `src/app/outdoor/refrigeration/page.tsx`
+- Component: `src/components/ProductPages/OutdoorRefrigerationPage.tsx`
+- Navigation: Outdoor > Refrigeration points to the canonical route; desktop and mobile menus open Outdoor and mark Refrigeration current.
+- Pattern: USA-reference Outdoor listing with outdoor hero, `All Outdoor` intro, Refrigeration filter, two Sub-Zero product cards, outdoor statement, and three-brand Discover more grid.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/outdoor/refrigeration
+http://127.0.0.1:3000/refrigeration/outdoor
+```
+
 ## Discover Outdoor Landing
 
 - Canonical route: `/outdoor/discover-outdoor`

@@ -1,6 +1,14 @@
 # Work Summary
 
-Updated: 2026-08-09
+Updated: 2026-08-11
+
+## Latest Focus: Outdoor Refrigeration Navigation
+
+- Added `/outdoor/refrigeration` as the canonical menu destination for Outdoor > Refrigeration, reusing the established Sub-Zero outdoor refrigeration listing.
+- Desktop and mobile menus now open Outdoor automatically on this route and mark Refrigeration active.
+- The refrigeration category selector now links Outdoor to the canonical route; `/refrigeration/outdoor` remains available as the existing route.
+- Browser QA passed at desktop and 390px mobile, including a real menu click from Discover Outdoor to the canonical route. Full ESLint and the production build passed after generated `.next-*` output directories were excluded from lint and Prisma generation was run outside the sandbox.
+- Refined the canonical page against the supplied `111.png` reference: it now has the outdoor-kitchen hero, `All Outdoor` intro, compact Refrigeration filter, two outdoor product cards, outdoor-specific statement, and the Sub-Zero/Wolf/Cove Discover more composition. The legacy `/refrigeration/outdoor` page remains unchanged.
 
 ## Latest Focus: Discover Outdoor
 

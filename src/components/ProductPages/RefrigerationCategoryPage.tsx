@@ -500,6 +500,7 @@ const categoryNav = [
 
 function categoryHref(slug: string) {
   if (slug === "drawers") return "/products/refrigeration/drawers";
+  if (slug === "outdoor") return "/outdoor/refrigeration";
   return `/refrigeration/${slug}`;
 }
 
