@@ -349,3 +349,18 @@ Last recorded verification for Wine Storage:
 - Define CSV import format for product data.
 - Add authentication and role protection for `/admin`.
 - Add real SEO/AEO management screens and structured data output.
+# Latest Focus: Lifestyle / The Living Kitchen
+
+- Completed the new `/lifestyle` route using `https://lifestyle.subzero-wolf.com/` and the supplied `222.png` capture as the visual references.
+- Added a full-bleed “The art of living well” hero, The Living Kitchen identity and supplied magazine copy, category pills, and a restrained editorial article grid using the reference AEM photography.
+- Reused the existing fixed Header and full Footer/pre-footer without changing global navigation or unrelated pages.
+- Files added: `src/app/lifestyle/page.tsx` and `src/components/Lifestyle/LifestylePage.tsx`. This summary was updated in `docs/WORK_SUMMARY.md`.
+- Browser checks passed at desktop and 390px mobile: hero crop, 40px/34px H1 sizing, loaded editorial imagery, footer flow, and zero horizontal overflow. Captures are in `docs/screenshots/`.
+- `npm.cmd run lint` passed. `npm.cmd run build` passed after Prisma generation was allowed outside the sandbox; the only warning is the existing unrelated Turbopack AVIF warning from the Refrigeration category asset.
+- Linked the desktop and mobile menus’ `The Living Kitchen` parent and `All Stories` entry to `/lifestyle`, and made the desktop panel initialize as active when opened from the Lifestyle page.
+- Refined the page against the supplied `333.png` local capture and `222.png` USA reference: full-viewport desktop hero, 1392px editorial canvas, reference-like grouped category tabs, 40px story titles, taller card copy areas, and feature-story proportions closer to the USA layout.
+- Aligned the hero title with the latest side-by-side captures: it now sits at the USA-style 24px desktop left/bottom inset instead of following the centered editorial canvas.
+- Matched the latest intro/feature comparison: shifted the magazine copy to the USA column start, aligned the intro vertical spacing, and widened feature-story text columns so `An Artist’s Abode` follows the reference single-line treatment at 1920px.
+- Matched the supplied article-grid close-up with 8px desktop column gutters and 16px row/section gutters, replacing the compressed 4px spacing between editorial cards.
+- Matched the final-results close-up by giving the two closing images the taller USA proportion, tightening their copy panels, and changing the CTA label to `View more results`.
+- Matched all `Read …` links to the reference styling: 14px, medium weight, visible underline, and 25% underline offset; verified in the browser and lint passed.
