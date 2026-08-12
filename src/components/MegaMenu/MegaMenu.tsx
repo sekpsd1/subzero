@@ -210,6 +210,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const isMicrowavesRoute = pathname === "/cooking/microwaves";
   const isDrawersRoute = pathname === "/cooking/drawers";
   const isOutdoorRoute = pathname === "/cooking/outdoor";
+  const isOutdoorViewAllRoute = pathname === "/outdoor/view-all-outdoor";
   const isDiscoverOutdoorRoute = pathname === "/outdoor/discover-outdoor";
   const isOutdoorRefrigerationRoute = pathname === "/outdoor/refrigeration";
   const isOutdoorGrillingRoute = pathname === "/outdoor/grills";
@@ -237,7 +238,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                   : isAccessoriesRoute
                     ? accessoriesItem
                   : undefined;
-  const initialMenuItem = isDiscoverOutdoorRoute || isOutdoorRefrigerationRoute || isOutdoorGrillingRoute || isOutdoorSideBurnersRoute || isOutdoorVentilationRoute || isOutdoorWarmingDrawersRoute ? outdoorBrandItem : isCookingProductRoute ? cookingItem : null;
+  const initialMenuItem = isOutdoorViewAllRoute || isDiscoverOutdoorRoute || isOutdoorRefrigerationRoute || isOutdoorGrillingRoute || isOutdoorSideBurnersRoute || isOutdoorVentilationRoute || isOutdoorWarmingDrawersRoute ? outdoorBrandItem : isCookingProductRoute ? cookingItem : null;
   const [activeItem, setActiveItem] = useState<NavItem | null>(initialMenuItem);
   const [activeChild, setActiveChild] = useState<NavItem | undefined>(
     isDiscoverOutdoorRoute
@@ -394,7 +395,11 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
             <Link
               href={activeItem.href}
               onClick={onClose}
-              className="mt-auto inline-flex h-9 min-w-[166px] items-center justify-center self-start rounded-full border border-white px-[18px] text-xs font-semibold text-white transition hover:bg-white hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-white/70"
+              aria-current={pathname === activeItem.href ? "page" : undefined}
+              className={cn(
+                "mt-auto inline-flex h-9 min-w-[166px] items-center justify-center self-start rounded-full border border-white px-[18px] text-xs font-semibold transition hover:bg-white hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-white/70",
+                pathname === activeItem.href ? "bg-white text-black" : "text-white",
+              )}
             >
               View all {activeItem.title.toLowerCase()}
             </Link>

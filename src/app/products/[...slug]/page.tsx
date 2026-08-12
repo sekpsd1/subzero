@@ -80,6 +80,10 @@ export default async function ProductRoutePage({ params, searchParams }: Product
       permanentRedirect("/outdoor/warming-drawers");
     }
 
+    if (categoryValues?.includes("outdoor/cooking-grilling")) {
+      permanentRedirect("/cooking/outdoor");
+    }
+
     const selectedSeries = query["default.mnseries"];
     const seriesValues = Array.isArray(selectedSeries) ? selectedSeries : selectedSeries?.split(",");
 
@@ -87,7 +91,11 @@ export default async function ProductRoutePage({ params, searchParams }: Product
       permanentRedirect("/outdoor/side-burners");
     }
 
-    permanentRedirect("/cooking/outdoor");
+    permanentRedirect("/outdoor/view-all-outdoor");
+  }
+
+  if (routePath === "outdoor/view-all-outdoor") {
+    permanentRedirect("/outdoor/view-all-outdoor");
   }
 
   if (routePath === "outdoor/side-burners") {

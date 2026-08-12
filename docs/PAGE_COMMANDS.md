@@ -1018,6 +1018,25 @@ http://127.0.0.1:3000/outdoor/refrigeration
 http://127.0.0.1:3000/refrigeration/outdoor
 ```
 
+## All Outdoor Listing
+
+- Canonical route: `/outdoor/view-all-outdoor`
+- Legacy redirects: `/products/outdoor` and `/products/outdoor/view-all-outdoor` (308)
+- Page: `src/app/outdoor/view-all-outdoor/page.tsx`
+- Component: `src/components/ProductPages/OutdoorViewAllPage.tsx`
+- Navigation: Outdoor is active; desktop and mobile `View all outdoor` links point to the canonical route and mark it current.
+- Pattern: USA-reference outdoor hero and intro, linked category navigation, Grills, Side Burners, Refrigeration, Warming Drawer, Ventilation, and Ice Makers groups, compact product/spec cards, ice-maker promo, outdoor statement, and Discover more.
+- Important: the `outdoor/cooking-grilling` legacy query continues to `/cooking/outdoor`; sibling Outdoor pages remain independent.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/outdoor/view-all-outdoor
+http://127.0.0.1:3000/products/outdoor
+http://127.0.0.1:3000/products/outdoor/view-all-outdoor
+http://127.0.0.1:3000/products/outdoor?default.categories=outdoor%2Fcooking-grilling
+```
+
 ## Outdoor Gas Grill Listing
 
 - Canonical route: `/outdoor/grills`
@@ -1095,7 +1114,7 @@ http://127.0.0.1:3000/products/cooking/drawers
 - Legacy redirect: `/products/outdoor/discover-outdoor` (308)
 - Page: `src/app/outdoor/discover-outdoor/page.tsx`
 - Component: `src/components/ProductPages/DiscoverOutdoorPage.tsx`
-- Navigation: top-level Outdoor opens active with Discover Outdoor selected; View all outdoor targets `/cooking/outdoor`.
+- Navigation: top-level Outdoor opens active with Discover Outdoor selected; View all outdoor targets `/outdoor/view-all-outdoor`.
 - Pattern: USA-reference editorial landing with full-width hero, hotspot-style highlights, outdoor product stories, inspiration, showroom, category overview, and Discover more.
 - Reference: `https://www.subzero-wolf.com/outdoor/discover-outdoor`
 - Important: this is separate from Wolf `/cooking/outdoor` and Sub-Zero `/refrigeration/outdoor` listings.

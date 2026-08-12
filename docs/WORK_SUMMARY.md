@@ -1,6 +1,15 @@
 # Work Summary
 
-Updated: 2026-08-11
+Updated: 2026-08-12
+
+## Latest Focus: All Outdoor Listing
+
+- Added `/outdoor/view-all-outdoor` as the canonical All Outdoor listing/category overview, following the supplied USA `777.png` reference.
+- Added the full outdoor hero and intro, six linked category groups, compact product/spec cards, Designer Ice Maker promo, outdoor statement, and shared Discover more composition.
+- Outdoor now opens active on this route; desktop and mobile `View all outdoor` links target the canonical page and expose the current-page state.
+- Unfiltered `/products/outdoor` and `/products/outdoor/view-all-outdoor` permanently redirect to the new canonical route. The existing outdoor cooking query continues to `/cooking/outdoor`.
+- Browser QA passed at desktop and 390px mobile with 60/46px H1, 36/30px group headings, 20/18px card titles, loaded imagery, and no horizontal overflow. ESLint and the production build passed.
+- Detailed notes are in `docs/OUTDOOR_VIEW_ALL_NOTES.md`.
 
 ## Latest Focus: Outdoor Warming Drawers
 

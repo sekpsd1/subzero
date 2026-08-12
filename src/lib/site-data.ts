@@ -124,7 +124,7 @@ export const mainNavigation: NavItem[] = [
   },
   {
     title: "Outdoor",
-    href: "/cooking/outdoor",
+    href: "/outdoor/view-all-outdoor",
     description: "Appliances for complete open-air kitchens.",
     children: [
       { title: "Discover Outdoor", href: "/outdoor/discover-outdoor", featured: true },

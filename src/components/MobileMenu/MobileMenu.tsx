@@ -14,7 +14,7 @@ type MobileMenuProps = {
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const pathname = usePathname();
   const [active, setActive] = useState<NavItem | null>(() =>
-    pathname === "/outdoor/discover-outdoor" || pathname === "/outdoor/refrigeration" || pathname === "/outdoor/grills" || pathname === "/outdoor/side-burners" || pathname === "/outdoor/ventilation" || pathname === "/outdoor/warming-drawers"
+    pathname === "/outdoor/view-all-outdoor" || pathname === "/outdoor/discover-outdoor" || pathname === "/outdoor/refrigeration" || pathname === "/outdoor/grills" || pathname === "/outdoor/side-burners" || pathname === "/outdoor/ventilation" || pathname === "/outdoor/warming-drawers"
       ? mainNavigation.find((item) => item.title === "Outdoor") ?? null
       : pathname === "/cooking/coffee-systems" || pathname === "/cooking/microwaves" || pathname === "/cooking/drawers" || pathname === "/cooking/outdoor" || pathname === "/cooking/accessories"
       ? mainNavigation.find((item) => item.title === "Cooking") ?? null
@@ -54,6 +54,16 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           {active?.title ?? "Menu"}
         </p>
         <div className="space-y-1">
+          {active?.title === "Outdoor" ? (
+            <Link
+              href={active.href}
+              onClick={onClose}
+              aria-current={pathname === active.href ? "page" : undefined}
+              className={`block border-b border-white/10 py-5 font-serif text-2xl ${pathname === active.href ? "underline underline-offset-8" : ""}`}
+            >
+              View all outdoor
+            </Link>
+          ) : null}
           {items.map((item) =>
             item.children?.length ? (
               <button
