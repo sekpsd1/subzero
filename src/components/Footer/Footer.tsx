@@ -143,43 +143,43 @@ const legalLinks = [
   "Product Sitemap",
 ];
 
-export function Footer({ lifestyle = false }: { lifestyle?: boolean }) {
+export function Footer({ lifestyle = false, ourStory = false }: { lifestyle?: boolean; ourStory?: boolean }) {
   const [openRow, setOpenRow] = useState<string | null>(null);
 
   return (
     <footer className="bg-[#121211] text-[#f8f5ee]">
-      <section className={`bg-[#77756e] px-5 py-14 md:px-8 ${lifestyle ? "md:py-[70px]" : "md:py-16"}`}>
-        <div className="mx-auto grid max-w-[1176px] gap-10 lg:grid-cols-[1.05fr_1fr_1fr]">
-          <h2 className="max-w-[390px] font-serif text-[28px] leading-[1.04]">
+      <section className={`bg-[#77756e] px-5 py-14 md:px-8 ${ourStory ? "lg:py-0" : lifestyle ? "md:py-[70px]" : "md:py-16"}`}>
+        <div className={`mx-auto grid gap-10 ${ourStory ? "max-w-[1440px] lg:grid-cols-[421px_1fr_1fr] lg:p-16" : "max-w-[1176px] lg:grid-cols-[1.05fr_1fr_1fr]"}`}>
+          <h2 style={ourStory ? { fontFamily: 'Garamond, "Palatino Linotype", Georgia, serif' } : undefined} className={`font-serif text-[28px] leading-[1.04] ${ourStory ? "max-w-[421px] lg:self-start lg:text-[30px] lg:leading-[33px]" : "max-w-[390px]"}`}>
             You&rsquo;re one step closer to creating your future kitchen. Let us guide
             you there.
           </h2>
 
-          <div>
-            <h3 className="font-serif text-[21px] leading-tight">{lifestyle ? "Enjoy a hands-on approach" : "Why start in a showroom?"}</h3>
-            <p className="mt-2 max-w-[360px] text-sm leading-[1.18]">
+          <div className={ourStory ? "lg:pt-[14.7px]" : ""}>
+            <h3 style={ourStory ? { fontFamily: 'Garamond, "Palatino Linotype", Georgia, serif' } : undefined} className={`font-serif text-[21px] leading-tight ${ourStory ? "lg:text-[24px] lg:leading-[26.4px]" : ""}`}>{lifestyle ? "Enjoy a hands-on approach" : "Why start in a showroom?"}</h3>
+            <p className={`mt-2 max-w-[360px] text-sm leading-[1.18] ${ourStory ? "lg:max-w-none lg:text-[16px] lg:leading-[19.52px]" : ""}`}>
               {lifestyle
                 ? "Explore every element of your kitchen project through a fully immersive experience in one of our stunning showrooms."
                 : "Explore design and innovation side by side with expert guidance to help you move forward with clarity."}
             </p>
             <Link
               href="/showroom"
-              className="mt-6 inline-flex h-12 min-w-[246px] items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-[#11110f] transition hover:bg-[#ece9df]"
+              className={`inline-flex items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-[#11110f] transition hover:bg-[#ece9df] ${ourStory ? "mt-6 h-[52px] lg:mt-[9.3px] lg:min-w-[274px] lg:px-10" : "mt-6 h-12 min-w-[246px]"}`}
             >
               {lifestyle ? "Visit a showroom" : "Learn about our showrooms"}
             </Link>
           </div>
 
-          <div>
-            <h3 className="font-serif text-[21px] leading-tight">{lifestyle ? "Connect with a consultant" : "Plan a personalized visit"}</h3>
-            <p className="mt-2 max-w-[340px] text-sm leading-[1.18]">
+          <div className={ourStory ? "lg:pt-[14.7px]" : ""}>
+            <h3 style={ourStory ? { fontFamily: 'Garamond, "Palatino Linotype", Georgia, serif' } : undefined} className={`font-serif text-[21px] leading-tight ${ourStory ? "lg:text-[24px] lg:leading-[26.4px]" : ""}`}>{lifestyle ? "Connect with a consultant" : "Plan a personalized visit"}</h3>
+            <p className={`mt-2 max-w-[340px] text-sm leading-[1.18] ${ourStory ? "lg:max-w-none lg:text-[16px] lg:leading-[19.52px]" : ""}`}>
               {lifestyle
                 ? "Our team of experts is here to answer your questions, offer tailored advice, and help you find the perfect fit for your kitchen."
                 : "Locate one of our stunning SEA showrooms and request a consultation."}
             </p>
             <Link
               href="/showroom/appointment"
-              className="mt-6 inline-flex h-12 min-w-[196px] items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-[#11110f] transition hover:bg-[#ece9df]"
+              className={`inline-flex items-center justify-center rounded-full bg-white px-8 text-sm font-semibold text-[#11110f] transition hover:bg-[#ece9df] ${ourStory ? "mt-6 h-[52px] lg:mt-[9.3px] lg:min-w-[218px] lg:px-10" : "mt-6 h-12 min-w-[196px]"}`}
             >
               {lifestyle ? "Get started" : "Find your showroom"}
             </Link>
