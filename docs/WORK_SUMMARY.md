@@ -358,6 +358,14 @@ Last recorded verification for Wine Storage:
 - Matched the latest close-up comparison by increasing feature-story height to 650px, reducing its text inset to 24px, and changing three-column story media to the reference-like 1.75:1 crop.
 - Matched all `Read …` links to the supplied close-up: 14px medium text with a visible underline and 25% underline offset.
 
+## Lifestyle Places
+
+- Completed `/the-living-kitchen/places` using `https://lifestyle.subzero-wolf.com/places` and the supplied `111.png` capture as visual references.
+- Added the full-bleed `Extraordinary destinations` hero and the ten-story Places editorial layout using the current reference AEM imagery and article sequence.
+- Files added: `src/app/the-living-kitchen/places/page.tsx` and `src/components/Lifestyle/LifestylePlacesPage.tsx`. Updated the desktop/mobile Places menu path in `src/components/MegaMenu/MegaMenu.tsx` and `src/lib/site-data.ts`.
+- Validation passed: `npm.cmd run lint`, `npm.cmd run build`, and desktop/mobile Browser smoke checks. The route renders ten editorial stories, all article imagery loads after scrolling, the 40px/36px hero title matches the reference scale, and no horizontal overflow was found at 1920px or 390px.
+- Follow-up: confirm remote AEM and lifestyle article imagery remains available in the SEA deployment environment.
+
 ## Open Work
 
 - Browser-check the new Refrigeration category batch visually against the French Door pattern and USA category references.

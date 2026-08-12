@@ -203,7 +203,7 @@ export const mainNavigation: NavItem[] = [
       { title: "Innovation", href: "/the-living-kitchen/innovation" },
       { title: "Food", href: "/the-living-kitchen/food" },
       { title: "Lifestyle", href: "/the-living-kitchen/lifestyle" },
-      { title: "Places", href: "/journal/places" },
+      { title: "Places", href: "/the-living-kitchen/places" },
     ],
   },
   {
