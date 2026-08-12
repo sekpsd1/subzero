@@ -194,19 +194,16 @@ export const mainNavigation: NavItem[] = [
     ],
   },
   {
-    title: "Journal & Culinary",
-    href: "/journal",
-    description: "Recipes, kitchen stories, and regional inspiration.",
+    title: "The Living Kitchen",
+    href: "/lifestyle",
+    description: "Curated stories celebrating design, cuisine, travel, wellness, and more.",
     children: [
-      {
-        title: "Recipes",
-        href: "/journal/recipes",
-        children: [
-          { title: "Sub-Zero & Wolf Kitchen", href: "/journal/sub-zero-wolf-kitchen" },
-          { title: "Southeast Asia Secret", href: "/journal/southeast-asia-secret" },
-        ],
-      },
-      { title: "Journal", href: "/journal" },
+      { title: "All Stories", href: "/lifestyle" },
+      { title: "Design", href: "/the-living-kitchen/design" },
+      { title: "Innovation", href: "/journal/innovation" },
+      { title: "Food", href: "/journal/food" },
+      { title: "Lifestyle", href: "/journal/lifestyle" },
+      { title: "Places", href: "/journal/places" },
     ],
   },
   {

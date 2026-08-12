@@ -19,10 +19,10 @@ const secondaryMenuItems: NavItem[] = [
   { title: "Inspiration", href: "/inspiration" },
   {
     title: "The Living Kitchen",
-    href: "/journal",
+    href: "/lifestyle",
     children: [
-      { title: "All Stories", href: "/journal" },
-      { title: "Design", href: "/journal/design" },
+      { title: "All Stories", href: "/lifestyle" },
+      { title: "Design", href: "/the-living-kitchen/design" },
       { title: "Innovation", href: "/journal/innovation" },
       { title: "Food", href: "/journal/food" },
       { title: "Lifestyle", href: "/journal/lifestyle" },

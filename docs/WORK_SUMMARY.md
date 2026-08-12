@@ -337,6 +337,17 @@ Last recorded verification for Wine Storage:
   - Use browser checks only for visual/scroll/interaction behavior.
 - Avoid slow full-project exploration when a page target is known. Read that route file, its page component, shared components it imports, and relevant notes only.
 
+## Lifestyle Design
+
+- Completed `/the-living-kitchen/design`, based on `https://lifestyle.subzero-wolf.com/design` and the supplied `444.png` reference capture.
+- Added a full-screen luxury-interior hero with the heading `Explore luxurious living spaces`, followed by a restrained magazine-style Design story grid, two feature stories, and the existing global footer.
+- Added `src/app/the-living-kitchen/design/page.tsx` and `src/components/Lifestyle/LifestyleDesignPage.tsx`; the desktop and mobile `Design` menu links now use the same route.
+- Browser smoke tests passed at 1920px desktop and 390px mobile: correct H1, ten editorial stories, loaded imagery, and no horizontal overflow. Captures are in `docs/screenshots/lifestyle-design-desktop-top.png` and `docs/screenshots/lifestyle-design-mobile.png`.
+- `npm.cmd run lint` passed. `npm.cmd run build` passed; the only warning is the existing unrelated Turbopack AVIF warning from the Refrigeration category asset.
+- Refined the page against the supplied `111.png` reference and `222.png` local capture: replaced the hero and six provisional/repeated images with the exact current AEM Design assets, updated the hero title to `Exceptional design`, and aligned the visible article excerpts and destinations with the source index.
+- Matched the latest close-up comparison by increasing feature-story height to 650px, reducing its text inset to 24px, and changing three-column story media to the reference-like 1.75:1 crop.
+- Matched all `Read …` links to the supplied close-up: 14px medium text with a visible underline and 25% underline offset.
+
 ## Open Work
 
 - Browser-check the new Refrigeration category batch visually against the French Door pattern and USA category references.
