@@ -185,6 +185,8 @@ function getPanelCardTitle(card: NavItem, item: NavItem, fallback: NavItem) {
 
 export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const pathname = usePathname();
+  const inspirationItem = secondaryMenuItems.find((item) => item.title === "Inspiration") ?? null;
+  const isInspirationRoute = pathname.startsWith("/inspiration");
   const cookingItem = mainNavigation.find((item) => item.title === "Cooking") ?? null;
   const outdoorBrandItem = mainNavigation.find((item) => item.title === "Outdoor") ?? null;
   const discoverOutdoorItem = outdoorBrandItem?.children?.find((item) => item.title === "Discover Outdoor");
@@ -238,7 +240,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
                   : isAccessoriesRoute
                     ? accessoriesItem
                   : undefined;
-  const initialMenuItem = isOutdoorViewAllRoute || isDiscoverOutdoorRoute || isOutdoorRefrigerationRoute || isOutdoorGrillingRoute || isOutdoorSideBurnersRoute || isOutdoorVentilationRoute || isOutdoorWarmingDrawersRoute ? outdoorBrandItem : isCookingProductRoute ? cookingItem : null;
+  const initialMenuItem = isInspirationRoute ? inspirationItem : isOutdoorViewAllRoute || isDiscoverOutdoorRoute || isOutdoorRefrigerationRoute || isOutdoorGrillingRoute || isOutdoorSideBurnersRoute || isOutdoorVentilationRoute || isOutdoorWarmingDrawersRoute ? outdoorBrandItem : isCookingProductRoute ? cookingItem : null;
   const [activeItem, setActiveItem] = useState<NavItem | null>(initialMenuItem);
   const [activeChild, setActiveChild] = useState<NavItem | undefined>(
     isDiscoverOutdoorRoute

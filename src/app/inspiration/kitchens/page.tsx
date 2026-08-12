@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Explore award-winning kitchen inspiration featuring Sub-Zero, Wolf, and Cove appliances.",
 };
 
-export default function InspirationPage() {
+export default function InspirationKitchensPage() {
   return (
     <>
       <Header />

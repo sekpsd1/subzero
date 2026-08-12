@@ -2,6 +2,16 @@
 
 Updated: 2026-08-12
 
+## Latest Focus: Inspiration Gallery / Kitchens
+
+- Added the image-first Inspiration Gallery to both `/inspiration` and `/inspiration/kitchens`, matching the supplied USA reference structure with its title, intro, filters, and complete 83-project dataset.
+- Added functional Style, Room Size, Layout, Products, Color, and Room Type filtering, 20-result pagination with five pages, next-page navigation, `VIEW ALL 83`, source-compatible hash state, and responsive desktop/mobile layouts.
+- Kept the desktop mega-menu Inspiration link at `/inspiration`, replaced that route's old placeholder with the completed gallery, and retained `/inspiration/kitchens` as a gallery-specific route.
+- The live USA page geo-routed Thailand to the international selector, so the supplied capture and saved USA gallery HTML were used as the reference source.
+- Browser QA passed at 1440px desktop and 390px mobile with loaded imagery, functional filters, active Inspiration navigation, and no horizontal overflow. ESLint and the production build passed.
+- Full-data QA also passed: 1-20 of 83 initially, 21-40 on page 2, all 83 in View all, and 47 Contemporary results matching the live source facet count.
+- Detailed notes are in `docs/INSPIRATION_KITCHENS_NOTES.md`.
+
 ## Latest Focus: All Outdoor Listing
 
 - Added `/outdoor/view-all-outdoor` as the canonical All Outdoor listing/category overview, following the supplied USA `777.png` reference.

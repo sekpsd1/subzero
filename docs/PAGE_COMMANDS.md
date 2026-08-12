@@ -692,13 +692,30 @@ Main file:
 
 State:
 
-- Scaffold exists.
-- Needs final content and imagery.
+- Displays the completed Inspiration Gallery.
+- `/inspiration/kitchens` remains available as the gallery-specific route.
 
 Fast check:
 
 ```text
 http://localhost:3000/inspiration
+```
+
+## Inspiration Gallery / Kitchens
+
+- Primary navigation route: `/inspiration`
+- Gallery-specific route: `/inspiration/kitchens`
+- Page: `src/app/inspiration/kitchens/page.tsx`
+- Component: `src/components/Inspiration/KitchenGalleryPage.tsx`
+- Navigation: desktop mega-menu Inspiration points to `/inspiration`; both routes render the same gallery and initialize Inspiration active.
+- Pattern: USA-reference title and intro, functional Style/Room Size/Layout/Products/Color/Room Type filters, 20 results per page, five-page navigation, and `VIEW ALL 83`.
+- Data: all 83 public USA gallery records and their exact filter fields were imported from the live Coveo response into `src/data/kitchen-gallery.ts` on 2026-08-12.
+
+Fast checks:
+
+```text
+http://127.0.0.1:3000/inspiration/kitchens
+http://127.0.0.1:3000/inspiration
 ```
 
 ## Our Story
