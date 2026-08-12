@@ -397,3 +397,16 @@ Last recorded verification for Wine Storage:
 - Matched the latest hero close-up by changing the H1 and metadata title from `Discover culinary artistry` to the reference wording `Culinary artistry`.
 - Matched the latest feature-card close-up by increasing category labels to 13px, excerpts to 16px/1.22, restoring the reference 24px excerpt spacing, and matching the 300px regular / 281px wide copy-panel heights.
 - Follow-up: confirm remote AEM imagery remains available in the SEA deployment environment.
+
+## Lifestyle Category
+
+- Completed `/the-living-kitchen/lifestyle` using `https://lifestyle.subzero-wolf.com/lifestyle` and the supplied `666.png` capture as visual references.
+- Added the reference-matched `Elevated living` hero and the current Lifestyle editorial sequence covering hosting, wellness, travel, community, and refined living; the page deliberately avoids product-catalog patterns.
+- Files added: `src/app/the-living-kitchen/lifestyle/page.tsx` and `src/components/Lifestyle/LifestyleCategoryPage.tsx`. Updated the desktop/mobile Lifestyle menu destinations in `src/components/MegaMenu/MegaMenu.tsx` and `src/lib/site-data.ts`.
+- `npm.cmd run lint` passed. `npm.cmd run build` passed; the only warning is the existing unrelated Turbopack AVIF warning from a Refrigeration category asset.
+- Browser smoke checks passed at 1920px desktop and 390px mobile: correct H1, all 11 editorial images loaded after scrolling, no horizontal overflow, and responsive hero/card crops. Captures are in `docs/screenshots/lifestyle-category-desktop.png` and `docs/screenshots/lifestyle-category-mobile.png`.
+- Follow-up: confirm remote AEM and lifestyle article imagery remains available in the SEA deployment environment.
+- Refined the desktop proportions against `666.png` and the supplied local `777.png`: corrected the 1440px feature-card breakpoint, matched the reference 1.6:1 card crops, tightened results-section bottom spacing, restored the reference pre-footer breathing room, and applied reference CTA copy through a Lifestyle-only footer variant.
+- Post-refinement validation passed: `npm.cmd run lint`, `npm.cmd run build`, 1920px desktop Browser comparison, and 390px mobile smoke test. All 11 images loaded and no horizontal overflow was found. Updated captures: `docs/screenshots/lifestyle-category-refined.png` and `docs/screenshots/lifestyle-category-mobile-refined.png`.
+- Updated the hero H1 from `The art of living beautifully` to the current USA reference wording `Elevated living` after the latest direct hero comparison.
+- Desktop hero verification at 1920×946 confirmed the reference-like 40px heading at a 24px left inset with no horizontal overflow. Capture: `docs/screenshots/lifestyle-hero-elevated-living.png`.

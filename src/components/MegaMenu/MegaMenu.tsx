@@ -25,7 +25,7 @@ const secondaryMenuItems: NavItem[] = [
       { title: "Design", href: "/the-living-kitchen/design" },
       { title: "Innovation", href: "/the-living-kitchen/innovation" },
       { title: "Food", href: "/the-living-kitchen/food" },
-      { title: "Lifestyle", href: "/journal/lifestyle" },
+      { title: "Lifestyle", href: "/the-living-kitchen/lifestyle" },
       { title: "Places", href: "/journal/places" },
     ],
   },
