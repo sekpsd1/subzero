@@ -201,7 +201,7 @@ export const mainNavigation: NavItem[] = [
       { title: "All Stories", href: "/lifestyle" },
       { title: "Design", href: "/the-living-kitchen/design" },
       { title: "Innovation", href: "/the-living-kitchen/innovation" },
-      { title: "Food", href: "/journal/food" },
+      { title: "Food", href: "/the-living-kitchen/food" },
       { title: "Lifestyle", href: "/journal/lifestyle" },
       { title: "Places", href: "/journal/places" },
     ],

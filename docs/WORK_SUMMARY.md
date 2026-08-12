@@ -385,3 +385,15 @@ Last recorded verification for Wine Storage:
 - Matched the supplied article-grid close-up with 8px desktop column gutters and 16px row/section gutters, replacing the compressed 4px spacing between editorial cards.
 - Matched the final-results close-up by giving the two closing images the taller USA proportion, tightening their copy panels, and changing the CTA label to `View more results`.
 - Matched all `Read …` links to the reference styling: 14px, medium weight, visible underline, and 25% underline offset; verified in the browser and lint passed.
+
+## Lifestyle Food
+
+- Completed `/the-living-kitchen/food` using `https://lifestyle.subzero-wolf.com/food` and the supplied `444.png` capture as references.
+- Added a full-bleed culinary hero with `Culinary artistry`, followed by the Food feature stories and editorial article grid using the reference AEM photography.
+- Files added: `src/app/the-living-kitchen/food/page.tsx` and `src/components/Lifestyle/LifestyleFoodPage.tsx`; the Food navigation links previously targeting `/journal/food` now use `/the-living-kitchen/food`.
+- `npm.cmd run lint` passed. `npm.cmd run build` passed; the only warning is the existing unrelated Turbopack AVIF warning from the Refrigeration category asset.
+- Browser smoke checks passed at 1920px desktop and 390px mobile: correct H1, ten editorial stories, loaded imagery, and no horizontal overflow. Captures are in `docs/screenshots/lifestyle-food-reference.png`, `docs/screenshots/lifestyle-food-desktop.png`, and `docs/screenshots/lifestyle-food-mobile.png`.
+- Refined against the supplied `444.png` reference and `555.png` local capture: matched the reference 40px desktop story typography, aligned the hero heading to the 24px desktop inset, and replaced shortened card excerpts with the current reference copy.
+- Matched the latest hero close-up by changing the H1 and metadata title from `Discover culinary artistry` to the reference wording `Culinary artistry`.
+- Matched the latest feature-card close-up by increasing category labels to 13px, excerpts to 16px/1.22, restoring the reference 24px excerpt spacing, and matching the 300px regular / 281px wide copy-panel heights.
+- Follow-up: confirm remote AEM imagery remains available in the SEA deployment environment.
