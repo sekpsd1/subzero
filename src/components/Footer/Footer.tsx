@@ -143,7 +143,15 @@ const legalLinks = [
   "Product Sitemap",
 ];
 
-export function Footer({ lifestyle = false, ourStory = false }: { lifestyle?: boolean; ourStory?: boolean }) {
+export function Footer({
+  lifestyle = false,
+  ourStory = false,
+  showroomMarket = "SEA",
+}: {
+  lifestyle?: boolean;
+  ourStory?: boolean;
+  showroomMarket?: "SEA" | "U.S.";
+}) {
   const [openRow, setOpenRow] = useState<string | null>(null);
 
   return (
@@ -175,7 +183,7 @@ export function Footer({ lifestyle = false, ourStory = false }: { lifestyle?: bo
             <p className={`mt-2 max-w-[340px] text-sm leading-[1.18] ${ourStory ? "lg:max-w-none lg:text-[16px] lg:leading-[19.52px]" : ""}`}>
               {lifestyle
                 ? "Our team of experts is here to answer your questions, offer tailored advice, and help you find the perfect fit for your kitchen."
-                : "Locate one of our stunning SEA showrooms and request a consultation."}
+                : `Locate one of our stunning ${showroomMarket} showrooms and request a consultation.`}
             </p>
             <Link
               href="/showroom/appointment"
