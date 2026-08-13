@@ -2,6 +2,13 @@
 
 Updated: 2026-08-12
 
+## Latest Focus: About Sub-Zero Group
+
+- Added the dedicated `/about` page, matching the USA About structure with two locally stored videos, reference imagery, responsive editorial/contact cards, and the shared showroom/footer composition.
+- The existing Our Story > About Sub-Zero Group menu destination already targets `/about`; no unrelated navigation or page was changed for this work.
+- Added accessible pause/play controls, reduced-motion behavior, semantic headings, telephone links, responsive image crops, and overflow-safe layouts for 1920px desktop through 390px mobile.
+- Reference and local QA captures are stored in `docs/screenshots/about-*.png`; validation status is recorded in `docs/ABOUT_PAGE_NOTES.md`.
+
 ## Latest Focus: Lifestyle Innovation
 
 - Completed `/the-living-kitchen/innovation` using `https://lifestyle.subzero-wolf.com/innovation` and the supplied `333.png` capture as visual references.
