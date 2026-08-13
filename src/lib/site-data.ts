@@ -182,10 +182,11 @@ export const mainNavigation: NavItem[] = [
   },
   {
     title: "Professionals",
-    href: "/trade",
+    href: "/trade-resources",
     description: "Specification library, brochures, and design resources.",
     children: [
-      { title: "Specification Library", href: "/trade/specification-library" },
+      { title: "Trade Resources", href: "/trade-resources" },
+      { title: "Product Specification Library", href: "/trade-resources/product-specifications#numberOfResults=20" },
       { title: "Brochure", href: "/trade/brochure" },
       { title: "A Higher Standard", href: "/trade/a-higher-standard" },
       { title: "Design Possibilities", href: "/trade/design-possibilities" },

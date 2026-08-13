@@ -1,6 +1,20 @@
 # Work Summary
 
-Updated: 2026-08-12
+Updated: 2026-08-14
+
+## Latest Focus: Product Specifications Library
+
+- Added `/trade-resources/product-specifications#numberOfResults=20`, matching the USA resource-page structure with popular resources, all 98 current Sub-Zero results, working pagination/View All, typed local product search, source-accurate Type/Style facets and counts, brand/category filtering, legacy product links, and the help CTA.
+- Professionals > Product Specification Library now targets the canonical route. Search/filter/page state is preserved in the URL hash and restores on reload and browser history navigation.
+- Product results use the existing `src/lib/site-data.ts` catalog. The project has no product-document or CAD data model, so unavailable states are explicit and no download records are fabricated.
+- Detailed implementation and validation notes are in `docs/PRODUCT_SPECIFICATIONS_NOTES.md`.
+
+## Latest Focus: Trade Resources
+
+- Added `/trade-resources` with the USA-reference structure, local imagery, eight functional shortcuts, professional tools, validated product and representative forms, installation content, Kitchen Design Contest gallery, professional links, and association partners.
+- Updated only the Professionals > Trade Resources destination to `/trade-resources`; existing `/trade` scaffold and unrelated pages remain unchanged.
+- Product search forwards valid queries to the specification route, while the representative form provides an honest unavailable state because no representative backend exists. No results or business records are fabricated.
+- Reference typography was measured at 1920px and responsive browser checks covered desktop, tablet, and 390px mobile. Details are in `docs/TRADE_RESOURCES_NOTES.md`.
 
 ## Latest Focus: About Sub-Zero Group
 

@@ -43,10 +43,10 @@ const secondaryMenuItems: NavItem[] = [
   { title: "Owners", href: "/owner-resources" },
   {
     title: "Professionals",
-    href: "/trade",
+    href: "/trade-resources",
     children: [
-      { title: "Trade Resources", href: "/trade" },
-      { title: "Product Specification Library", href: "/trade/specification-library" },
+      { title: "Trade Resources", href: "/trade-resources" },
+      { title: "Product Specification Library", href: "/trade-resources/product-specifications#numberOfResults=20" },
       { title: "Reveal Cabinet Specs", href: "/trade/reveal" },
       { title: "Brochure Maker", href: "/trade/brochure" },
       { title: "Installation Videos", href: "/trade/installation-videos" },
