@@ -40,7 +40,7 @@ const secondaryMenuItems: NavItem[] = [
       { title: "Foundation", href: "/our-story/foundation" },
     ],
   },
-  { title: "Owners", href: "/support" },
+  { title: "Owners", href: "/owner-resources" },
   {
     title: "Professionals",
     href: "/trade",

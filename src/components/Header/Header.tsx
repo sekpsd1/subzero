@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Search } from "lucide-react";
+import { MapPin, Search, ShoppingCart, UserRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
 import { SearchOverlay } from "@/components/SearchOverlay/SearchOverlay";
 import { cn } from "@/lib/utils";
 
-export function Header() {
+export function Header({ ownerResources = false }: { ownerResources?: boolean }) {
   const [hidden, setHidden] = useState(false);
   const [glass, setGlass] = useState(false);
   const [solid, setSolid] = useState(false);
@@ -53,14 +53,17 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[100] h-[68px] overflow-visible transition duration-500 md:h-[78px]",
+          "fixed inset-x-0 top-0 z-[100] h-[68px] overflow-visible transition duration-500",
+          ownerResources ? "md:h-[76px]" : "md:h-[78px]",
           headerTone,
           hidden && !menuOpen ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",
           solidHeader
             ? "bg-[#f4f2ec] shadow-[0_1px_0_rgba(23,23,21,0.10)]"
             : menuOpen
               ? "bg-black/[0.68] backdrop-blur-[14px]"
-              : "bg-transparent",
+              : ownerResources
+                ? "bg-[#181816]"
+                : "bg-transparent",
         )}
       >
         <div
@@ -68,14 +71,18 @@ export function Header() {
           className={cn(
             "pointer-events-none absolute inset-x-0 top-0 h-[152px] transition-opacity duration-500",
             "bg-[linear-gradient(180deg,rgba(12,12,12,0.52)_0%,rgba(12,12,12,0.36)_24%,rgba(12,12,12,0.18)_55%,rgba(12,12,12,0.00)_100%)]",
-            solidHeader ? "opacity-0" : glass || menuOpen ? "opacity-100" : "opacity-90",
+            solidHeader || ownerResources
+              ? "opacity-0"
+              : glass || menuOpen
+                ? "opacity-100"
+                : "opacity-90",
           )}
         />
         <div
           aria-hidden="true"
           className={cn(
             "pointer-events-none absolute inset-x-0 top-0 h-px",
-            solidHeader ? "bg-[#171715]/10" : "bg-white/20",
+            ownerResources ? "bg-transparent" : solidHeader ? "bg-[#171715]/10" : "bg-white/20",
           )}
         />
         <nav className="relative z-10 flex h-full items-center justify-between px-3.5 md:px-6">
@@ -83,7 +90,10 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
-              className="group flex h-[46px] w-[46px] flex-col items-center justify-center gap-1 rounded-full border border-current bg-transparent text-current transition hover:shadow-[inset_0_0_0_1px_currentColor] md:h-[50px] md:w-[50px]"
+              className={cn(
+                "group flex h-[46px] w-[46px] flex-col items-center justify-center gap-1 rounded-full border border-current bg-transparent text-current transition hover:shadow-[inset_0_0_0_1px_currentColor]",
+                ownerResources ? "md:h-[48px] md:w-[48px]" : "md:h-[50px] md:w-[50px]",
+              )}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
             >
@@ -120,19 +130,48 @@ export function Header() {
           >
             <BrandMarks solid={solidHeader} />
           </Link>
-          <div className="relative z-10 flex min-w-0 items-center justify-end gap-3 md:min-w-[260px] md:gap-[26px]">
+          <div
+            className={cn(
+              "relative z-10 flex min-w-0 items-center justify-end gap-3 md:min-w-[260px]",
+              ownerResources ? "md:gap-[18px]" : "md:gap-[26px]",
+            )}
+          >
             <Link
               href="/showroom/dealers"
               aria-label="Locations and dealers"
-              className="hidden transition hover:-translate-y-px sm:inline-flex"
+              className={cn(
+                "hidden transition hover:-translate-y-px sm:inline-flex",
+                ownerResources && "h-[26px] w-[26px] items-center justify-center",
+              )}
             >
-              <MapPin size={21} strokeWidth={1.45} />
+              <MapPin size={ownerResources ? 22 : 21} strokeWidth={ownerResources ? 1.35 : 1.45} />
             </Link>
+            {ownerResources ? (
+              <>
+                <Link
+                  href="https://www.subzero-wolf.com/account/login"
+                  aria-label="Owner account"
+                  className="hidden h-[26px] w-[26px] items-center justify-center transition hover:-translate-y-px md:inline-flex"
+                >
+                  <UserRound size={23} strokeWidth={1.25} />
+                </Link>
+                <Link
+                  href="https://www.subzero-wolf.com/store/checkout"
+                  aria-label="Shopping cart"
+                  className="hidden h-[26px] w-[26px] items-center justify-center transition hover:-translate-y-px md:inline-flex"
+                >
+                  <ShoppingCart size={22} strokeWidth={1.25} />
+                </Link>
+              </>
+            ) : null}
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
               aria-label="Open search"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-current bg-transparent text-current transition hover:-translate-y-px hover:shadow-[inset_0_0_0_1px_currentColor] md:h-[50px] md:w-[50px]"
+              className={cn(
+                "flex h-11 w-11 items-center justify-center rounded-full border border-current bg-transparent text-current transition hover:-translate-y-px hover:shadow-[inset_0_0_0_1px_currentColor]",
+                ownerResources ? "md:h-[48px] md:w-[48px]" : "md:h-[50px] md:w-[50px]",
+              )}
             >
               <Search size={21} strokeWidth={1.45} />
             </button>

@@ -65,7 +65,17 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             </Link>
           ) : null}
           {items.map((item) =>
-            item.children?.length ? (
+            item.title === "Owners" ? (
+              <Link
+                key={item.title}
+                href={item.href}
+                onClick={onClose}
+                aria-current={pathname === item.href ? "page" : undefined}
+                className={`block border-b border-white/10 py-5 font-serif text-2xl ${pathname === item.href ? "underline underline-offset-8" : ""}`}
+              >
+                {item.title}
+              </Link>
+            ) : item.children?.length ? (
               <button
                 type="button"
                 key={item.title}

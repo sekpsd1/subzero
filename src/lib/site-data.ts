@@ -140,7 +140,7 @@ export const mainNavigation: NavItem[] = [
   },
   {
     title: "Owners",
-    href: "/support",
+    href: "/owner-resources",
     description: "Product information, care guides, warranty, and support.",
     children: [
       { title: "Product Information", href: "/support/product-information" },

@@ -146,17 +146,22 @@ const legalLinks = [
 export function Footer({
   lifestyle = false,
   ourStory = false,
+  ownerResources = false,
   showroomMarket = "SEA",
 }: {
   lifestyle?: boolean;
   ourStory?: boolean;
+  ownerResources?: boolean;
   showroomMarket?: "SEA" | "U.S.";
 }) {
   const [openRow, setOpenRow] = useState<string | null>(null);
 
   return (
-    <footer className="bg-[#121211] text-[#f8f5ee]">
-      <section className={`bg-[#77756e] px-5 py-14 md:px-8 ${ourStory ? "xl:py-0" : lifestyle ? "md:py-[70px]" : "md:py-16"}`}>
+    <footer
+      className="bg-[#121211] text-[#f8f5ee]"
+      style={ownerResources ? { fontFamily: "museo-sans, sans-serif" } : undefined}
+    >
+      {!ownerResources ? <section className={`bg-[#77756e] px-5 py-14 md:px-8 ${ourStory ? "xl:py-0" : lifestyle ? "md:py-[70px]" : "md:py-16"}`}>
         <div className={`mx-auto grid gap-10 ${ourStory ? "max-w-[1440px] xl:grid-cols-[421px_1fr_1fr] xl:p-16" : "max-w-[1176px] lg:grid-cols-[1.05fr_1fr_1fr]"}`}>
           <h2 style={ourStory ? { fontFamily: 'Garamond, "Palatino Linotype", Georgia, serif' } : undefined} className={`font-serif text-[28px] leading-[1.04] ${ourStory ? "max-w-[421px] lg:self-start lg:text-[30px] lg:leading-[33px]" : "max-w-[390px]"}`}>
             You&rsquo;re one step closer to creating your future kitchen. Let us guide
@@ -193,9 +198,9 @@ export function Footer({
             </Link>
           </div>
         </div>
-      </section>
+      </section> : null}
 
-      <section className="border-t border-[#356078] px-5 md:px-8">
+      <section className={`border-t border-[#356078] px-5 md:px-8 ${ownerResources ? "md:pb-[54px]" : ""}`}>
         <div className="mx-auto max-w-[1728px]">
           <div className="grid border-b border-white/15 lg:grid-cols-[365px_1fr]">
             <div className="flex min-h-[365px] flex-col justify-between border-white/15 py-11 lg:border-r lg:px-14">
@@ -328,7 +333,7 @@ export function Footer({
         </div>
       </section>
 
-      <section className="bg-[#0d0d0c] px-5 py-9 text-xs text-[#d0ccc2] md:px-8">
+      <section className={`bg-[#0d0d0c] px-5 py-9 text-xs text-[#d0ccc2] md:px-8 ${ownerResources ? "md:py-[53px]" : ""}`}>
         <div className="mx-auto flex max-w-[1728px] flex-wrap items-center justify-between gap-8">
           <div className="flex flex-wrap gap-x-8 gap-y-4">
             {legalLinks.map((link) => (
