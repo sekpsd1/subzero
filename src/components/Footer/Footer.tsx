@@ -118,7 +118,7 @@ const footerRows: FooterRow[] = [
       {
         links: [
           ["Our Story", "/our-story"],
-          ["Company Milestones", "/our-story/company-milestones"],
+          ["History and Milestones", "/our-story/history-milestones"],
           ["Sustainability", "/our-story/sustainability"],
         ],
       },
@@ -148,8 +148,8 @@ export function Footer({ lifestyle = false, ourStory = false }: { lifestyle?: bo
 
   return (
     <footer className="bg-[#121211] text-[#f8f5ee]">
-      <section className={`bg-[#77756e] px-5 py-14 md:px-8 ${ourStory ? "lg:py-0" : lifestyle ? "md:py-[70px]" : "md:py-16"}`}>
-        <div className={`mx-auto grid gap-10 ${ourStory ? "max-w-[1440px] lg:grid-cols-[421px_1fr_1fr] lg:p-16" : "max-w-[1176px] lg:grid-cols-[1.05fr_1fr_1fr]"}`}>
+      <section className={`bg-[#77756e] px-5 py-14 md:px-8 ${ourStory ? "xl:py-0" : lifestyle ? "md:py-[70px]" : "md:py-16"}`}>
+        <div className={`mx-auto grid gap-10 ${ourStory ? "max-w-[1440px] xl:grid-cols-[421px_1fr_1fr] xl:p-16" : "max-w-[1176px] lg:grid-cols-[1.05fr_1fr_1fr]"}`}>
           <h2 style={ourStory ? { fontFamily: 'Garamond, "Palatino Linotype", Georgia, serif' } : undefined} className={`font-serif text-[28px] leading-[1.04] ${ourStory ? "max-w-[421px] lg:self-start lg:text-[30px] lg:leading-[33px]" : "max-w-[390px]"}`}>
             You&rsquo;re one step closer to creating your future kitchen. Let us guide
             you there.
