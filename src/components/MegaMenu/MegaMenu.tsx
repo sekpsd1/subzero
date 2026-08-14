@@ -143,6 +143,34 @@ const professionalsMenuVisualImages: Record<string, string> = {
     "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:0bb87547-0711-452d-94c0-902c326e5479/as/KDC_Hero.avif?assetname=KDC_Hero.png&width=1920&max-quality=90",
 };
 
+const livingKitchenMenuVisualImages: Record<string, string> = {
+  "All Stories":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:f83109d1-2185-4821-adcb-da2525644d96/as/field-of-bees.avif?assetname=field-of-bees.png&width=1920&max-quality=90",
+  Design:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:96aa15ca-cc33-4ad6-86ba-b1a295ac514f/as/high-style-hide.avif?assetname=high-style-hide.png&width=1920&max-quality=90",
+  Innovation:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:4b90687f-ed56-405e-b3a3-6bb7554e4313/as/innovation_category_hero.avif?assetname=innovation_category_hero.png&width=1920&max-quality=90",
+  Food:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:0035b30e-8373-40c3-8de8-f0bbbddd2caa/as/Orange_OliveOil_Cake_Gourmet2.avif?assetname=Orange_OliveOil_Cake_Gourmet2.jpeg&width=1920&max-quality=90",
+  Lifestyle:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:33549670-3870-4088-a32f-5d30007e60ea/as/Minimal_European_Kitchen_OA-1.avif?assetname=Minimal_European_Kitchen_OA+1.png&width=1920&max-quality=90",
+  Places:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:f41de493-f402-4c96-acfa-6f3c7e1b2138/as/tlk-places-category-hero-optimized.avif?assetname=tlk-places-category-hero-optimized.jpg&width=1920&max-quality=90",
+};
+
+const ourStoryMenuVisualImages: Record<string, string> = {
+  "Discover Our Story":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:86a9f640-dd9a-4dc2-b2e1-c026a850c307/as/Sub-Zero-day-1-7995.avif?assetname=Sub-Zero+day+1-7995.jpg&width=1920&max-quality=90",
+  "About Sub-Zero Group":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:2b0627dc-b4b3-45cb-a356-643736625b0e/as/Factory_Craftsmanship_HP.avif?assetname=Factory_Craftsmanship_HP.jpg&width=1920&max-quality=90",
+  "History and Milestones":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:21e84811-e6ca-4bb1-8d5f-231a21dc6c17/as/Sub-Zero_Story_1920x1080.avif?assetname=Sub-Zero_Story_1920x1080.jpg&width=1920&max-quality=90",
+  Sustainability:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:faf8855b-c035-42b1-a09f-edfb6d8eceaf/as/sustainability-hero-image.avif?assetname=sustainability-hero-image.png&width=1920&max-quality=90",
+  Foundation:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:4c5c45c2-4be9-4ac2-902b-fb605f83da09/as/FOOD_VEGETABLES_SLG_51617_16x9.avif?assetname=FOOD_VEGETABLES_SLG_51617_16x9.jpg&width=1920&max-quality=90",
+};
+
 const cardVisualImages = [
   imageLibrary.cooking,
   "/assets/subzero/home-hero.avif",
@@ -196,11 +224,16 @@ function getMenuVisual(item?: NavItem | null, fallback?: NavItem | null) {
   const outdoorImage = fallback?.title === "Outdoor" ? outdoorMenuVisualImages[title] : undefined;
   const professionalsImage =
     fallback?.title === "Professionals" ? professionalsMenuVisualImages[title] : undefined;
+  const livingKitchenImage =
+    fallback?.title === "The Living Kitchen" ? livingKitchenMenuVisualImages[title] : undefined;
+  const ourStoryImage = fallback?.title === "Our Story" ? ourStoryMenuVisualImages[title] : undefined;
 
   return {
     title: title || "Sub-Zero Wolf SEA",
     href: item?.href ?? fallback?.href ?? "/",
     image:
+      ourStoryImage ??
+      livingKitchenImage ??
       professionalsImage ??
       outdoorImage ??
       menuVisualImages[title] ??
