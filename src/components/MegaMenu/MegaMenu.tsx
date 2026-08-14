@@ -47,7 +47,7 @@ const secondaryMenuItems: NavItem[] = [
     children: [
       { title: "Trade Resources", href: "/trade-resources" },
       { title: "Product Specification Library", href: "/trade-resources/product-specifications#numberOfResults=20" },
-      { title: "Reveal Cabinet Specs", href: "/trade/reveal" },
+      { title: "Reveal Cabinet Specs", href: "/trade-resources/reveal" },
       { title: "Brochure Maker", href: "/trade/brochure" },
       { title: "Installation Videos", href: "/trade/installation-videos" },
       { title: "New and Future Products", href: "/trade/future-products" },
