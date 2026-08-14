@@ -469,3 +469,12 @@ Last recorded verification for Wine Storage:
 - Remaining scope: product-configuration and later wizard steps were intentionally not created.
 - CTA refinement: matched the live USA Continue button at 165×46px, 14px/500 text, `#e3e3e2` fill, black 1px border, 100px radius, and 67px/100px container spacing. The disabled state remains functionally disabled while retaining the reference black text/border appearance, and the non-reference selection-count label was removed.
 - Completed the previously missing Wolf/Cove brochure catalog from the supplied USA HTML: 177 Wolf products across all 17 Wolf categories and 4 Cove dishwashers. The page still renders zero product cards initially, then renders only the opened category; Browser verification returned 11 Gas Ranges, 4 Dishwashers, and no empty-state message.
+
+## Installation Videos
+
+- Added `/trade/installation-videos` as the menu-facing route and retained `/trade-resources/installation-videos` as a compatible route. Both render the same USA-reference page: breadcrumb, 54px desktop heading, intro, four alternating 300x200 image/text rows, dividers, outline pill CTAs, and Additional resources section.
+- Added `src/app/trade/installation-videos/page.tsx`, `src/app/trade-resources/installation-videos/page.tsx`, `src/components/InstallationVideos/InstallationVideosPageContent.tsx`, and its scoped CSS module. The menu-facing route reuses the existing implementation without duplicating UI. Reused the owner-resources Header/Footer and Typekit font setup without changing shared behavior.
+- Reused the four exact USA reference crops in `public/assets/trade-resources/installation-videos/`; the first image loads eagerly for LCP and the three below-fold images remain lazy-loaded.
+- Browser checks passed at 1600x1000 and 390x844: all images load, desktop alternation/mobile stacking are correct, all six destinations were verified, and horizontal overflow is zero. No console or hydration errors were found; remaining console warnings come from the existing shared header/root setup.
+- `npm.cmd run lint -- --no-cache` and `npm.cmd run build` passed. Build retains the existing unrelated Turbopack AVIF warning from `RefrigerationCategoryPage.tsx`.
+- Remaining scope: the four linked installation-video detail pages were intentionally not created.

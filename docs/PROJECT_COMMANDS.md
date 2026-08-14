@@ -229,3 +229,20 @@ npm.cmd run build
 ```
 
 The production build requires write access to `node_modules/.prisma` during `prisma generate`.
+
+## Installation Videos
+
+Run the existing dev server and open:
+
+```text
+http://127.0.0.1:3000/trade/installation-videos
+```
+
+Final validation:
+
+```powershell
+npm.cmd run lint -- --no-cache
+npm.cmd run build
+```
+
+The menu-facing route is `/trade/installation-videos`; `/trade-resources/installation-videos` remains available as a compatible route. Both reuse the owner-resources Header/Footer and the four reference crops under `public/assets/trade-resources/installation-videos/`.

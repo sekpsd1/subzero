@@ -1019,6 +1019,24 @@ http://127.0.0.1:3000/products/outdoor
 http://127.0.0.1:3000/refrigeration/outdoor
 ```
 
+## Installation Videos
+
+- Menu-facing route: `/trade/installation-videos`
+- Compatible route: `/trade-resources/installation-videos`
+- Pages: `src/app/trade/installation-videos/page.tsx` and `src/app/trade-resources/installation-videos/page.tsx`
+- Component: `src/components/InstallationVideos/InstallationVideosPageContent.tsx`
+- Styles: `src/components/InstallationVideos/InstallationVideosPageContent.module.css`
+- Assets: `public/assets/trade-resources/installation-videos/`
+- Pattern: USA-reference breadcrumb and introduction, four alternating 300x200 installation category rows, mobile image-first stacking, outline Watch Videos links, and Additional resources CTA/phone link.
+- Shared reuse: existing owner-resources Header/Footer and the existing Typekit font stylesheet; no shared component behavior changed.
+- Intentional remaining scope: the four linked detail routes are not implemented in this task.
+
+Fast check:
+
+```text
+http://127.0.0.1:3000/trade/installation-videos
+```
+
 ## Brochure Maker — Select Products
 
 - Route: `/trade-resources/brochure-maker/product-select`
