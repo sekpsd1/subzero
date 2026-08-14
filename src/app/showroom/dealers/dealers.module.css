@@ -1,0 +1,55 @@
+.page { min-height: 100vh; background: #fff; color: #171717; font-family: Arial, Helvetica, sans-serif; }
+.content { width: min(100% - 48px, 1150px); margin-inline: auto; padding: 136px 0 112px; }
+.intro { text-align: center; }
+.intro h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(42px, 4vw, 58px); font-weight: 400; line-height: 1.08; }
+.titleRule { display: block; width: 230px; height: 1px; margin: 19px auto 34px; background: #d2d2d2; }
+.intro p { max-width: 1100px; margin: 0 auto; font-size: 19px; line-height: 1.18; }
+.dealerLayout { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 56%); gap: 20px; align-items: start; margin-top: 29px; }
+.imageWrap { position: relative; aspect-ratio: 1024 / 579; overflow: hidden; background: #ececec; }
+.imageWrap img { object-fit: cover; }
+.countryList { display: grid; gap: 2px; }
+.country, .group { border: 0; }
+.country > summary, .group > summary { display: flex; align-items: center; justify-content: space-between; list-style: none; cursor: pointer; user-select: none; }
+.country > summary::-webkit-details-marker, .group > summary::-webkit-details-marker { display: none; }
+.country > summary { min-height: 44px; padding: 0 18px 0 20px; background: #f0f0f0; font-size: 14px; font-weight: 600; }
+.country[open] > summary { background: #e8e8e8; }
+.countryIcon { position: relative; width: 18px; height: 18px; }
+.countryIcon svg { position: absolute; inset: 0; }
+.iconOpen { display: none; }
+.country[open] .iconClosed { display: none; }
+.country[open] .iconOpen { display: block; }
+.countryContent { padding: 8px 0 10px; }
+.group + .group { margin-top: 5px; }
+.group > summary { min-height: 42px; padding: 0 18px; background: #f7f7f7; color: #333; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.plus { position: relative; width: 13px; height: 13px; }
+.plus::before, .plus::after { position: absolute; top: 6px; left: 1px; width: 11px; height: 1px; background: currentColor; content: ""; }
+.plus::after { transform: rotate(90deg); transition: transform 160ms ease; }
+.group[open] .plus::after { transform: rotate(0); }
+.dealerList { padding: 2px 18px 14px; }
+.dealerCard { padding: 17px 0; border-bottom: 1px solid #dedede; }
+.dealerCard:last-child { border-bottom: 0; }
+.dealerCard h3 { margin: 0 0 9px; font-size: 15px; line-height: 1.4; }
+.dealerCard p { margin: 4px 0 0; color: #595959; font-size: 13px; line-height: 1.55; }
+.dealerCard strong { color: #333; font-weight: 600; }
+.dealerCard a { color: #4f6577; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.bottomRule { height: 1px; margin-top: 44px; background: #d5d5d5; }
+
+@media (max-width: 820px) {
+  .content { width: min(100% - 36px, 650px); padding: 120px 0 80px; }
+  .intro h1 { font-size: 43px; }
+  .titleRule { width: 170px; margin-bottom: 27px; }
+  .intro p { max-width: 580px; font-size: 16px; line-height: 1.45; }
+  .dealerLayout { grid-template-columns: 1fr; gap: 22px; margin-top: 30px; }
+  .country > summary { min-height: 50px; }
+  .bottomRule { margin-top: 34px; }
+}
+
+@media (max-width: 480px) {
+  .content { width: min(100% - 28px, 650px); padding: 110px 0 64px; }
+  .intro h1 { font-size: 38px; }
+  .intro p { font-size: 15px; }
+  .titleRule { width: 130px; margin: 16px auto 24px; }
+  .country > summary, .group > summary { padding-inline: 15px; }
+  .group > summary { min-height: 46px; }
+  .dealerList { padding-inline: 15px; }
+}
