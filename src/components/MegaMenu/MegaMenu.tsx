@@ -105,6 +105,44 @@ const menuVisualImages: Record<string, string> = {
   "Our Story": imageLibrary.kitchenDark,
 };
 
+const outdoorMenuVisualImages: Record<string, string> = {
+  "Discover Outdoor":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:10e614fa-84d8-4207-b5e8-c958396b2e9b/as/SZWC_Nashville_46640_R_RGB.avif?assetname=SZWC_Nashville_46640_R_RGB.jpg&width=1920&max-quality=90",
+  "Ice Makers - NEW":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:78ba3735-d271-4323-a597-c9939b95ca61/as/DEU1550I_P_OPEN.avif?assetname=DEU1550I_P_OPEN.png&width=1920&max-quality=90",
+  Refrigeration:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:09e1dfbe-e8e3-4804-b548-e011b3917124/as/DEU2450RO_L-SS-PRO_SH.avif?assetname=DEU2450RO_L-SS-PRO_SH.png&width=1920&max-quality=90",
+  Grilling:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:6c7efa0c-fa10-44a9-b7ed-f4b935499a5c/as/outdoor-grilling.avif?assetname=outdoor-grilling.png&width=1920&max-quality=90",
+  Cooking:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:8111093e-5ca3-4f6e-ab29-96380f89ef4a/as/outdoor-cooking.avif?assetname=outdoor-cooking.png&width=1920&max-quality=90",
+  Ventilation:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:91843cae-cb53-4076-97be-d04cc03dceb8/as/outdoor-vent.avif?assetname=outdoor-vent.png&width=1920&max-quality=90",
+  "Warming Drawers":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:0feac7c0-75e5-48f7-b771-9d0e9c61358b/as/warming-drawer.avif?assetname=warming-drawer.png&width=1920&max-quality=90",
+  Accessories:
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:6e75f73d-7a8c-4e46-b3e7-50fae25b70f9/as/BBQ_Liner-1.avif?assetname=BBQ_Liner+1.png&width=1920&max-quality=90",
+};
+
+const professionalsMenuVisualImages: Record<string, string> = {
+  "Trade Resources":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:11468860-1080-4b80-bee5-d5947bd3423f/as/SZWC_Atlanta_Showroom_1019.avif?assetname=SZWC_Atlanta_Showroom_1019.jpg&width=1920&max-quality=90",
+  "Product Specification Library":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:c57b9865-77b4-4c8d-86a3-d58ef3cbb624/as/trade-resources_search.avif?assetname=trade-resources_search.png&width=1920&max-quality=90",
+  "Reveal Cabinet Specs":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:32501848-100c-4f8c-996d-98bc09426931/as/Lg_TC_031317_1_Sketch.avif?assetname=Lg_TC_031317_1_Sketch.jpg&width=1920&max-quality=90",
+  "Brochure Maker":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:f4135562-44d0-44b6-8473-98e9ce506837/as/explore-more-1.avif?assetname=explore-more-1.jpg&width=1920&max-quality=90",
+  "Installation Videos":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:52d2b947-cdd5-4345-85a5-e2964edbfcc4/as/W_SPO3050TE_S_T_Flush.avif?assetname=W_SPO3050TE_S_T_Flush.tif&width=1920&max-quality=90",
+  "New and Future Products":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:073cdb57-4398-420a-8d2c-4f544cc267fc/as/subzero_toolbox_coffeemachine_bold_v2.avif?assetname=subzero_toolbox_coffeemachine_bold_v2.jpg&width=1920&max-quality=90",
+  "Continuing Education (CEUs)":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:2797357e-836d-4e61-99ed-0ffe5c787172/as/designer-hotspot.avif?assetname=designer-hotspot.png&width=1920&max-quality=90",
+  "Kitchen Design Contest":
+    "https://delivery-p28264-e87620.adobeaemcloud.com/adobe/assets/urn:aaid:aem:0bb87547-0711-452d-94c0-902c326e5479/as/KDC_Hero.avif?assetname=KDC_Hero.png&width=1920&max-quality=90",
+};
+
 const cardVisualImages = [
   imageLibrary.cooking,
   "/assets/subzero/home-hero.avif",
@@ -155,11 +193,19 @@ function splitChildren(item: NavItem) {
 
 function getMenuVisual(item?: NavItem | null, fallback?: NavItem | null) {
   const title = item?.title ?? fallback?.title ?? "";
+  const outdoorImage = fallback?.title === "Outdoor" ? outdoorMenuVisualImages[title] : undefined;
+  const professionalsImage =
+    fallback?.title === "Professionals" ? professionalsMenuVisualImages[title] : undefined;
 
   return {
     title: title || "Sub-Zero Wolf SEA",
     href: item?.href ?? fallback?.href ?? "/",
-    image: menuVisualImages[title] ?? menuVisualImages[fallback?.title ?? ""] ?? imageLibrary.kitchenDark,
+    image:
+      professionalsImage ??
+      outdoorImage ??
+      menuVisualImages[title] ??
+      menuVisualImages[fallback?.title ?? ""] ??
+      imageLibrary.kitchenDark,
   };
 }
 
@@ -192,7 +238,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
   const discoverOutdoorItem = outdoorBrandItem?.children?.find((item) => item.title === "Discover Outdoor");
   const outdoorRefrigerationItem = outdoorBrandItem?.children?.find((item) => item.title === "Refrigeration");
   const outdoorGrillingItem = outdoorBrandItem?.children?.find((item) => item.title === "Grilling");
-  const outdoorSideBurnersItem = outdoorBrandItem?.children?.find((item) => item.title === "Side Burners");
+  const outdoorCookingItem = outdoorBrandItem?.children?.find((item) => item.title === "Cooking");
   const outdoorVentilationItem = outdoorBrandItem?.children?.find((item) => item.title === "Ventilation");
   const outdoorWarmingDrawersItem = outdoorBrandItem?.children?.find((item) => item.title === "Warming Drawers");
   const rangesItem = cookingItem?.children?.find((item) => item.title === "Ranges");
@@ -250,7 +296,7 @@ export function MegaMenu({ open, onClose }: MegaMenuProps) {
         : isOutdoorGrillingRoute
           ? outdoorGrillingItem
         : isOutdoorSideBurnersRoute
-          ? outdoorSideBurnersItem
+          ? outdoorCookingItem
         : isOutdoorVentilationRoute
           ? outdoorVentilationItem
         : isOutdoorWarmingDrawersRoute
@@ -438,6 +484,7 @@ function MenuVisualPanel({
   onClose: () => void;
 }) {
   const visual = getMenuVisual(item, fallback);
+  const isOutdoorProductVisual = fallback.title === "Outdoor" && item.title !== "Discover Outdoor";
   const hasWolfOverviewCard =
     fallback.title === "Cooking" &&
     (item.title === "Ranges" || item.title === "Built-in Ovens" || item.title === "Cooktops & Rangetops");
@@ -511,7 +558,10 @@ function MenuVisualPanel({
           fill
           priority={false}
           sizes="(min-width: 1024px) 60vw, 100vw"
-          className="object-cover transition duration-700 group-hover:scale-[1.02]"
+          className={cn(
+            "transition duration-700 group-hover:scale-[1.02]",
+            isOutdoorProductVisual ? "object-contain" : "object-cover",
+          )}
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02)_0%,rgba(0,0,0,0.05)_46%,rgba(0,0,0,0.58)_100%)]" />
         <h3 className="absolute bottom-7 left-8 font-serif text-[42px] leading-none text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
