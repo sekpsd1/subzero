@@ -208,3 +208,24 @@ For shared system work:
 - Data model/API behavior is documented.
 - Build passes.
 - Existing user changes are not reverted.
+
+## Brochure Maker Select Products
+
+Run and open the page:
+
+```powershell
+npm.cmd run dev
+```
+
+```text
+http://127.0.0.1:3000/trade-resources/brochure-maker/product-select
+```
+
+Validation used for this route:
+
+```powershell
+npm.cmd run lint -- --no-cache
+npm.cmd run build
+```
+
+The production build requires write access to `node_modules/.prisma` during `prisma generate`.

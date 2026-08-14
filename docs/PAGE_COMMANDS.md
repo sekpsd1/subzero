@@ -1019,6 +1019,25 @@ http://127.0.0.1:3000/products/outdoor
 http://127.0.0.1:3000/refrigeration/outdoor
 ```
 
+## Brochure Maker — Select Products
+
+- Route: `/trade-resources/brochure-maker/product-select`
+- Menu-friendly alias: `/trade/brochure`
+- Page: `src/app/trade-resources/brochure-maker/product-select/page.tsx`
+- Interactive UI: `src/components/BrochureMaker/BrochureMakerPage.tsx`
+- Route-scoped styles: `src/components/BrochureMaker/BrochureMakerPage.module.css`
+- Product mapping: `src/components/BrochureMaker/brochure-products.ts`
+- Reuses the global Header/Footer, `referenceSubZeroProducts`, and `referenceNewModels`; Wolf/Cove use the generated real USA catalog in `src/components/BrochureMaker/reference-wolf-cove-products.ts`.
+- Catalog generator: `scripts/generate-brochure-catalog.mjs` accepts a saved USA page HTML file and an output TypeScript path.
+- Selection is stored in `sessionStorage` under `brochure-maker:selected-products`; Continue targets `/trade-resources/brochure-maker/product-configuration`.
+- Product rows remain lazy at the accordion level: no cards render until a category is opened.
+
+Fast check:
+
+```text
+http://127.0.0.1:3000/trade-resources/brochure-maker/product-select
+```
+
 ## Outdoor Refrigeration Listing
 
 - Canonical route: `/outdoor/refrigeration`

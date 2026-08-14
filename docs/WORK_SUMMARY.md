@@ -456,3 +456,16 @@ Last recorded verification for Wine Storage:
 - Post-refinement validation passed: `npm.cmd run lint`, `npm.cmd run build`, 1920px desktop Browser comparison, and 390px mobile smoke test. All 11 images loaded and no horizontal overflow was found. Updated captures: `docs/screenshots/lifestyle-category-refined.png` and `docs/screenshots/lifestyle-category-mobile-refined.png`.
 - Updated the hero H1 from `The art of living beautifully` to the current USA reference wording `Elevated living` after the latest direct hero comparison.
 - Desktop hero verification at 1920×946 confirmed the reference-like 40px heading at a 24px left inset with no horizontal overflow. Capture: `docs/screenshots/lifestyle-hero-elevated-living.png`.
+
+## Brochure Maker — Select Products
+
+- Added `/trade-resources/brochure-maker/product-select`, matching the USA Brochure Maker structure with breadcrumb, 54px desktop heading, intro, four-step progress, three brand columns, accordion categories, Continue area, and responsive single-column mobile layout.
+- Added `/trade/brochure` as a menu-friendly alias that reuses the same route implementation.
+- Reused the existing Header/Footer and real project data: the Sub-Zero reference catalog plus Wolf entries from `src/lib/site-data.ts`. No product models, names, or images were invented; missing category data uses an explicit empty state.
+- Product rows render only for open accordions and include lazy images, accessible checkboxes, hover/focus/selected states, model, name, and real New badges.
+- Multi-select state persists through reload/back navigation in `sessionStorage`. Continue is disabled with no selection, enables after selection, and navigates to `/trade-resources/brochure-maker/product-configuration`; steps 2–4 are non-navigable before validation.
+- Browser checks passed at 1920×946 and 390×844: no horizontal overflow, no broken visible images, correct collapsed initial state, selection persistence, and correct Continue URL. Captures: `docs/screenshots/brochure-maker-desktop.png` and `docs/screenshots/brochure-maker-mobile.png`.
+- `npm.cmd run lint -- --no-cache` passed. `npm.cmd run build` passed; the only build warning is the existing unrelated Turbopack AVIF warning from `RefrigerationCategoryPage.tsx`.
+- Remaining scope: product-configuration and later wizard steps were intentionally not created.
+- CTA refinement: matched the live USA Continue button at 165×46px, 14px/500 text, `#e3e3e2` fill, black 1px border, 100px radius, and 67px/100px container spacing. The disabled state remains functionally disabled while retaining the reference black text/border appearance, and the non-reference selection-count label was removed.
+- Completed the previously missing Wolf/Cove brochure catalog from the supplied USA HTML: 177 Wolf products across all 17 Wolf categories and 4 Cove dishwashers. The page still renders zero product cards initially, then renders only the opened category; Browser verification returned 11 Gas Ranges, 4 Dishwashers, and no empty-state message.
