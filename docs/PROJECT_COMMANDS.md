@@ -230,6 +230,23 @@ npm.cmd run build
 
 The production build requires write access to `node_modules/.prisma` during `prisma generate`.
 
+## Continuing Education Units
+
+Run the existing dev server and open:
+
+```text
+http://127.0.0.1:3000/trade-resources/continuing-education
+```
+
+Validation:
+
+```powershell
+npm.cmd run lint -- --no-cache
+npm.cmd run build
+```
+
+The page reuses the owner-resources Header/Footer and stores the three partner crops under `public/assets/trade-resources/continuing-education/`. Representative search is validation-only because the project has no representative API.
+
 ## Installation Videos
 
 Run the existing dev server and open:

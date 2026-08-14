@@ -1162,6 +1162,24 @@ http://127.0.0.1:3000/products/outdoor/warming-drawers
 http://127.0.0.1:3000/products/cooking/drawers
 ```
 
+## Continuing Education Units
+
+- Canonical route: `/trade-resources/continuing-education`
+- Page: `src/app/trade-resources/continuing-education/page.tsx`
+- Components: `src/components/ContinuingEducation/ContinuingEducationPageContent.tsx` and `RepresentativeSearchForm.tsx`
+- Assets: `public/assets/trade-resources/continuing-education/`
+- Navigation: Professionals > Continuing Education (CEUs) targets the canonical route on desktop and mobile.
+- Form behavior: requires one representative type and a 5-digit U.S. ZIP Code; supports Enter submission and exposes errors next to the relevant control. No representative API exists, so the valid state reports that search is unavailable and does not fabricate results.
+- External links: Explore courses, AIA, NKBA, and IDCEC open safely in a new tab.
+- UI constraint: body copy may mention Cove, but this page and its shared Header/Footer render no COVE logo.
+- Validation passed: Browser QA at desktop/mobile, `npm.cmd run lint -- --no-cache`, and `npm.cmd run build`. The build has only the existing unrelated Turbopack AVIF warning.
+
+Fast check:
+
+```text
+http://127.0.0.1:3000/trade-resources/continuing-education
+```
+
 ## Discover Outdoor Landing
 
 - Canonical route: `/outdoor/discover-outdoor`

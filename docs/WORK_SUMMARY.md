@@ -2,6 +2,15 @@
 
 Updated: 2026-08-14
 
+## Latest Focus: Continuing Education Units
+
+- Added `/trade-resources/continuing-education` with the USA-reference breadcrumb, 54px desktop title, course CTA, representative search form, association partners, responsive layout, and the existing trade-resources Header/Footer.
+- Added accessible radio controls and 5-digit U.S. ZIP validation. The project has no representative-search API, so valid submissions show an explicit unavailable state and do not fabricate people or results.
+- Added the exact AIA, NKBA, and IDCEC reference crops under `public/assets/trade-resources/continuing-education/`; all external destinations open in a new tab with `noopener noreferrer`.
+- Updated the Professionals desktop/mobile navigation destination to the canonical route. No COVE logo or wordmark is rendered; the word “Cove” remains only in the supplied body copy.
+- Browser QA passed for desktop/mobile layout, empty and invalid validation, one-at-a-time radio selection, Enter submission, safe external links, loaded partner images, and zero COVE logo matches. Captures: `docs/screenshots/continuing-education-reference-desktop.png`, `continuing-education-reference-mobile.png`, `continuing-education-local-desktop.png`, `continuing-education-local-mobile.png`, and `continuing-education-local-partners.png`.
+- `npm.cmd run lint -- --no-cache` and `npm.cmd run build` passed. Build retains the existing unrelated Turbopack AVIF warning from `RefrigerationCategoryPage.tsx`.
+
 ## Latest Focus: Product Specifications Library
 
 - Added `/trade-resources/product-specifications#numberOfResults=20`, matching the USA resource-page structure with popular resources, all 98 current Sub-Zero results, working pagination/View All, typed local product search, source-accurate Type/Style facets and counts, brand/category filtering, legacy product links, and the help CTA.

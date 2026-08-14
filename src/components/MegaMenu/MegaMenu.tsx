@@ -51,7 +51,7 @@ const secondaryMenuItems: NavItem[] = [
       { title: "Brochure Maker", href: "/trade/brochure" },
       { title: "Installation Videos", href: "/trade/installation-videos" },
       { title: "New and Future Products", href: "/trade/future-products" },
-      { title: "Continuing Education (CEUs)", href: "/trade/continuing-education" },
+      { title: "Continuing Education (CEUs)", href: "/trade-resources/continuing-education" },
       { title: "Kitchen Design Contest", href: "/trade/kitchen-design-contest" },
     ],
   },

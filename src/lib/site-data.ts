@@ -186,6 +186,7 @@ export const mainNavigation: NavItem[] = [
     description: "Specification library, brochures, and design resources.",
     children: [
       { title: "Trade Resources", href: "/trade-resources" },
+      { title: "Continuing Education (CEUs)", href: "/trade-resources/continuing-education" },
       { title: "Product Specification Library", href: "/trade-resources/product-specifications#numberOfResults=20" },
       { title: "Brochure", href: "/trade/brochure" },
       { title: "A Higher Standard", href: "/trade/a-higher-standard" },
