@@ -1,74 +1,101 @@
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
+import styles from "./appointment.module.css";
 
 export const metadata = {
   title: "Showroom Appointment",
-  description: "Schedule a showroom appointment with a regional Sub-Zero Wolf SEA team.",
+  description: "Schedule a showroom appointment with a regional Sub-Zero and Wolf SEA team.",
 };
+
+type Location = {
+  name?: string;
+  address: string[];
+  telephone?: string;
+  email: string;
+  hours: string;
+  appointmentHref: string;
+};
+
+const showrooms: { title: string; locations: Location[] }[] = [
+  {
+    title: "The House of Sub-Zero and Wolf Thailand",
+    locations: [{
+      address: ["6 Soi Chamchun, Klongton-Nue, Wattana,", "Bangkok 10110 Thailand"],
+      telephone: "+662 726 9113",
+      email: "szw.enquiry@mykitchenart.com",
+      hours: "Monday-Friday, 8.00 am – 5 pm",
+      appointmentHref: "mailto:szw.enquiry@mykitchenart.com?subject=Showroom%20Appointment",
+    }],
+  },
+  {
+    title: "The House of Sub-Zero and Wolf Singapore",
+    locations: [{
+      address: ["31 McNair Road, Townerville, Singapore 328529"],
+      telephone: "+65 6386 9335",
+      email: "szw.enquiries@szw-sea.com",
+      hours: "Mon-Fri 10am to 5.30pm",
+      appointmentHref: "mailto:szw.enquiries@szw-sea.com?subject=Showroom%20Appointment",
+    }],
+  },
+  {
+    title: "The House of Sub-Zero and Wolf Indonesia",
+    locations: [
+      {
+        name: "Indonesia Design District",
+        address: ["Lot#T37A", "Jl.M.H Thamrin, Pantai Indah Kapuk 2. Tangerang", "15214-Indonesia"],
+        email: "enquiry.idd@subzeroindonesia.com",
+        hours: "Monday-Sunday, 10 am-10 pm",
+        appointmentHref: "mailto:enquiry.idd@subzeroindonesia.com?subject=Showroom%20Appointment",
+      },
+      {
+        name: "Jakarta Design Center",
+        address: ["2nd Floor #SR11", "Jl Gatot Subroto Kav 53 Slipi Jakarta 10260", "Indonesia"],
+        telephone: "+6221 53677684/85",
+        email: "enquiry.jdc@subzeroindonesia.com",
+        hours: "Monday-Sunday 10 am – 6 pm",
+        appointmentHref: "mailto:enquiry.jdc@subzeroindonesia.com?subject=Showroom%20Appointment",
+      },
+    ],
+  },
+];
 
 export default function AppointmentPage() {
   return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-[#0F0F0F] px-6 py-32 text-[#FBF9F5] md:px-12">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-stone-500">
-              Appointment
-            </p>
-            <h1 className="mt-5 font-serif text-5xl leading-tight">
-              Schedule a showroom appointment
-            </h1>
-            <p className="mt-6 text-base leading-8 text-stone-300">
-              Embark on your kitchen journey with a personalized experience.
-              Our expert consultants are ready to help bring your vision to life.
-            </p>
-          </div>
-          <form className="grid gap-4 border border-white/10 bg-white/[0.03] p-6">
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="grid gap-2 text-sm">
-                Visitor type
-                <select className="border border-white/10 bg-black px-4 py-3">
-                  <option>Shopper</option>
-                  <option>Trade Professional</option>
-                </select>
-              </label>
-              <label className="grid gap-2 text-sm">
-                Country
-                <select className="border border-white/10 bg-black px-4 py-3">
-                  <option>Thailand</option>
-                  <option>Singapore</option>
-                  <option>Indonesia</option>
-                  <option>Malaysia</option>
-                </select>
-              </label>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <input className="border border-white/10 bg-black px-4 py-3" placeholder="First Name" />
-              <input className="border border-white/10 bg-black px-4 py-3" placeholder="Last Name" />
-              <input className="border border-white/10 bg-black px-4 py-3" placeholder="Phone Number" />
-              <input className="border border-white/10 bg-black px-4 py-3" placeholder="Email" type="email" />
-              <input className="border border-white/10 bg-black px-4 py-3" placeholder="Preferred Date" />
-              <input className="border border-white/10 bg-black px-4 py-3" placeholder="Preferred Time" />
-            </div>
-            <input
-              className="border border-white/10 bg-black px-4 py-3"
-              placeholder="Country product installation"
-            />
-            <textarea
-              className="min-h-32 border border-white/10 bg-black px-4 py-3"
-              placeholder="Message"
-            />
-            <button
-              type="button"
-              className="w-fit border border-white px-6 py-3 text-xs uppercase tracking-[0.25em]"
-            >
-              Send Request
-            </button>
-          </form>
-        </div>
+    <div className={styles.page}>
+      <Header ownerResources />
+      <main className={styles.main}>
+        <section className={styles.intro}>
+          <h1>Schedule a Showroom Appointment</h1>
+          <span className={styles.titleRule} aria-hidden="true" />
+          <p>
+            Embark on your exciting kitchen journey with us. Visit The House of Sub-Zero &amp; Wolf SEA showrooms for a personalized experience. Our expert consultants are ready to help bring your dream kitchen to life. Simply choose your preferred date and time and we will confirm it promptly.
+          </p>
+          <p>We look forward to welcoming you and assisting in bringing your kitchen vision to life.</p>
+        </section>
+
+        <section className={styles.showroomGrid} aria-label="Showroom locations">
+          {showrooms.map((showroom) => (
+            <article className={styles.showroom} key={showroom.title}>
+              <h2>{showroom.title}</h2>
+              <div className={styles.locationList}>
+                {showroom.locations.map((location) => (
+                  <div className={styles.location} key={location.name ?? location.email}>
+                    {location.name ? <h3>{location.name}</h3> : null}
+                    <address>{location.address.map((line) => <span key={line}>{line}</span>)}</address>
+                    {location.telephone ? (
+                      <p>Tel. <a href={`tel:${location.telephone.replace(/\s/g, "")}`}>{location.telephone}</a></p>
+                    ) : null}
+                    <p>Email: <a href={`mailto:${location.email}`}>{location.email}</a></p>
+                    <p>Office Hours: {location.hours}</p>
+                    <a className={styles.appointmentButton} href={location.appointmentHref}>Appointment</a>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -1,0 +1,82 @@
+.page {
+  min-height: 100vh;
+  background: #fff;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  min-height: calc(100vh - 303px);
+  padding: 136px 24px 82px;
+  background: #fff;
+}
+
+.intro, .showroomGrid { width: min(100%, 1098px); margin-inline: auto; }
+.intro { text-align: center; }
+
+.intro h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(35px, 3.05vw, 49px);
+  font-weight: 400;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.titleRule { display: block; width: 214px; height: 1px; margin: 18px auto 33px; background: #d0d0d0; }
+.intro p { max-width: 1085px; margin: 0 auto; color: #777; font-size: 15px; line-height: 1.72; letter-spacing: .01em; }
+.intro p + p { margin-top: 18px; }
+
+.showroomGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-height: 790px;
+  margin-top: 54px;
+  border-top: 1px solid #d3d3d3;
+  padding-top: 33px;
+}
+
+.showroom { padding: 0 28px 28px 10px; }
+.showroom + .showroom { border-left: 1px solid #d3d3d3; padding-left: 30px; }
+.showroom h2 { max-width: 330px; margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
+.locationList { margin-top: 16px; }
+.location + .location { margin-top: 39px; }
+.location h3 { margin: 0 0 18px; font-size: 14px; font-weight: 700; text-transform: uppercase; }
+.location address, .location p { margin: 0; color: #777; font-size: 14px; font-style: normal; line-height: 1.58; }
+.location address span { display: block; }
+.location address + p, .location p + p { margin-top: 15px; }
+.location a:not(.appointmentButton) { color: inherit; }
+
+.appointmentButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 37px;
+  margin: 28px auto 0;
+  border-radius: 2px;
+  background: #727b84;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: background 160ms ease;
+}
+
+.appointmentButton:hover { background: #58616a; }
+
+@media (max-width: 900px) {
+  .main { padding-top: 128px; }
+  .showroomGrid { grid-template-columns: 1fr; min-height: 0; }
+  .showroom, .showroom + .showroom { border-left: 0; border-top: 1px solid #d3d3d3; padding: 31px 4px 38px; }
+  .showroom:first-child { border-top: 0; padding-top: 0; }
+  .appointmentButton { margin-left: 0; }
+}
+
+@media (max-width: 560px) {
+  .main { padding: 114px 20px 64px; }
+  .intro h1 { font-size: 31px; line-height: 1.14; }
+  .titleRule { width: 130px; margin: 18px auto 26px; }
+  .intro p { font-size: 14px; line-height: 1.65; }
+  .showroomGrid { margin-top: 42px; padding-top: 29px; }
+  .showroom h2 { font-size: 17px; }
+}
