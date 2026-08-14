@@ -9,13 +9,7 @@ import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
 import { SearchOverlay } from "@/components/SearchOverlay/SearchOverlay";
 import { cn } from "@/lib/utils";
 
-export function Header({
-  ownerResources = false,
-  cove = false,
-}: {
-  ownerResources?: boolean;
-  cove?: boolean;
-}) {
+export function Header({ ownerResources = false }: { ownerResources?: boolean }) {
   const [hidden, setHidden] = useState(false);
   const [glass, setGlass] = useState(false);
   const [solid, setSolid] = useState(false);
@@ -134,7 +128,7 @@ export function Header({
             className="absolute left-1/2 top-1/2 z-[2] -translate-x-1/2 -translate-y-1/2 text-center"
             aria-label="Home"
           >
-            <BrandMarks solid={solidHeader} cove={cove} />
+            <BrandMarks solid={solidHeader} />
           </Link>
           <div
             className={cn(
@@ -191,9 +185,9 @@ export function Header({
   );
 }
 
-function BrandMarks({ solid, cove }: { solid: boolean; cove: boolean }) {
+function BrandMarks({ solid }: { solid: boolean }) {
   return (
-    <span className="flex items-center justify-center gap-[5px] md:gap-2" aria-label={cove ? "Wolf Sub-Zero Cove" : "Wolf Sub-Zero"}>
+    <span className="flex items-center justify-center gap-[5px] md:gap-2" aria-label="Wolf Sub-Zero">
       <Image
         src={solid ? "/assets/subzero/wolf-logo.svg" : "/assets/subzero/white-logo-wolf-2.png"}
         alt="Wolf"
@@ -216,16 +210,6 @@ function BrandMarks({ solid, cove }: { solid: boolean; cove: boolean }) {
           solid ? "drop-shadow-none" : "drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]",
         )}
       />
-      {cove ? (
-        <Image
-          src="/assets/trade-resources/cove-logo.svg"
-          alt="Cove"
-          width={84}
-          height={25}
-          priority
-          className="hidden h-auto w-[72px] drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] md:block"
-        />
-      ) : null}
     </span>
   );
 }

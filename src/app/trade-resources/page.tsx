@@ -12,7 +12,7 @@ export default function TradeResourcesPage() {
   return (
     <>
       <link rel="stylesheet" href="https://use.typekit.net/fmm1fin.css" />
-      <Header ownerResources cove />
+      <Header ownerResources />
       <TradeResourcesPageContent />
       <Footer ownerResources />
     </>

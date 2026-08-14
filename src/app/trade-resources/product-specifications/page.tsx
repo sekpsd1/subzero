@@ -13,7 +13,7 @@ export default function ProductSpecificationsRoute() {
   return (
     <>
       <link rel="stylesheet" href="https://use.typekit.net/fmm1fin.css" />
-      <Header ownerResources cove />
+      <Header ownerResources />
       <ProductSpecificationsPage products={products} />
       <Footer ownerResources />
     </>

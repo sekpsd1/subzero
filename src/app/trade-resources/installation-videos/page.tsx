@@ -13,7 +13,7 @@ export default function InstallationVideosPage() {
   return (
     <>
       <link rel="stylesheet" href="https://use.typekit.net/fmm1fin.css" />
-      <Header ownerResources cove />
+      <Header ownerResources />
       <InstallationVideosPageContent />
       <Footer ownerResources />
     </>

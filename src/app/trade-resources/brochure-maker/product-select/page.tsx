@@ -12,7 +12,7 @@ export default function BrochureMakerProductSelectRoute() {
   return (
     <>
       <link rel="stylesheet" href="https://use.typekit.net/fmm1fin.css" />
-      <Header ownerResources cove />
+      <Header ownerResources />
       <BrochureMakerPage />
       <Footer ownerResources />
     </>
