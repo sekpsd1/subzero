@@ -1,13 +1,22 @@
 import { NextResponse } from "next/server";
-import { journalPosts } from "@/lib/site-data";
-
+import { publicJournal } from "@/lib/posts/public";
 export async function GET() {
-  return NextResponse.json({
-    data: journalPosts,
-    meta: {
-      workflow: "wordpress-like",
-      supportsCategories: true,
-      supportsSeoAeo: true,
-    },
-  });
+  try {
+    return NextResponse.json(
+      {
+        data: await publicJournal(),
+        meta: {
+          workflow: "wordpress-like",
+          supportsCategories: true,
+          supportsSeoAeo: true,
+        },
+      },
+      { headers: { "Cache-Control": "no-store" } },
+    );
+  } catch {
+    return NextResponse.json(
+      { error: "Journal service unavailable." },
+      { status: 503, headers: { "Cache-Control": "no-store" } },
+    );
+  }
 }

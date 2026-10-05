@@ -17,7 +17,7 @@ export default function JournalPage() {
           title="Recipes, stories, and regional inspiration"
         />
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {journalPosts.map((post) => (
+          {journalPosts.filter((post) => post.status === "published").map((post) => (
             <article key={post.slug} className="border border-white/10 bg-white/[0.03]">
               <div
                 className="aspect-[4/3] bg-cover bg-center"

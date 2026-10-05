@@ -59,3 +59,6 @@ Do not label the project ready for delivery until these checks pass or the clien
 - Client acceptance scope and intended delivery date.
 
 Continue code work independently where possible. Database migrations, persistence verification and live deployment depend on the actual environment.
+
+## SYS-02 article/SEO delivery update — 2026-10-05
+Article administration is deployed and verified on staging: real DB CRUD/taxonomy/SEO, private preview and cover, RBAC/Origin/audit and stale writes. Integration 62 checks and actual rollback/restored-build drill pass. See pages/admin-posts-seo.md. Public article detail/metadata/sitemap integration stays in its separate workstream; this is not client acceptance or closure of existing dependency release gates.
