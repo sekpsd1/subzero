@@ -24,7 +24,7 @@ export default async function AdminPage() {
           {["Dashboard", "Posts", "Products", "Inventory", "Appointments", "SEO / AEO", "Users"].map((item) => (
             <a
               key={item}
-              href={item === "Products" ? "/admin/products" : item === "Posts" || item === "SEO / AEO" ? "/admin/posts" : item === "Dashboard" ? "/admin" : "#"}
+              href={item === "Inventory" ? "/admin/inventory" : item === "Products" ? "/admin/products" : item === "Posts" || item === "SEO / AEO" ? "/admin/posts" : item === "Dashboard" ? "/admin" : "#"}
               className="block border border-transparent px-4 py-3 text-stone-300 hover:border-white/10 hover:bg-white/[0.04] hover:text-white"
             >
               {item}
@@ -40,7 +40,7 @@ export default async function AdminPage() {
           <h1 className="mt-4 font-serif text-4xl">Dashboard</h1>
           <p className="mt-3 text-sm text-stone-400">{session.user.name} · {session.user.role} · Sample dashboard data</p>
           <div className="mt-5 flex flex-wrap gap-3"><Link href="/admin/products" className="border border-white/25 px-4 py-2">Manage products</Link>
-            <Link href="/admin/posts" className="border border-white/25 px-4 py-2">Manage posts & SEO</Link><form action="/api/admin/logout" method="post"><button className="border border-white/25 px-4 py-2">Sign out</button></form>
+            <Link href="/admin/inventory" className="border border-white/25 px-4 py-2">Manage inventory</Link><Link href="/admin/posts" className="border border-white/25 px-4 py-2">Manage posts & SEO</Link><form action="/api/admin/logout" method="post"><button className="border border-white/25 px-4 py-2">Sign out</button></form>
             {session.user.role === "ADMIN" && <form action="/api/admin/sessions/revoke" method="post"><button className="border border-white/25 px-4 py-2">Sign out all sessions</button></form>}
           </div>
         </header>
