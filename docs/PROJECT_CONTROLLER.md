@@ -52,7 +52,7 @@ Baseline inspected 2026-10-05; no runtime QA, lint or build was run for this doc
 | TRADE-01 | P1 | Brochure wizard steps 2-4 and real output | queued | Unassigned |
 | TRADE-02 | P1 | Four installation-video detail destinations | queued | Unassigned |
 | SYS-01 | P1 | Forms, representative lookup, persistence and email integration audit | queued | Unassigned |
-| SYS-02 | P1 | Admin auth, roles, product/CMS/CSV/inventory workflows | active | Current chat: auth only; CRUD remains queued |
+| SYS-02 | P1 | Admin auth, roles, product/CMS/CSV/inventory workflows | active | Products chat: catalog verified; stock/CMS/CSV remain queued |
 | QA-01 | P2 | Final navigation, responsive, SEO and deployment checks | queued | Unassigned |
 
 Controller decides the next narrow work item with the user. This queue does not authorize external submissions or deployment.
@@ -80,6 +80,7 @@ Controller decides the next narrow work item with the user. This queue does not 
 Task ID; route; reference; files changed; implemented behavior; exact checks/results/date; screenshot paths; dependencies; remaining work; user acceptance; commit/push state. Keep each handoff concise and factual.
 
 ## SYS-02 auth scope — verified (2026-10-05)
+
 Owner: current chat. Claimed: prisma/schema.prisma, new admin_auth migration, src/lib/auth/*, src/app/admin/*, src/app/api/admin/*, scripts/admin-*.mjs, docs/pages/admin-auth.md. Existing dirty files preserved. Authentication only; CRUD excluded.
 
 Auth evidence and private bootstrap/rollback instructions: [admin-auth](pages/admin-auth.md). Local lint/build and server migration/build passed; live integration results are recorded there. No owner ADMIN, commit/push or public-source changes. Owner bootstrap and acceptance remain pending.
@@ -95,3 +96,8 @@ Live update: setup deployed and grant activated after explicit user confirmation
 Latest: owner screenshot confirms ADMIN login; setup page directly checked as 404. Remember me (optional 30 days, otherwise 8 hours) and latest English cream login design deployed to staging. Duration checks 3/3, auth tests 5/5 and server lint/build pass; live checkbox verified. Owner remembered-login cookie check pending; existing session remains 8 hours. Backup .auth-backups/20261005-remember. No commit/push.
 
 Final cleanup: setup executable sources retired, exact page/API paths permanently 404, DB closure marker present and grant absent. Live disposable-account tests verify 8h/30d cookie and DB expiry plus logout/replay; cleanup complete, owner unchanged. Final server build/local lint/unit checks pass. Backup .auth-backups/20261005-auth-final; full rollback unexercised. No commit/push.
+
+## SYS-02 catalog — verified within scope (2026-10-05)
+Owner: products chat. Implemented DB products search/filter/pagination/editor/status/soft-delete/restore, brands/subcategories and validated private image upload/order/alt/removal. Existing requirePage/requireApi reused; ADMIN/STAFF write, ADMIN-only destructive catalog operations, atomic audit and stale-edit protection. Products links work; public products response contract preserved with Active/non-deleted allowlist. Additive indexes only; no stock/CMS/CSV/COVE/public page redesign or commit/push.
+Local/server unit 11/11, full lint and builds pass; live HTTPS/MySQL integration 54 checks pass; desktop/mobile UI writes and image reload verified. Staging-only backup plus actual rollback/restored-build drill passes with unchanged catalog/users/sessions. QA data cleaned; real catalog has zero products/brands/categories, owner ADMIN retained. Source details, evidence and limits: [admin-products](pages/admin-products.md).
+Release gate remains open: server npm audit reports 25 findings (7 moderate, 17 high, 1 critical), including Next 16.2.9 advisories. Dashboard/public pages still use existing sample data. Image orphan-retention cleanup and database disaster restore are not exercised/automated. No client-ready/accepted claim.

@@ -48,6 +48,8 @@ yarn-error.log*
 .env*
 .auth-setup-private/
 .auth-backups/
+.product-media/
+.products-backups/
 .websetup-release.*
 
 # vercel
