@@ -41,6 +41,7 @@ model User {
   updatedAt    DateTime   @updatedAt
   posts        Post[]
   auditLogs    AuditLog[]
+  sessions     AdminSession[]
 }
 
 model Media {
@@ -253,4 +254,21 @@ model SiteSetting {
   key       String   @unique
   value     Json
   updatedAt DateTime @updatedAt
+}
+
+model AdminSession {
+  tokenHash String @id @db.VarChar(64)
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  revokedAt DateTime?
+  @@index([userId])
+  @@index([expiresAt])
+}
+model AuthRateLimit {
+  key String @id @db.VarChar(64)
+  attempts Int @default(0)
+  expiresAt DateTime
+  @@index([expiresAt])
 }

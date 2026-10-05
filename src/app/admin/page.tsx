@@ -1,3 +1,4 @@
+import { requirePage } from "@/lib/auth/server";
 import Link from "next/link";
 import { adminModules, journalPosts, products, showrooms } from "@/lib/site-data";
 import { formatNumber } from "@/lib/utils";
@@ -7,7 +8,8 @@ export const metadata = {
   description: "Admin and staff management surface for catalog, posts, stock, appointments, and SEO.",
 };
 
-export default function AdminPage() {
+export default async function AdminPage() {
+  const session = await requirePage();
   const totalStock = products.reduce((total, product) => total + product.stock, 0);
   const reservedStock = products.reduce((total, product) => total + product.reserved, 0);
 
@@ -36,6 +38,11 @@ export default function AdminPage() {
             Staff and admin workspace
           </p>
           <h1 className="mt-4 font-serif text-4xl">Dashboard</h1>
+          <p className="mt-3 text-sm text-stone-400">{session.user.name} · {session.user.role} · Sample dashboard data</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <form action="/api/admin/logout" method="post"><button className="border border-white/25 px-4 py-2">Sign out</button></form>
+            {session.user.role === "ADMIN" && <form action="/api/admin/sessions/revoke" method="post"><button className="border border-white/25 px-4 py-2">Sign out all sessions</button></form>}
+          </div>
         </header>
         <div className="grid gap-5 p-6 md:grid-cols-2 md:p-10 xl:grid-cols-5">
           {adminModules.map((module) => (
