@@ -1,122 +1,42 @@
-import { requirePage } from "@/lib/auth/server";
 import Link from "next/link";
-import { adminModules, journalPosts, products, showrooms } from "@/lib/site-data";
-import { formatNumber } from "@/lib/utils";
+import { requirePage } from "@/lib/auth/server";
+import { getPrisma } from "@/lib/prisma";
+import CatalogShell from "@/components/AdminCatalog/CatalogShell";
 
-export const metadata = {
-  title: "Admin Dashboard",
-  description: "Admin and staff management surface for catalog, posts, stock, appointments, and SEO.",
-};
+export const metadata = { title: "Admin Dashboard" };
 
 export default async function AdminPage() {
   const session = await requirePage();
-  const totalStock = products.reduce((total, product) => total + product.stock, 0);
-  const reservedStock = products.reduce((total, product) => total + product.reserved, 0);
-
-  return (
-    <main className="min-h-screen bg-[#101010] text-[#FBF9F5]">
-      <aside className="fixed inset-y-0 left-0 hidden w-72 border-r border-white/10 bg-black/40 p-6 lg:block">
-        <Link href="/" className="font-serif text-2xl">SZ Wolf SEA</Link>
-        <p className="mt-2 text-xs uppercase tracking-[0.3em] text-stone-500">
-          Admin
-        </p>
-        <nav className="mt-10 space-y-2 text-sm">
-          {["Dashboard", "Posts", "Products", "Inventory", "Appointments", "SEO / AEO", "Users"].map((item) => (
-            <a
-              key={item}
-              href={item === "Inventory" ? "/admin/inventory" : item === "Products" ? "/admin/products" : item === "Posts" || item === "SEO / AEO" ? "/admin/posts" : item === "Dashboard" ? "/admin" : "#"}
-              className="block border border-transparent px-4 py-3 text-stone-300 hover:border-white/10 hover:bg-white/[0.04] hover:text-white"
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
-      </aside>
-      <section className="lg:pl-72">
-        <header className="border-b border-white/10 px-6 py-8 md:px-10">
-          <p className="text-xs uppercase tracking-[0.35em] text-stone-500">
-            Staff and admin workspace
-          </p>
-          <h1 className="mt-4 font-serif text-4xl">Dashboard</h1>
-          <p className="mt-3 text-sm text-stone-400">{session.user.name} · {session.user.role} · Sample dashboard data</p>
-          <div className="mt-5 flex flex-wrap gap-3"><Link href="/admin/products" className="border border-white/25 px-4 py-2">Manage products</Link>
-            <Link href="/admin/inventory" className="border border-white/25 px-4 py-2">Manage inventory</Link><Link href="/admin/posts" className="border border-white/25 px-4 py-2">Manage posts & SEO</Link><form action="/api/admin/logout" method="post"><button className="border border-white/25 px-4 py-2">Sign out</button></form>
-            {session.user.role === "ADMIN" && <form action="/api/admin/sessions/revoke" method="post"><button className="border border-white/25 px-4 py-2">Sign out all sessions</button></form>}
-          </div>
-        </header>
-        <div className="grid gap-5 p-6 md:grid-cols-2 md:p-10 xl:grid-cols-5">
-          {adminModules.map((module) => (
-            <div key={module.title} className="border border-white/10 bg-white/[0.03] p-5">
-              <p className="text-sm text-stone-400">{module.title}</p>
-              <p className="mt-3 font-serif text-4xl">{formatNumber(module.count)}</p>
-              <p className="mt-4 text-xs leading-6 text-stone-500">{module.description}</p>
-            </div>
-          ))}
-        </div>
-        <div className="grid gap-6 p-6 pt-0 md:p-10 md:pt-0 xl:grid-cols-[1.2fr_0.8fr]">
-          <section className="border border-white/10 bg-white/[0.03]">
-            <div className="border-b border-white/10 p-5">
-              <h2 className="font-serif text-2xl">Product Catalog</h2>
-              <p className="mt-2 text-sm text-stone-500">
-                Prices are stored but hidden from public pages until enabled.
-              </p>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[720px] text-left text-sm">
-                <thead className="text-xs uppercase tracking-[0.2em] text-stone-500">
-                  <tr>
-                    <th className="p-4">Model</th>
-                    <th className="p-4">Brand</th>
-                    <th className="p-4">Series</th>
-                    <th className="p-4">Stock</th>
-                    <th className="p-4">Reserved</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product) => (
-                    <tr key={product.model} className="border-t border-white/10">
-                      <td className="p-4 font-medium">{product.model}</td>
-                      <td className="p-4 text-stone-400">{product.brand}</td>
-                      <td className="p-4 text-stone-400">{product.series}</td>
-                      <td className="p-4">{product.stock}</td>
-                      <td className="p-4">{product.reserved}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-          <div className="space-y-6">
-            <section className="border border-white/10 bg-white/[0.03] p-5">
-              <h2 className="font-serif text-2xl">Inventory Snapshot</h2>
-              <p className="mt-5 text-5xl font-light">{totalStock - reservedStock}</p>
-              <p className="mt-2 text-sm text-stone-500">available units in backend stock</p>
-            </section>
-            <section className="border border-white/10 bg-white/[0.03] p-5">
-              <h2 className="font-serif text-2xl">Country Routing</h2>
-              <div className="mt-5 space-y-3">
-                {showrooms.map((showroom) => (
-                  <div key={showroom.country} className="flex justify-between gap-4 text-sm">
-                    <span>{showroom.country}</span>
-                    <span className="text-stone-500">{showroom.email}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-            <section className="border border-white/10 bg-white/[0.03] p-5">
-              <h2 className="font-serif text-2xl">Editorial Queue</h2>
-              <div className="mt-5 space-y-3">
-                {journalPosts.map((post) => (
-                  <div key={post.slug} className="text-sm">
-                    <p>{post.title}</p>
-                    <p className="text-stone-500">{post.status}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+  const db = getPrisma();
+  const [count, balances, recent] = await db.$transaction([
+    db.product.count({ where: { deletedAt: null } }),
+    db.inventory.aggregate({ _sum: { quantity: true, reserved: true } }),
+    db.stockMovement.findMany({
+      orderBy: [{ createdAt: "desc" }, { id: "desc" }], take: 8,
+      select: { id: true, createdAt: true, operation: true, type: true, quantity: true,
+        product: { select: { id: true, model: true } } },
+    }),
+  ], { isolationLevel: "RepeatableRead" });
+  const total = balances._sum.quantity ?? 0;
+  const reserved = balances._sum.reserved ?? 0;
+  return <CatalogShell title="Dashboard">
+    <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+      <p>{session.user.name} · {session.user.role}</p>
+      <Link className="rounded bg-stone-100 px-4 py-2 text-black" href="/admin/products/new">Add product</Link>
+    </div>
+    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      {([["Products", count, "/admin/products"], ["Total units", total, "/admin/inventory?deleted=yes"],
+         ["Reserved units", reserved, "/admin/inventory?deleted=yes"], ["Available units", total-reserved, "/admin/inventory?deleted=yes"]] as const)
+        .map(([label,value,href]) => <Link key={label} href={href} className="rounded border border-white/15 bg-[#191919] p-5 hover:border-white/40">
+          <span className="text-stone-400">{label}</span><strong className="mt-3 block text-3xl">{value.toLocaleString("en")}</strong>
+        </Link>)}
+    </div>
+    <h2 className="mb-3 mt-9 text-xl">Recent stock movements</h2>
+    {recent.length ? <ul className="divide-y divide-white/10 border-y border-white/10">{recent.map(m =>
+      <li key={m.id}><Link className="flex flex-wrap items-baseline justify-between gap-2 py-3 hover:underline" href={`/admin/inventory/${m.product.id}`}>
+        <strong>{m.product.model}</strong><span>{(m.operation ?? m.type).replaceAll("_"," ")} · {m.quantity}</span>
+        <time className="text-stone-400" dateTime={m.createdAt.toISOString()}>{m.createdAt.toISOString().slice(0,16).replace("T"," ")} UTC</time>
+      </Link></li>)}</ul> : <p>No stock movements recorded.</p>}
+    {session.user.role === "ADMIN" && <form className="mt-8" method="post" action="/api/admin/sessions/revoke"><button className="underline">Sign out all sessions</button></form>}
+  </CatalogShell>;
 }

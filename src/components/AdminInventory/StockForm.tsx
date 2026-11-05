@@ -1,10 +1,21 @@
 'use client';
-import { useEffect,useRef,useState } from 'react';
+import { useCallback,useEffect,useRef,useState } from 'react';
+import { nextBalance } from '@/lib/inventory/rules.mjs';
 import { useRouter } from 'next/navigation';
 const labels={RECEIVED:'Receive: increase total',ADJUST_UP:'Adjust up: increase total',ADJUST_DOWN:'Adjust down: reduce available stock',RESERVED:'Reserve: move available to reserved',RELEASED:'Release: move reserved to available',SOLD_RESERVED:'Sell reserved: reduce total AND reserved',SOLD_AVAILABLE:'Sell available: reduce total, keep reserved'};
-export default function StockForm({productId}:{productId:string}) {
- const formRef=useRef<HTMLFormElement>(null);const recoveredRef=useRef<HTMLParagraphElement>(null);
- useEffect(()=>{try{const saved=JSON.parse(sessionStorage.getItem('inventory-pending:'+productId)||'null');if(saved){const values=JSON.parse(saved.body);for(const [name,value] of Object.entries(values)){const field=formRef.current?.elements.namedItem(name);if(field instanceof HTMLInputElement||field instanceof HTMLSelectElement||field instanceof HTMLTextAreaElement)field.value=String(value??'');}if(recoveredRef.current)recoveredRef.current.textContent='An earlier request may have completed. Retry these saved values to confirm it safely.';}}catch{if(recoveredRef.current)recoveredRef.current.textContent='Unable to recover the pending request.';}},[productId]);
+export default function StockForm({productId,quantity,reserved}:{productId:string;quantity:number;reserved:number}) {
+ const previewRef=useRef<HTMLOutputElement>(null);
+ const updatePreview=useCallback((form:HTMLFormElement)=>{
+   const output=previewRef.current;
+   if(!output)return;
+   const fields=new FormData(form);
+   if(!fields.get('amount')){output.textContent='';return;}
+   try{
+     const after=nextBalance(quantity,reserved,fields.get('operation'),Number(fields.get('amount')));
+     output.textContent=`Total ${quantity} → ${after.quantity} · Reserved ${reserved} → ${after.reserved} · Available ${quantity-reserved} → ${after.quantity-after.reserved}`;
+   }catch{output.textContent='This change exceeds the balance or quantity limits.';}
+ },[quantity,reserved]); const formRef=useRef<HTMLFormElement>(null);const recoveredRef=useRef<HTMLParagraphElement>(null);
+ useEffect(()=>{try{const saved=JSON.parse(sessionStorage.getItem('inventory-pending:'+productId)||'null');if(saved){const values=JSON.parse(saved.body);for(const [name,value] of Object.entries(values)){const field=formRef.current?.elements.namedItem(name);if(field instanceof HTMLInputElement||field instanceof HTMLSelectElement||field instanceof HTMLTextAreaElement)field.value=String(value??'');}if(formRef.current)updatePreview(formRef.current);if(recoveredRef.current)recoveredRef.current.textContent='An earlier request may have completed. Retry these saved values to confirm it safely.';}}catch{if(recoveredRef.current)recoveredRef.current.textContent='Unable to recover the pending request.';}},[productId,quantity,reserved,updatePreview]);
  const router=useRouter();const busy=useRef(false);const pending=useRef<{key:string;body:string}|null>(null);const [working,setWorking]=useState(false);const [message,setMessage]=useState('');
  async function submit(event:React.FormEvent<HTMLFormElement>){event.preventDefault();if(busy.current)return;busy.current=true;setWorking(true);setMessage('');if(recoveredRef.current)recoveredRef.current.textContent='';
  const storageKey='inventory-pending:'+productId;
@@ -15,8 +26,8 @@ export default function StockForm({productId}:{productId:string}) {
  try{sessionStorage.setItem(storageKey,JSON.stringify(pending.current));}catch{setMessage('Cannot preserve the request key. Enable session storage before submitting.');busy.current=false;setWorking(false);return;}
  try{const response=await fetch('/api/admin/inventory/'+productId,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,idempotencyKey:pending.current.key})});const result=await response.json();
  if(!response.ok){if(response.status<500){pending.current=null;sessionStorage.removeItem(storageKey);}throw Error(result.error||'Stock request failed.');}
- pending.current=null;sessionStorage.removeItem(storageKey);form.reset();setMessage(result.data.replayed?'Original request confirmed; stock was not changed twice.':'Stock movement saved.');router.refresh();
+ pending.current=null;sessionStorage.removeItem(storageKey);form.reset();updatePreview(form);setMessage(result.data.replayed?'Original request confirmed; stock was not changed twice.':'Stock movement saved.');router.refresh();
  }catch(e){setMessage(e instanceof Error?e.message:'Request outcome unknown. Retry the same values.');}finally{busy.current=false;setWorking(false);}}
  const c='w-full min-w-0 rounded border border-white/20 bg-[#202020] p-3';
- return <form ref={formRef} onSubmit={submit} className="my-6 grid max-w-2xl gap-3"><h2 className="text-xl">New movement / compensating correction</h2><p>Total includes reserved units. Available = total − reserved. History cannot be edited or deleted. Correct errors with a new movement, note and original movement ID.</p><label>Operation<select name="operation" className={c} disabled={working}>{Object.entries(labels).map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label><label>Units (positive whole number)<input name="amount" type="number" min="1" max="2147483647" step="1" required className={c} disabled={working}/></label><label>Reason / reference (required)<textarea name="note" maxLength={1000} required className={c} disabled={working}/></label><label>Original movement ID (optional, for correction)<input name="compensationForId" maxLength={191} className={c} disabled={working}/></label><button disabled={working} className={c}>{working?'Saving…':'Save movement'}</button><p ref={recoveredRef}/><p role="status">{message}</p></form>;
+ return <form ref={formRef} onSubmit={submit} onChange={e=>updatePreview(e.currentTarget)} className="my-6 grid max-w-2xl gap-3"><h2 className="text-xl">New movement / compensating correction</h2><p>Total includes reserved units. Available = total − reserved. History cannot be edited or deleted. Correct errors with a new movement, note and original movement ID.</p><label>Operation<select name="operation" className={c} disabled={working}>{Object.entries(labels).map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label><label>Units (positive whole number)<input name="amount" type="number" min="1" max="2147483647" step="1" required className={c} disabled={working}/></label><label>Reason / reference (required)<textarea name="note" maxLength={1000} required className={c} disabled={working}/></label><label>Original movement ID (optional, for correction)<input name="compensationForId" maxLength={191} className={c} disabled={working}/></label><output ref={previewRef} aria-live="polite" className="text-stone-300"/><button disabled={working} className={c}>{working?'Saving…':'Save movement'}</button><p ref={recoveredRef}/><p role="status">{message}</p></form>;
 }

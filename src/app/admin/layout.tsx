@@ -1,2 +1,3 @@
+import AdminWorkspace from "./AdminWorkspace";
 export const metadata = { robots: { index: false, follow: false } };
-export default function AdminLayout({ children }: { children: React.ReactNode }) { return children; }
+export default function AdminLayout({ children }: { children: React.ReactNode }) { return <AdminWorkspace>{children}</AdminWorkspace>; }

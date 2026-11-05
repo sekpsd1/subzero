@@ -19,7 +19,7 @@ export async function listProducts(params: URLSearchParams) {
     const total = await tx.product.count({ where });
     const pages = Math.max(1, Math.ceil(total / filters.pageSize));
     const page = Math.min(filters.page, pages);
-    const products = await tx.product.findMany({ where, skip: (page - 1) * filters.pageSize, take: filters.pageSize, orderBy: [{ updatedAt: 'desc' }, { id: 'asc' }], select: { id: true, model: true, name: true, status: true, deletedAt: true, brand: { select: { name: true } }, category: { select: { name: true } } } });
+    const products = await tx.product.findMany({ where, skip: (page - 1) * filters.pageSize, take: filters.pageSize, orderBy: [{ updatedAt: 'desc' }, { id: 'asc' }], select: { id: true, model: true, name: true, status: true, deletedAt: true, inventory: { select: { quantity: true, reserved: true } }, images: { orderBy: [{ sortOrder: 'asc' }, { id: 'asc' }], take: 1, select: { url: true } }, brand: { select: { name: true } }, category: { select: { name: true } } } });
     return { products, total, page, pages, filters };
   }, { isolationLevel: Prisma.TransactionIsolationLevel.RepeatableRead });
 }
